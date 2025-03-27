@@ -1,0 +1,157 @@
+* {
+  box-sizing: border-box;
+}
+
+.main {
+  margin-top: 3em;
+}
+
+body {
+  display: grid;
+  place-content: center;
+  font-family: "Roboto", sans-serif;
+  min-height: 100%;
+  overflow: hidden;
+}
+
+h1 {
+  font-weight: 400;
+}
+
+h2 {
+  font-weight: 300;
+}
+
+h5 {
+  font-weight: 300;
+}
+
+.text-buttons {
+  font-weight: 300;
+}
+
+.text-buttons:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.title {
+  text-align: center;
+}
+
+.login-form {
+  margin-top: 2em;
+}
+
+input {
+  padding: 0.75em;
+  width: 100%;
+  border-radius: 0.5em;
+  border: 0.1em solid rgba(0, 0, 0, 0.1);
+  font-family: "Roboto", sans-serif;
+  background-color: white;
+}
+
+input[type="submit"] {
+  background-color: rgba(128, 128, 128, 0.1);
+}
+
+button {
+  padding: 0.75em;
+  width: 100%;
+  border-radius: 0.5em;
+  border: 0.1em solid rgba(0, 0, 0, 0.1);
+  font-family: "Roboto", sans-serif;
+  background-color: rgba(128, 128, 128, 0.1);
+}
+
+button:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+  cursor: pointer;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  outline: 0.1em solid rgba(0, 0, 0, 0.5) !important;
+}
+
+input[type="submit"]:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+  cursor: pointer;
+}
+
+.flex-r {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.85);
+  width: 30em;
+  padding: 2em 4em;
+  box-shadow: 0px 7px 29px 0px rgba(100, 100, 111, 0.2);
+  border-radius: 1.5em;
+}
+
+.cover-card {
+  background-color: rgba(255, 255, 255, 0.85);
+  width: 35em;
+  padding: 2em 4em;
+  box-shadow: 0px 7px 29px 0px rgba(100, 100, 111, 0.2);
+  border-radius: 1.5em;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.login-bg {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(black, black),
+    url("https://images.unsplash.com/photo-1689799515027-878d0b0cd1a5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-blend-mode: saturation;
+  background-size: cover;
+  filter: blur(0.3em);
+  z-index: -1;
+  transform: scale(1.1);
+}
+
+.cover-flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 3em;
+  justify-content: space-between;
+}
+
+.phone-covered {
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  gap: 2em;
+}
+
+ul.no-bullets {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+li.margin-adjustment {
+  margin-bottom: -1.2em;
+}
+
+.dash-flex {
+  display: flex;
+  flex-direction: row;
+  gap: 5em;
+  flex-wrap: wrap;
+}
+
+.premium-reducer {
+  display: flex;
+  flex-direction: column;
+}
