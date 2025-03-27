@@ -158,8 +158,13 @@ li.margin-adjustment {
 }
 
 .phone-cover-margin {
-  margin-top: 2em;
+  margin-top: 2.5em;
   display: flex;
   gap: 5em;
   justify-content: space-around;
+}
+
+.premium-reducer-margin {
+  margin-top: 3em;
+  padding: 2em;
 }
