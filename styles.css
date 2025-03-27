@@ -102,7 +102,6 @@ input[type="submit"]:hover {
   padding: 2em 4em;
   box-shadow: 0px 7px 29px 0px rgba(100, 100, 111, 0.2);
   border-radius: 1.5em;
-  border: 1px solid black;
   text-align: center;
 }
 
@@ -132,6 +131,7 @@ input[type="submit"]:hover {
   flex-direction: row;
   text-align: left;
   gap: 2em;
+  align-items: center;
 }
 
 ul.no-bullets {
@@ -145,6 +145,7 @@ li.margin-adjustment {
 }
 
 .dash-flex {
+  margin-top: 5em;
   display: flex;
   flex-direction: row;
   gap: 5em;
@@ -154,4 +155,11 @@ li.margin-adjustment {
 .premium-reducer {
   display: flex;
   flex-direction: column;
+}
+
+.phone-cover-margin {
+  margin-top: 2em;
+  display: flex;
+  gap: 5em;
+  justify-content: space-around;
 }
