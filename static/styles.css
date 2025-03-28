@@ -10,6 +10,9 @@
   --background-opaque: rgba(255, 255, 254, 1);
   --dark-gradient: rgba(5, 29, 72, 0.5);
   --light-gradient: rgba(0, 117, 201, 0.5);
+
+  --pale-blue-gradient-a: rgba(100, 147, 194, 0.377);
+  --pale-blue-gradient-b: rgba(100, 147, 194, 0.711);
 }
 
 * {
@@ -226,7 +229,7 @@ li.margin-adjustment {
   color: black;
 }
 .nav-link-container a:hover {
-  color: rgb(87, 98, 102);
+  color: white;
 }
 
 .header-link-container {
@@ -236,4 +239,18 @@ li.margin-adjustment {
 
 .website-header-name {
   color: black;
+}
+
+.home-screen-bg {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(
+      var(--pale-blue-gradient-a),
+      var(--pale-blue-gradient-b)
+    ),
+    url("https://insidesources.com/wp-content/uploads/2015/06/bigstock-Person-holding-smart-phone-in-618304671.jpg");
+  background-size: cover;
+  z-index: -1;
+  transform: scale(1.1);
 }
