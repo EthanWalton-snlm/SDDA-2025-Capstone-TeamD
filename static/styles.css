@@ -212,3 +212,28 @@ li.margin-adjustment {
 .phone-cover li {
   margin-bottom: 2em;
 }
+
+.nav-link-container {
+  display: flex;
+  justify-content: space-between;
+  color: black;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-link-container a {
+  text-decoration: none;
+  color: black;
+}
+.nav-link-container a:hover {
+  color: rgb(87, 98, 102);
+}
+
+.header-link-container {
+  display: flex;
+  gap: 30px;
+}
+
+.website-header-name {
+  color: black;
+}
