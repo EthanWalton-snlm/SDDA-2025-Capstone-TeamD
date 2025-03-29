@@ -10,6 +10,9 @@
   --background-opaque: rgba(255, 255, 254, 1);
   --dark-gradient: rgba(5, 29, 72, 0.5);
   --light-gradient: rgba(0, 117, 201, 0.5);
+
+  --pale-blue-gradient-a: rgba(100, 147, 194, 0.377);
+  --pale-blue-gradient-b: rgba(100, 147, 194, 0.711);
 }
 
 * {
@@ -18,7 +21,9 @@
 }
 
 .main {
-  margin-top: 3em;
+  margin-bottom: 5em;
+  display: grid;
+  place-content: center;
 }
 
 body {
@@ -126,11 +131,10 @@ input[type="submit"]:hover {
 
 .login-bg {
   position: absolute;
-  height: 100%;
   width: 100%;
   background-image: linear-gradient(var(--dark-gradient), var(--light-gradient)),
     url("https://images.unsplash.com/photo-1689799515027-878d0b0cd1a5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-  background-size: cover;
+  background-size: contain;
   filter: blur(0.3em);
   z-index: -1;
   transform: scale(1.1);
@@ -211,4 +215,66 @@ li.margin-adjustment {
 
 .phone-cover li {
   margin-bottom: 2em;
+}
+
+.nav-link-container {
+  display: flex;
+  justify-content: right;
+  color: black;
+  list-style: none;
+  gap: 30px;
+}
+
+.nav-link-container li {
+  padding: 1em;
+  border-radius: 5em;
+  border: 1px solid var(--dark);
+  font-family: "Roboto", sans-serif;
+  background-color: rgba(255, 255, 255, 0);
+  text-align: center;
+  width: 8em;
+  color: var(--white);
+}
+.nav-link-container li:hover {
+  background-color: var(--white);
+}
+.nav-link-container a {
+  text-decoration: none;
+  color: black;
+}
+.nav-link-container a:hover {
+  color: var(--vibrant);
+}
+
+.header-link-container {
+  display: flex;
+  gap: 30px;
+  justify-content: right;
+  text-align: right;
+}
+
+.website-header-name {
+  color: black;
+  text-align: left;
+}
+
+.home-screen-bg {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(
+      var(--pale-blue-gradient-a),
+      var(--pale-blue-gradient-b)
+    ),
+    url("https://insidesources.com/wp-content/uploads/2015/06/bigstock-Person-holding-smart-phone-in-618304671.jpg");
+  background-size: cover;
+  z-index: -1;
+  transform: scale(1.1);
+}
+
+.website-header-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100vw;
+  padding: 2em 5em;
 }
