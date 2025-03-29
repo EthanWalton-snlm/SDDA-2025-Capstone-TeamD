@@ -1,92 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+{% extends "navigation-bar-logged-in.html" %} {% block content%}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
+<body style="overflow-x: hidden">
+  <div class="main">
+    <div class="cover-card premium-reducers">
+      <h1>Premium Reducers</h1>
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-    />
-
-    <link rel="stylesheet" href="../styles.css" />
-  </head>
-
-  <body>
-    <div class="main">
-      <h1>Phone Insurance</h1>
-
-      <div class="cover-card premium-reducers">
-        <h1>Premium Reducers</h1>
-
-        <div class="premium-reducer-margin">
-          <div class="cover-flex">
-            <div class="premium-reducer">
-              <i class="fa-solid fa-shield-halved" style="font-size: 54px"></i>
-              <h2>Screen Protector</h2>
-            </div>
-
-            <div class="premium-reducer">
-              <i class="fa-solid fa-dumbbell" style="font-size: 54px"></i>
-              <h2>Phone Case</h2>
-            </div>
-
-            <div class="premium-reducer">
-              <i class="fa-solid fa-dumbbell" style="font-size: 54px"></i>
-              <h2>Phone Case</h2>
-            </div>
+      <div class="premium-reducer-margin">
+        <div class="cover-flex">
+          <div class="premium-reducer">
+            <i class="fa-solid fa-shield-halved" style="font-size: 54px"></i>
+            <h2>Screen Protector</h2>
           </div>
-        </div>
-      </div>
 
-      <div class="dash-flex">
-        <div class="cover-card">
-          <div class="phone-cover">
-            <h1>iPhone 12 Pro</h1>
-            <h4>Business Plan</h4>
-            <h2>R{{price}}</h2>
-            <ul>
-              <li>Yada Yada Yada Yada Yada</li>
-              <li>Yada Yada Yada Yada Yada</li>
-              <li>Yada Yada Yada Yada Yada</li>
-            </ul>
+          <div class="premium-reducer">
+            <i class="fa-solid fa-dumbbell" style="font-size: 54px"></i>
+            <h2>Phone Case</h2>
           </div>
-        </div>
 
-        <div class="cover-card">
-          <div class="phone-cover">
-            <h1>Samsung A2A</h1>
-            <h4>Fresher Plan</h4>
-            <h2>R{{price}}</h2>
-            <ul>
-              <li>Yada Yada Yada Yada Yada</li>
-              <li>Yada Yada Yada Yada Yada</li>
-              <li>Yada Yada Yada Yada Yada</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="cover-card">
-          <div class="phone-cover">
-            <h1>iPhone 15 Pro Max</h1>
-            <h4>Grand Plan</h4>
-            <h2>R{{price}}</h2>
-            <ul>
-              <li>Yada Yada Yada Yada Yada</li>
-              <li>Yada Yada Yada Yada Yada</li>
-              <li>Yada Yada Yada Yada Yada</li>
-            </ul>
+          <div class="premium-reducer">
+            <i class="fa-solid fa-dumbbell" style="font-size: 54px"></i>
+            <h2>Phone Case</h2>
           </div>
         </div>
       </div>
     </div>
-  </body>
-</html>
+
+    <div class="dash-flex">
+      <div class="cover-card">
+        <div class="phone-cover">
+          <h1>iPhone 12 Pro</h1>
+          <h4>Business Plan</h4>
+          <h2>R{{price}}</h2>
+          <ul>
+            <li>Yada Yada Yada Yada Yada</li>
+            <li>Yada Yada Yada Yada Yada</li>
+            <li>Yada Yada Yada Yada Yada</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cover-card">
+        <div class="phone-cover">
+          <h1>Samsung A2A</h1>
+          <h4>Fresher Plan</h4>
+          <h2>R{{price}}</h2>
+          <ul>
+            <li>Yada Yada Yada Yada Yada</li>
+            <li>Yada Yada Yada Yada Yada</li>
+            <li>Yada Yada Yada Yada Yada</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cover-card">
+        <div class="phone-cover">
+          <h1>iPhone 15 Pro Max</h1>
+          <h4>Grand Plan</h4>
+          <h2>R{{price}}</h2>
+          <ul>
+            <li>Yada Yada Yada Yada Yada</li>
+            <li>Yada Yada Yada Yada Yada</li>
+            <li>Yada Yada Yada Yada Yada</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+{% endblock %}

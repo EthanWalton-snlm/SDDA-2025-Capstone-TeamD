@@ -9,7 +9,11 @@
         <h2>Log In</h2>
       </div>
 
-      <form class="login-form">
+      <form
+        action="{{url_for('login_bp.log_in_auth')}}"
+        method="POST"
+        class="login-form"
+      >
         <input
           type="text"
           id="username"

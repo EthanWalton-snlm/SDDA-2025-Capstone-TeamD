@@ -3,6 +3,6 @@ from flask import Blueprint, render_template
 home_bp = Blueprint("home_bp", __name__)
 
 
-@home_bp.get("/home")
+@home_bp.get("/")
 def home_screen():
     return render_template("home.html")

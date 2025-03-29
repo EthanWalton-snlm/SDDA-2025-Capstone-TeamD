@@ -21,7 +21,6 @@
 }
 
 .main {
-  margin-top: 3em;
   margin-bottom: 5em;
   display: grid;
   place-content: center;

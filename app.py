@@ -1,5 +1,6 @@
 from flask import Flask
 
+from routes.dashboard_bp import dashboard_bp
 from routes.home_bp import home_bp
 
 # blueprint imports
@@ -13,6 +14,7 @@ def create_app():
     app.register_blueprint(login_bp)
     app.register_blueprint(signup_bp)
     app.register_blueprint(home_bp)
+    app.register_blueprint(dashboard_bp, url_prefix="/dashboard")
     return app
 
 
