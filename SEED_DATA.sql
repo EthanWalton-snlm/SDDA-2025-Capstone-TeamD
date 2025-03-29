@@ -25,6 +25,7 @@ CREATE TABLE policyTypes (
 CREATE TABLE claims (
     claim_id NVARCHAR(50) PRIMARY KEY,
     status NVARCHAR(25),
+    reason NVARCHAR(500),
     FOREIGN KEY (username) REFERENCES users(username),
     FOREIGN KEY (policy_id) REFERENCES policies(policy_id)
 );

@@ -5,18 +5,18 @@
     <div class="card">
       <h2>Review Submission</h2>
       <div class="submission-detail">
-        <p><strong>Submitted by:</strong> {{ submission.name }}</p>
-        <p><strong>Details:</strong> {{ submission.submitted }}</p>
+        <p><strong>Submitted by:</strong> {{ submission.username }}</p>
+        <p><strong>Details:</strong> {{ submission.reason }}</p>
       </div>
 
       <form method="POST">
-        {% if submission.status == 'pending' %}
+        {% if submission.status == 'Pending' %}
         <button type="submit" name="approve">Approve</button>
         <button type="submit" name="reject">Reject</button>
         {% endif %}
       </form>
 
-      {% if submission.status == 'rejected' %}
+      {% if submission.status == 'Rejected' %}
       <form method="POST">
         <label for="reason">Reason for Rejection:</label>
         <textarea id="reason" name="reason" required>
