@@ -20,93 +20,23 @@ submissions = [
         "reason": "",
     },
     {
-        "id": 2,
-        "name": "Jane Smith",
-        "submitted": "Form submitted by Jane Smith",
+        "id": 3,
+        "name": "Siyanda Kunene",
+        "submitted": "Form submitted by Siyanda Kunene",
         "status": "pending",
         "reason": "",
     },
     {
-        "id": 2,
-        "name": "Jane Smith",
-        "submitted": "Form submitted by Jane Smith",
+        "id": 4,
+        "name": "Ethan Walton",
+        "submitted": "Form submitted by Ethan Walton",
         "status": "pending",
         "reason": "",
     },
     {
-        "id": 2,
-        "name": "Jane Smith",
-        "submitted": "Form submitted by Jane Smith",
-        "status": "pending",
-        "reason": "",
-    },
-    {
-        "id": 2,
-        "name": "Jane Smith",
-        "submitted": "Form submitted by Jane Smith",
-        "status": "pending",
-        "reason": "",
-    },
-    {
-        "id": 2,
-        "name": "Jane Smith",
-        "submitted": "Form submitted by Jane Smith",
-        "status": "pending",
-        "reason": "",
-    },
-    {
-        "id": 2,
-        "name": "Jane Smith",
-        "submitted": "Form submitted by Jane Smith",
-        "status": "pending",
-        "reason": "",
-    },
-    {
-        "id": 2,
-        "name": "Jane Smith",
-        "submitted": "Form submitted by Jane Smith",
-        "status": "pending",
-        "reason": "",
-    },
-    {
-        "id": 2,
-        "name": "Jane Smith",
-        "submitted": "Form submitted by Jane Smith",
-        "status": "pending",
-        "reason": "",
-    },
-    {
-        "id": 2,
-        "name": "Jane Smith",
-        "submitted": "Form submitted by Jane Smith",
-        "status": "pending",
-        "reason": "",
-    },
-    {
-        "id": 2,
-        "name": "Jane Smith",
-        "submitted": "Form submitted by Jane Smith",
-        "status": "pending",
-        "reason": "",
-    },
-    {
-        "id": 2,
-        "name": "Jane Smith",
-        "submitted": "Form submitted by Jane Smith",
-        "status": "pending",
-        "reason": "",
-    },
-    {
-        "id": 2,
-        "name": "Jane Smith",
-        "submitted": "Form submitted by Jane Smith",
-        "status": "pending",
-        "reason": "",
-    },
-    {
-        "id": 2,
-        "name": "Jane Smith",
-        "submitted": "Form submitted by Jane Smith",
+        "id": 5,
+        "name": "Chleo Smith",
+        "submitted": "Form submitted by Chleo Smith",
         "status": "pending",
         "reason": "",
     },
@@ -132,12 +62,14 @@ def admin_review(id):
         if "approve" in request.form:
             submission["status"] = "approved"
             approved.append(submission)
+            return redirect(url_for("admin_bp.admin_home_page"))
         elif "reject" in request.form:
             submission["status"] = "rejected"
-            submission["reason"] = request.form["reason"]
+        elif "reject_reason" in request.form:
+            submission["reason"] = request.form.get("reason")
             rejected.append(submission)
-
+            return redirect(url_for("admin_bp.admin_home_page"))
         # Redirect back to the home page
-        return redirect(url_for("home_bp.home_screen"))
+        # return redirect(url_for("home_bp.home_screen"))
 
     return render_template("admin_review.html", submission=submission)

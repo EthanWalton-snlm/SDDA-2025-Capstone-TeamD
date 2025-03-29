@@ -22,11 +22,13 @@
         <textarea id="reason" name="reason" required>
 {{ submission.reason }}</textarea
         >
-        <button type="submit" name="reject">Submit Rejection Reason</button>
+        <button type="submit" name="reject_reason">
+          Submit Rejection Reason
+        </button>
       </form>
       {% endif %}
 
-      <a class="text-buttons" href="{{ url_for('home_bp.home_screen') }}"
+      <a class="text-buttons" href="{{ url_for('admin_bp.admin_home_page') }}"
         >Back to Dashboard</a
       >
     </div>
