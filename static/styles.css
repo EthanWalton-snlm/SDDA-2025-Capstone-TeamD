@@ -22,6 +22,9 @@
 
 .main {
   margin-top: 3em;
+  margin-bottom: 5em;
+  display: grid;
+  place-content: center;
 }
 
 body {
@@ -129,11 +132,10 @@ input[type="submit"]:hover {
 
 .login-bg {
   position: absolute;
-  height: 100%;
   width: 100%;
   background-image: linear-gradient(var(--dark-gradient), var(--light-gradient)),
     url("https://images.unsplash.com/photo-1689799515027-878d0b0cd1a5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-  background-size: cover;
+  background-size: contain;
   filter: blur(0.3em);
   z-index: -1;
   transform: scale(1.1);
@@ -218,27 +220,43 @@ li.margin-adjustment {
 
 .nav-link-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: right;
   color: black;
   list-style: none;
-  align-items: center;
+  gap: 30px;
 }
 
+.nav-link-container li {
+  padding: 1em;
+  border-radius: 5em;
+  border: 1px solid var(--dark);
+  font-family: "Roboto", sans-serif;
+  background-color: rgba(255, 255, 255, 0);
+  text-align: center;
+  width: 8em;
+  color: var(--white);
+}
+.nav-link-container li:hover {
+  background-color: var(--white);
+}
 .nav-link-container a {
   text-decoration: none;
   color: black;
 }
 .nav-link-container a:hover {
-  color: white;
+  color: var(--vibrant);
 }
 
 .header-link-container {
   display: flex;
   gap: 30px;
+  justify-content: right;
+  text-align: right;
 }
 
 .website-header-name {
   color: black;
+  text-align: left;
 }
 
 .home-screen-bg {
@@ -253,4 +271,11 @@ li.margin-adjustment {
   background-size: cover;
   z-index: -1;
   transform: scale(1.1);
+}
+
+.website-header-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100vw;
+  padding: 2em 5em;
 }
