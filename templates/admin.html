@@ -1,0 +1,42 @@
+{% extends "navigation-bar.html" %} {% block content%}
+
+<body>
+  <div class="box-container">
+    <div class="box-left">
+      <h2>Pending Submissions</h2>
+      {% for submission in submissions %} {% if submission.status == 'pending'
+      %}
+      <div class="submission">
+        <p>{{ submission.submitted }}</p>
+        <a
+          href="{{ url_for('admin_bp.admin_review', id=submission.id) }}"
+          class="view-button"
+          >View Details</a
+        >
+      </div>
+      {% endif %} {% endfor %}
+    </div>
+
+    <div class="box-right">
+      <h2>Approved Submissions</h2>
+      {% for submission in approved %}
+      <div class="submission">
+        <p>{{ submission.submitted }}</p>
+        <p>Status: Approved ✅</p>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="box-centre">
+      <h2>Rejected Submissions</h2>
+      {% for submission in rejected %}
+      <div class="submission">
+        <p>{{ submission.submitted }}</p>
+        <p>Status: Rejected ❌</p>
+        <p>Reason: {{submission.reason}}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</body>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "navigation-bar.html" %} {% block content%}
+
+<body>
+  <div class="admin-container">
+    <div class="card">
+      <h2>Review Submission</h2>
+      <div class="submission-detail">
+        <p><strong>Submitted by:</strong> {{ submission.name }}</p>
+        <p><strong>Details:</strong> {{ submission.submitted }}</p>
+      </div>
+
+      <form method="POST">
+        {% if submission.status == 'pending' %}
+        <button type="submit" name="approve">Approve</button>
+        <button type="submit" name="reject">Reject</button>
+        {% endif %}
+      </form>
+
+      {% if submission.status == 'rejected' %}
+      <form method="POST">
+        <label for="reason">Reason for Rejection:</label>
+        <textarea id="reason" name="reason" required>
+{{ submission.reason }}</textarea
+        >
+        <button type="submit" name="reject_reason">
+          Submit Rejection Reason
+        </button>
+      </form>
+      {% endif %}
+
+      <a class="text-buttons" href="{{ url_for('admin_bp.admin_home_page') }}"
+        >Back to Dashboard</a
+      >
+    </div>
+  </div>
+</body>
+{% endblock %}
