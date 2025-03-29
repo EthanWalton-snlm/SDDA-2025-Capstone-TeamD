@@ -1,6 +1,6 @@
 from flask import Blueprint, redirect, render_template, request, url_for
 
-from models.users import User
+from routes.account_details_bp import get_user_details
 from utilities import encrypt_password
 
 login_bp = Blueprint("login_bp", __name__)
@@ -20,14 +20,12 @@ def log_in_auth():
         ),  # TODO: encrypt in html [using encrypt_password()]
     }
 
-    user = User.query.get(data["username"])
+    user = get_user_details(data["username"])
 
     if user is None:
         return redirect(url_for("login_bp.log_in_screen"))
 
-    user_details = user.to_dict()
-
-    if user_details["password"] == data["password"]:
+    if user.to_dict()["password"] == data["password"]:
         return redirect(url_for("dashboard_bp.dashboard_page"))
     else:
         return redirect(url_for("login_bp.log_in_screen"))
