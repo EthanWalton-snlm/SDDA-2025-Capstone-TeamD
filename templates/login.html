@@ -1,40 +1,44 @@
 {% extends "navigation-bar.html" %} {% block content%}
 <body style="overflow-y: scroll; overflow-x: hidden">
-  <div class="login-bg"></div>
+  {% extends "navigation-bar.html" %} {% block content%}
+  <body style="overflow: hidden">
+    chleo-branch
+    <div class="login-bg"></div>
 
-  <div class="main">
-    <div class="card">
-      <div class="title">
-        <h1>Phone Insurance</h1>
-        <h2>Log In</h2>
-      </div>
+    <div class="main">
+      <div class="card">
+        <div class="title">
+          <h1>Phone Insurance</h1>
+          <h2>Log In</h2>
+        </div>
 
-      <form
-        action="{{url_for('login_bp.log_in_auth')}}"
-        method="POST"
-        class="login-form"
-      >
-        <input
-          type="text"
-          id="username"
-          name="username"
-          value="Username"
-        /><br /><br />
-        <input
-          type="password"
-          id="password"
-          name="password"
-          value="Password"
-        /><br /><br />
-        <input type="submit" value="Submit" />
-      </form>
+        <form
+          action="{{url_for('login_bp.log_in_auth')}}"
+          method="POST"
+          class="login-form"
+        >
+          <input
+            type="text"
+            id="username"
+            name="username"
+            value="Username"
+          /><br /><br />
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value="Password"
+          /><br /><br />
+          <input type="submit" value="Submit" />
+        </form>
 
-      <div class="flex-r">
-        <h5 class="text-buttons">Sign Up</h5>
-        <h5 class="text-buttons">Forgot Password</h5>
+        <div class="flex-r">
+          <h5 class="text-buttons">Sign Up</h5>
+          <h5 class="text-buttons">Forgot Password</h5>
+        </div>
       </div>
     </div>
-  </div>
-</body>
+  </body>
 
-{% endblock %}
+  {% endblock %}
+</body>
