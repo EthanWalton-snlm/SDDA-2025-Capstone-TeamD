@@ -101,7 +101,6 @@ def admin_review(id):
     )
 
     if request.method == "POST":
-        print(request.form)
         if "approve" in request.form:
             change_claim_status(submission["claim_id"], CLAIM_STATUS_CODE["approve"])
             return redirect(url_for("admin_bp.admin_home_page"))
