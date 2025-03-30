@@ -63,6 +63,9 @@ def get_all_approved_submissions():
     ]
 
 
+# TODO: reject goes to approved
+
+
 def get_all_rejected_submissions():
     submissions = get_all_submissions_data()
     return [
@@ -98,13 +101,17 @@ def admin_review(id):
     )
 
     if request.method == "POST":
+        print(request.form)
         if "approve" in request.form:
             change_claim_status(submission["claim_id"], CLAIM_STATUS_CODE["approve"])
             return redirect(url_for("admin_bp.admin_home_page"))
         elif "reject" in request.form:
             change_claim_status(submission["claim_id"], CLAIM_STATUS_CODE["reject"])
-        elif "reject_reason" in request.form:
-            change_claim_status(submission["claim_id"], request.form.get("reason"))
+            return redirect(url_for("admin_bp.admin_review", id=id))
+        elif "admin_comment" in request.form:
+            update_claim_reason(
+                submission["claim_id"], request.form.get("admin_comment")
+            )
             return redirect(url_for("admin_bp.admin_home_page"))
         # Redirect back to the home page
         # return redirect(url_for("home_bp.home_screen"))
@@ -124,12 +131,12 @@ def change_claim_status(id, status):
             print(e)
 
 
-def update_claim_reason(id, reason):
+def update_claim_reason(id, admin_comment):
     claim = Claim.query.get(id)
 
     if claim is not None:
         try:
-            claim.reason = reason
+            claim.admin_comment = admin_comment
             db.session.commit()
         except Exception as e:
             db.session.rollback()  # restores data, cannot be done after commit()

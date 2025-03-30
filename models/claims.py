@@ -13,6 +13,7 @@ class Claim(db.Model):
     )
     status = db.Column(db.String(25))
     reason = db.Column(db.String(500))
+    admin_comment = db.Column(db.String(500))
     username = db.Column(
         db.String(100), ForeignKey("users.username")
     )  # aka submitted_by
@@ -25,6 +26,7 @@ class Claim(db.Model):
             "claim_id": self.claim_id,
             "status": self.status,
             "reason": self.reason,
+            "admin_comment": self.admin_comment,
             "username": self.username,
             "policy_id": self.policy_id,
         }

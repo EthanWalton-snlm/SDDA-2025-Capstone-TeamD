@@ -18,11 +18,11 @@
 
       {% if submission.status == 'Rejected' %}
       <form method="POST">
-        <label for="reason">Reason for Rejection:</label>
-        <textarea id="reason" name="reason" required>
-{{ submission.reason }}</textarea
+        <label for="admin_comment">Reason for Rejection:</label>
+        <textarea id="admin_comment" name="admin_comment" required>
+{{ submission.admin_comment }}</textarea
         >
-        <button type="submit" name="reject_reason">
+        <button type="submit" name="admin_comment">
           Submit Rejection Reason
         </button>
       </form>
