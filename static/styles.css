@@ -426,3 +426,18 @@ textarea {
 .admin-container form {
   margin-bottom: 1em;
 }
+
+.account-details-grid {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 1em;
+}
+
+.account-details-grid h2 {
+  font-size: 28px;
+}
+
+.account-details-grid h3 {
+  font-size: 28px;
+  font-weight: 200;
+}
