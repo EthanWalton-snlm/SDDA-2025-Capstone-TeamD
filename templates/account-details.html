@@ -1,0 +1,15 @@
+{% extends "navigation-bar-logged-in.html" %} {% block content%}
+
+<body style="overflow-x: hidden">
+  <div class="main">
+    <div class="card">
+      <div class="account-details-grid">
+        {% for key, value in user.items() %}
+        <h2>{{key.replace("_", " ").title()}}</h2>
+        <h3>{{value}}</h3>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</body>
+{% endblock %}

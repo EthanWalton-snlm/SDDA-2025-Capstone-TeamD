@@ -7,7 +7,7 @@ class User(db.Model):
     #     db.String(50), primary_key=True, default=lambda: str(uuid.uuid4())
     # )
     username = db.Column(db.String(100), primary_key=True)
-    password = db.Column(db.String(50))  # TODO: encrypt
+    password = db.Column(db.String(500))
     first_name = db.Column(db.String(50))
     last_name = db.Column(db.String(50))
     email = db.Column(db.String(50))
