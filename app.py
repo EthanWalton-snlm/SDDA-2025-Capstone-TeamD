@@ -3,12 +3,14 @@ from sqlalchemy.sql import text
 
 from config import Config
 from extensions import db
+from routes.account_details_bp import account_details_bp
 from routes.admin_bp import admin_bp
 from routes.dashboard_bp import dashboard_bp
 from routes.home_bp import home_bp
 
 # blueprint imports
 from routes.login_bp import login_bp
+from routes.signout_bp import signout_bp
 from routes.signup_bp import signup_bp
 
 
@@ -32,6 +34,8 @@ def create_app():
     app.register_blueprint(home_bp)
     app.register_blueprint(dashboard_bp, url_prefix="/dashboard")
     app.register_blueprint(admin_bp, url_prefix="/admin")
+    app.register_blueprint(account_details_bp, url_prefix="/account")
+    app.register_blueprint(signout_bp, url_prefix="/sign-out")
     return app
 
 
