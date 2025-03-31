@@ -1,5 +1,5 @@
 from flask import Flask
-
+from routes.claims_bp import claims_bp
 from routes.dashboard_bp import dashboard_bp
 from routes.home_bp import home_bp
 
@@ -15,6 +15,8 @@ def create_app():
     app.register_blueprint(signup_bp)
     app.register_blueprint(home_bp)
     app.register_blueprint(dashboard_bp, url_prefix="/dashboard")
+    app.register_blueprint(claims_bp, url_prefix="/claims")
+
     return app
 
 
