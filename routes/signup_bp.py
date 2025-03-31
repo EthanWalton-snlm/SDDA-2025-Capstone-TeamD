@@ -31,6 +31,7 @@ def sign_up_user():
     try:
         db.session.add(new_user)
         db.session.commit()
+        print("here")
         return redirect(url_for("dashboard_bp.dashboard_page"))
     except Exception as e:
         db.session.rollback()  # restores data, cannot be done after commit()

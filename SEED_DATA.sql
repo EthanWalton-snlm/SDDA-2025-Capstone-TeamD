@@ -1,6 +1,6 @@
 CREATE TABLE users (
     username NVARCHAR(100) PRIMARY KEY,
-    password NVARCHAR(50),
+    password NVARCHAR(500),
     first_name NVARCHAR(50),
     last_name NVARCHAR(50),
     email NVARCHAR(50),
@@ -43,13 +43,16 @@ ADD username NVARCHAR(100)
 REFERENCES users(username);
 
 ALTER TABLE claims
-ADD policy_type_id NVARCHAR(50)
-REFERENCES policyTypes(policy_type_id);
+ADD policy_id NVARCHAR(50)
+REFERENCES policies(policy_id);
 
+
+
+INSERT INTO policies VALUES ('123', 100, (SELECT username FROM users WHERE username = 'admin'), (SELECT policy_type_id FROM PolicyTypes WHERE policy_type_id='BPLAN'));
 
 
 INSERT INTO claims (claim_id, status, reason, username, policy_id)
-VALUES ('claim1', 'pending', 'broke my phone', (SELECT username FROM users WHERE username = 'wewe'), (SELECT policy_type_id FROM PolicyTypes WHERE policy_type_id='BPLAN'));
+VALUES ('claim1', 'Pending', 'broke my phone', (SELECT username FROM users WHERE username = 'admin'), (SELECT policy_id FROM policies WHERE policy_id='123'));
 
 
 INSERT INTO users (username, password, first_name, last_name, is_admin)
@@ -57,7 +60,6 @@ VALUES
 ('admin', 'admin', 'Admin', 'Account', 1);
 
 
-INSERT INTO policyTypes VALUES ('BPLAN', 'Business Plan', 'For business people')
+INSERT INTO policyTypes VALUES ('BPLAN', 'Business Plan', 'For business people');
 
-
-INSERT INTO claims SET username = (SELECT 1 FROM users), policy_id = (SELECT 1 FROM PolicyTypes);
+SELECT * FROM users;
