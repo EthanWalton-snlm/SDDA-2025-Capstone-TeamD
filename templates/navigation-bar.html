@@ -14,6 +14,13 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='styles.css') }}"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     {% block style_content%}{% endblock%}
   </head>
   <body>
@@ -36,7 +43,9 @@
     <footer class="main-footer">
       <section class="footer-content">
         <div class="footer-section footer-policies">
-          <h1>Policies</h1>
+          <a href="/policies">
+            <h1>Policies</h1>
+          </a>
           <ul>
             <li>Fresher</li>
             <li>Personal</li>
@@ -55,7 +64,7 @@
         </div>
 
         <div class="footer-section footer-claims">
-          <h1>Claims</h1>
+          <h1>Claim</h1>
           <ul>
             <li>Damage Claim</li>
             <li>Theft/Loss Claim</li>
@@ -66,7 +75,7 @@
         <div class="footer-section footer-contact">
           <h1>Contact</h1>
           <ul>
-            <li>helpdesk@phoneinsurance.com</li>
+            <li>helpdesk@Cellsure.com</li>
             <li>+27 123 456 789</li>
             <li>Contact Form</li>
           </ul>
