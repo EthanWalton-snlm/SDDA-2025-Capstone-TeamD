@@ -1,4 +1,6 @@
 from flask import Flask
+
+
 from sqlalchemy.sql import text
 
 from config import Config
@@ -12,6 +14,7 @@ from routes.home_bp import home_bp
 from routes.login_bp import login_bp
 from routes.signout_bp import signout_bp
 from routes.signup_bp import signup_bp
+from routes.claims_bp import claims_bp
 
 
 def create_app():
@@ -33,6 +36,7 @@ def create_app():
     app.register_blueprint(signup_bp)
     app.register_blueprint(home_bp)
     app.register_blueprint(dashboard_bp, url_prefix="/dashboard")
+    app.register_blueprint(claims_bp, url_prefix="/claims")
     app.register_blueprint(admin_bp, url_prefix="/admin")
     app.register_blueprint(account_details_bp, url_prefix="/account")
     app.register_blueprint(signout_bp, url_prefix="/sign-out")
