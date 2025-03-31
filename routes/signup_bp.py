@@ -1,5 +1,6 @@
 from flask import Blueprint, redirect, render_template, request, url_for
 
+from constants import set_logged_in_username
 from extensions import db
 from models.users import User
 from utilities import encrypt_password
@@ -31,7 +32,7 @@ def sign_up_user():
     try:
         db.session.add(new_user)
         db.session.commit()
-        print("here")
+        set_logged_in_username(new_user.to_dict()["username"])
         return redirect(url_for("dashboard_bp.dashboard_page"))
     except Exception as e:
         db.session.rollback()  # restores data, cannot be done after commit()

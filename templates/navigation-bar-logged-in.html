@@ -30,7 +30,7 @@
     />
   </head>
   <body>
-    <!-- <div class="home-screen-bg"></div> -->
+    <div class="home-screen-bg"></div>
     {% block background_img %}{% endblock %}
     <div class="website-header-container">
       <h1 class="website-header-name">Phone Insurance</h1>
@@ -38,16 +38,18 @@
         <nav>
           <ul class="nav-link-container">
             <li><a href="/dashboard"> Home</a></li>
-            <li><a href="/"> Sign Out</a></li>
+            <li><a href="/account"> Account</a></li>
+            <li><a href="/sign-out"> Sign Out</a></li>
           </ul>
         </nav>
       </header>
     </div>
-    {% block content %}{% endblock%}
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+    {% block content %}{% endblock%}
   </body>
 </html>
