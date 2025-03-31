@@ -1,54 +1,39 @@
 {% extends "navigation-bar-logged-in.html" %} {% block content%}
 
+<body style="overflow-x: hidden">
+  <div class="main">
 
-<!DOCTYPE html>
-<html lang="en">
+    <div class="container">
+      <h1>Cellphone Insurance Claim Form</h1>
+      <p>Please upload the required documents to submit your claim.</p>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cellphone Insurance Claim Form</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-
-<body>
-
-  <div class="container">
-    <h1>Cellphone Insurance Claim Form</h1>
-    <p>Please upload the required documents to submit your claim.</p>
-
-    <iframe
-      src="https://docs.google.com/spreadsheets/d/17INviqEQ-dqytOsy9q3zAb-Jl79HaZU0D8w_q-RF_ik/edit?usp=sharing/pubhtml?widget=true&headers=false"
-      width="800" height="600"></iframe>
+      <p>the below moves to the admin side</p>
+      <iframe
+        src="https://docs.google.com/spreadsheets/d/17INviqEQ-dqytOsy9q3zAb-Jl79HaZU0D8w_q-RF_ik/edit?usp=sharing/pubhtml?widget=true&headers=false"
+        width="800" height="600"></iframe>
 
 
 
-    <form action="#" method="post" enctype="multipart/form-data">
+      <form action="#" method="post" enctype="multipart/form-data">
 
 
-      <!-- IMEI Number -->
-      <label for="imei-number">IMEI Number:</label>
-      <input type="text" id="imei-number" name="imei-number" placeholder="Enter IMEI Number">
+        <!-- IMEI Number -->
+        <label for="imei-number">IMEI Number:</label>
+        <input type="text" id="imei-number" name="imei-number" placeholder="Enter IMEI Number">
 
-      <label for="imei-number">IMEI Number:</label>
-      <input type="text" id="imei-number" name="imei-number" placeholder="Enter IMEI Number">
-
-      <label for="imei-number">IMEI Number:</label>
-      <input type="text" id="imei-number" name="imei-number" placeholder="Enter IMEI Number">
+        <label for="imei-number">ID:</label>
+        <input type="text" id="ID" name="ID" placeholder="Enter ID">
 
 
+        <button type="submit">Submit Claim</button>
+      </form>
 
-      <button type="submit">Submit Claim</button>
-    </form>
+      <iframe
+        src="https://docs.google.com/forms/d/e/1FAIpQLSeU-D7FSqyNyTNz2gQF0HaWaoeiGTu2x9bR5Q8kJBBVmQXgog/viewform?embedded=true"
+        width="640" height="1137" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
 
-    <iframe
-      src="https://docs.google.com/forms/d/e/1FAIpQLSeU-D7FSqyNyTNz2gQF0HaWaoeiGTu2x9bR5Q8kJBBVmQXgog/viewform?embedded=true"
-      width="640" height="1137" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-
-  </div>
+    </div>
 
 </body>
-
-</html>
 
 {% endblock %}
