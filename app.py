@@ -7,10 +7,12 @@ from routes.account_details_bp import account_details_bp
 from routes.admin_bp import admin_bp
 from routes.claims_bp import claims_bp
 from routes.dashboard_bp import dashboard_bp
+from routes.faq_bp import faq_bp
 from routes.home_bp import home_bp
 
 # blueprint imports
 from routes.login_bp import login_bp
+from routes.partners_bp import partners_bp
 from routes.policies_bp import policies_bp
 from routes.signout_bp import signout_bp
 from routes.signup_bp import signup_bp
@@ -40,6 +42,8 @@ def create_app():
     app.register_blueprint(account_details_bp, url_prefix="/account")
     app.register_blueprint(signout_bp, url_prefix="/sign-out")
     app.register_blueprint(policies_bp)
+    app.register_blueprint(partners_bp)
+    app.register_blueprint(faq_bp)
     return app
 
 

@@ -1,0 +1,71 @@
+{% extends "navigation-bar.html" %} {% block content%}
+<body style="overflow-y: scroll; overflow-x: hidden">
+  <div class="login-bg"></div>
+  <div class="main">
+    <div class="card">
+      <div class="title">
+        <h1>Cellsure</h1>
+        <h2>New Policy</h2>
+      </div>
+
+      <form method="post" class="new-policy-form">
+        <label>
+          Account Name:
+          <input
+            type="text"
+            id="account-name"
+            name="account-name"
+            value="Name"
+          /><br /><br />
+
+          Account Password:
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value="Password"
+          /><br /><br />
+
+          Phone Name:
+          <input
+            type="text"
+            id="phone-name"
+            name="phone-name"
+            value="e.g iPhone 12"
+            required
+          /><br /><br />
+          <fieldset>
+            <legend>Which Policy would you like to select?</legend>
+            <label
+              ><input type="radio" name="radio" value="Fresher" />Fresher</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="radio"
+                value="Personal"
+              />Personal</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="radio"
+                value="Fresher"
+              />Business</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="radio"
+                value="Personal"
+              />Platinum</label
+            >
+          </fieldset>
+          <br /><br />
+        </label>
+        <button class="submit-button">Submit</button>
+      </form>
+    </div>
+  </div>
+</body>
+{% endblock %}

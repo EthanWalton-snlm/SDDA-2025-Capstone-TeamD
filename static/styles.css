@@ -539,9 +539,10 @@ textarea {
 .tile-text {
   color: var(--dark);
   display: flex;
-  justify-content: center;
   text-transform: uppercase;
   font-weight: 200;
+  padding-left: 30px;
+  line-height: 40px;
 }
 
 /* style for list items on policy list */
@@ -549,7 +550,6 @@ textarea {
   color: var(--dark);
   list-style: none;
   font-weight: 200;
-  line-height: 30px;
 }
 
 .policy-info-list-gray {
@@ -605,4 +605,71 @@ textarea {
   width: 50%;
   background-color: var(--background-transparent);
   margin-left: 65px;
+}
+
+/* styling for image on partner page */
+.tile-img {
+  height: 40%;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* styling for body text on partner page */
+.tile-body-text {
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+  padding-right: 10px;
+  font-weight: 200;
+  font-size: small;
+  line-height: 20px;
+}
+
+/* input for faq page */
+.faq-input {
+  display: none;
+}
+
+/* label for faq page */
+.faq-label {
+  display: block;
+  padding: 8px 22px;
+  margin: 0 0 1px 0;
+  cursor: pointer;
+  background: var(--background-transparent);
+  border-radius: 3px;
+  color: var(--dark);
+  transition: ease 0.5s;
+  min-width: fit-content;
+  max-width: 100%;
+}
+
+/* label hover for faq button*/
+.faq-label:hover {
+  background: var(--dark);
+  color: var(--white);
+}
+/*
+faq cntent styling */
+.faq-content {
+  background: #e2e5f6;
+  padding: 10px 25px;
+  border: 1px solid #a7a7a7;
+  margin: 0 0 1px 0;
+  border-radius: 3px;
+  max-width: 100%;
+}
+
+.faq-input + .faq-label + .faq-content {
+  display: none;
+}
+
+.faq-input:checked + .faq-label + .faq-content {
+  display: block;
+}
+
+.faq-body {
+  max-width: 90%;
+  padding-left: 100px;
 }
