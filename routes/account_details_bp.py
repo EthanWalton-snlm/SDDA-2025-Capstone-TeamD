@@ -15,6 +15,20 @@ def account_details_page():
     details = get_user_details(get_logged_in_username())
 
     if details is not None:
-        return render_template("account-details.html", user=details.to_dict())
+        return render_template(
+            "account-details.html", user=details.to_dict(), edit=False
+        )
+
+    return redirect(url_for("login_bp.log_in_screen"))
+
+
+@account_details_bp.get("/edit")
+def edit_account_details_page():
+    details = get_user_details(get_logged_in_username())
+
+    if details is not None:
+        return render_template(
+            "account-details.html", user=details.to_dict(), edit=True
+        )
 
     return redirect(url_for("login_bp.log_in_screen"))

@@ -441,3 +441,63 @@ textarea {
   font-size: 28px;
   font-weight: 200;
 }
+
+.account-details-profile-pic {
+  width: 7.5em;
+  border-radius: 50%;
+}
+
+.acc-details-card {
+  background-color: var(--background-transparent);
+  width: 45vw;
+  padding: 2em 4em;
+  box-shadow: 0px 7px 29px 0px rgba(100, 100, 111, 0.2);
+  border-radius: 1.5em;
+}
+
+.acc-details-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.acc-details-form h4 {
+  font-weight: 400;
+}
+
+.acc-details-btn {
+  margin-top: 1em;
+  padding: 0.75em;
+  width: 100%;
+  border-radius: 0.5em;
+  border: 0.1em solid var(--border-transparent);
+  font-family: "Roboto", sans-serif;
+  background-color: var(--border-opaque);
+  color: var(--white);
+}
+
+.acc-details-btn:hover {
+  background-color: var(--white);
+  color: var(--border-opaque);
+  cursor: pointer;
+}
+
+.acc-details-form-label {
+  margin-bottom: 1.5em;
+}
+
+.acc-details-greeting {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 3em;
+}
+
+.acc-details-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

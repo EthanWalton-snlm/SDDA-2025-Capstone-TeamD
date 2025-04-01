@@ -2,13 +2,56 @@
 
 <body style="overflow-x: hidden">
   <div class="main">
-    <div class="card">
-      <div class="account-details-grid">
-        {% for key, value in user.items() %}
-        <h2>{{key.replace("_", " ").title()}}</h2>
-        <h3>{{value}}</h3>
-        {% endfor %}
+    <div class="acc-details-card">
+      <div class="acc-details-greeting">
+        <img
+          src="https://th.bing.com/th/id/OIP.V8o0z-WF2LgCV-e2c0MSRAHaHa?w=1306&h=1306&rs=1&pid=ImgDetMain"
+          class="account-details-profile-pic"
+        />
+        <h2>Hey, {{user.first_name}}!</h2>
       </div>
+
+      <hr />
+      <div class="acc-details-title">
+        <h2>
+          <!-- Make say edit -->
+          {{ "View Personal Details" if not edit else "Edit Personal Details" }}
+        </h2>
+        <h2>
+          {% if not edit %}
+          <a href="edit"><i class="fa-solid fa-pen-to-square"></i></a>
+          {% else %}
+          <a href="/account"><i class="fa-regular fa-eye"></i></a>
+          {% endif %}
+        </h2>
+      </div>
+      <hr />
+
+      <form>
+        {% for key, value in user.items() %}
+        <div class="acc-details-form">
+          <!-- <h3>{{value}}</h3> -->
+          {% if key == "username" or key == "id_number" %}
+          <div class="acc-details-form-label">
+            <h4>{{key.replace("_", " ").title()}}</h4>
+          </div>
+          <div class="acc-details-form-input">
+            <input type="text" value="{{value}}" disabled />
+          </div>
+
+          {% elif key != "password" and key != "is_admin" %}
+          <div class="acc-details-form-label">
+            <h4>{{key.replace("_", " ").title()}}</h4>
+          </div>
+          <div class="acc-details-form-input">
+            <input type="text" value="{{value}}" />
+          </div>
+          {% endif %}
+        </div>
+        {% endfor %} {% if edit %}
+        <button type="submit" class="acc-details-btn">Save Changes</button>
+        {% endif %}
+      </form>
     </div>
   </div>
 </body>
