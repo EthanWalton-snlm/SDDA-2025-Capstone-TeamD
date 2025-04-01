@@ -21,7 +21,7 @@
 }
 
 .main {
-  margin-bottom: 5em;
+  margin-bottom: 10em;
   display: grid;
   place-content: center;
 }
@@ -31,6 +31,7 @@ body {
   place-content: center;
   font-family: "Roboto", sans-serif;
   min-height: 100%;
+  background-image: linear-gradient(var(--white), var(--pale-blue-gradient-b));
 }
 
 h1 {
@@ -61,10 +62,6 @@ h4 {
 
 .title {
   text-align: center;
-}
-
-.login-form {
-  margin-top: 2em;
 }
 
 input {
@@ -188,7 +185,6 @@ li.margin-adjustment {
 
 .premium-reducers {
   width: 90em;
-  margin-top: 4em;
 }
 
 .phone-cover-margin {
@@ -302,7 +298,7 @@ li.margin-adjustment {
 .nav-link-container {
   display: flex;
   justify-content: right;
-  color: black;
+  color: var(--dark);
   list-style: none;
   gap: 30px;
 }
@@ -315,17 +311,15 @@ li.margin-adjustment {
   background-color: rgba(255, 255, 255, 0);
   text-align: center;
   width: 8em;
-  color: var(--white);
+  color: var(--dark);
 }
 .nav-link-container li:hover {
-  background-color: var(--white);
+  background-color: var(--dark);
+  color: var(--white);
 }
 .nav-link-container a {
   text-decoration: none;
-  color: black;
-}
-.nav-link-container a:hover {
-  color: var(--vibrant);
+  color: inherit;
 }
 
 .header-link-container {
@@ -336,7 +330,7 @@ li.margin-adjustment {
 }
 
 .website-header-name {
-  color: black;
+  color: var(--dark);
   text-align: left;
 }
 
@@ -344,10 +338,7 @@ li.margin-adjustment {
   position: absolute;
   height: 100%;
   width: 100%;
-  background-image: linear-gradient(
-      var(--pale-blue-gradient-a),
-      var(--pale-blue-gradient-b)
-    ),
+  background-image: linear-gradient(var(--pale-blue-gradient-b), var(--white)),
     url("https://insidesources.com/wp-content/uploads/2015/06/bigstock-Person-holding-smart-phone-in-618304671.jpg");
   background-size: cover;
   z-index: -1;
@@ -357,8 +348,15 @@ li.margin-adjustment {
 .website-header-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  align-items: top;
   width: 100vw;
-  padding: 2em 5em;
+  padding: 1em 5em 0em 5em;
+  margin: 0;
+  background-color: var(--white);
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
+  margin-bottom: 5em;
+  box-shadow: 0px 7px 29px 0px rgba(100, 100, 111, 0.2);
 }
 
 .box-container {
