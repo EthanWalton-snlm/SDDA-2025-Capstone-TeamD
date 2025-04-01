@@ -8,32 +8,37 @@
         <h2>New Policy</h2>
       </div>
 
-      <form method="post" class="new-policy-form">
+      <form
+        class="new-policy-form"
+        action="{{url_for('policies_bp.new_policy_sign_up')}}"
+        method="POST"
+      >
         <label>
-          Account Name:
+          User Name:
           <input
             type="text"
-            id="account-name"
-            name="account-name"
+            id="username"
+            name="username"
             value="Name"
           /><br /><br />
 
-          Account Password:
+          <!-- Account Password:
           <input
             type="password"
             id="password"
             name="password"
             value="Password"
-          /><br /><br />
+          /><br /><br /> -->
 
           Phone Name:
           <input
             type="text"
-            id="phone-name"
-            name="phone-name"
+            id="phone_name"
+            name="phone_name"
             value="e.g iPhone 12"
             required
           /><br /><br />
+
           <fieldset>
             <legend>Which Policy would you like to select?</legend>
             <label
@@ -50,14 +55,14 @@
               ><input
                 type="radio"
                 name="radio"
-                value="Fresher"
+                value="Business"
               />Business</label
             >
             <label
               ><input
                 type="radio"
                 name="radio"
-                value="Personal"
+                value="Platinum"
               />Platinum</label
             >
           </fieldset>
