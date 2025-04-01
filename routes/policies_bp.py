@@ -1,4 +1,5 @@
 from flask import Blueprint, redirect, render_template, request, url_for
+from sqlalchemy import null
 
 from constants import set_logged_in_username
 from extensions import db
@@ -24,10 +25,12 @@ def new_policy_sign_up():
         "username": request.form.get("username"),
         "phone_name": request.form.get("phone_name"),
         "policy_name": request.form.get("radio"),
+        "phone_case": request.form.get("phone-case"),
+        "screen_protector": request.form.get("screen-protector"),
+        "waterproof_phone": request.form.get("waterproof-phone"),
     }
-
     new_user = Policies(**data)
-    print(new_user.to_dict())
+    # print(new_user.to_dict())
     try:
         db.session.add(new_user)
         db.session.commit()

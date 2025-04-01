@@ -16,6 +16,9 @@ class Policies(db.Model):
     phone_name = db.Column(db.String(100))
     policy_name = db.Column(db.String(100))
     policy_type_id = db.Column(db.String(50), ForeignKey(PolicyType.policy_type_id))
+    phone_case = db.Column(db.String(50))
+    screen_protector = db.Column(db.String(50))
+    waterproof_phone = db.Column(db.String(50))
 
     # Object -> Dict
     def to_dict(self):
@@ -25,4 +28,7 @@ class Policies(db.Model):
             "policy_name": self.policy_name,
             "phone_name": self.phone_name,
             "policy_type_id": self.policy_type_id,
+            "phone_case": self.phone_case,
+            "screen_protector": self.screen_protector,
+            "waterproof_phone": self.waterproof_phone,
         }
