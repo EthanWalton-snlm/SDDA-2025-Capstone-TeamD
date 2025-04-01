@@ -27,7 +27,10 @@
       </div>
       <hr />
 
-      <form>
+      <form
+        action="{{url_for('account_details_bp.edit_account_details')}}"
+        method="POST"
+      >
         {% for key, value in user.items() %}
         <div class="acc-details-form">
           <!-- <h3>{{value}}</h3> -->
@@ -44,7 +47,17 @@
             <h4>{{key.replace("_", " ").title()}}</h4>
           </div>
           <div class="acc-details-form-input">
-            <input type="text" value="{{value}}" />
+            {% if edit %}
+            <input type="text" value="{{value}}" name="{{key}}" id="{{key}}" />
+            {% else %}
+            <input
+              type="text"
+              value="{{value}}"
+              name="{{key}}"
+              id="{{key}}"
+              disabled
+            />
+            {% endif %}
           </div>
           {% endif %}
         </div>
