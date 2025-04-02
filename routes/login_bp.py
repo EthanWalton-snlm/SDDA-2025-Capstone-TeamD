@@ -26,8 +26,6 @@ def log_in_auth():
     if user is None:
         return redirect(url_for("login_bp.log_in_screen"))
 
-    print(user.to_dict()["password"], data["password"])
-
     if user.to_dict()["password"] == data["password"]:
         set_logged_in_username(user.to_dict()["username"])
         return redirect(url_for("dashboard_bp.dashboard_page"))
