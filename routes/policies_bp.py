@@ -35,6 +35,7 @@ def new_policy_sign_up():
         db.session.add(new_user)
         db.session.commit()
         set_logged_in_username(new_user.to_dict()["username"])
+        # set_policies(new_user.to_dict()["policy_name"])
         return redirect(url_for("dashboard_bp.dashboard_page"))
     except Exception as e:
         db.session.rollback()  # restores data, cannot be done after commit()
