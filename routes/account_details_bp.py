@@ -2,12 +2,13 @@ from flask import Blueprint, redirect, render_template, request, url_for
 from flask_login import current_user
 
 from extensions import db
+from models.policies import Policies
 from models.users import User
 
 account_details_bp = Blueprint("account_details_bp", __name__)
 
 
-def get_user_details(username):
+def get_user_details(username, policy_id):
     return User.query.get(username)
 
 
