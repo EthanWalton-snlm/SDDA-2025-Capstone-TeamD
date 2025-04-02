@@ -1,52 +1,11 @@
 from flask import Blueprint, redirect, render_template, request, url_for
+from flask_login import login_required
 
 from constants import CLAIM_STATUS_CODE
 from extensions import db
 from models.claims import Claim
 
 admin_bp = Blueprint("admin_bp", __name__)
-
-# submissions = [
-#     {
-#         "id": 1,
-#         "name": "John Doe",
-#         "submitted": "Form submitted by John Doe",
-#         "status": "pending",
-#         "reason": "",
-#     },
-#     {
-#         "id": 2,
-#         "name": "Jane Smith",
-#         "submitted": "Form submitted by Jane Smith",
-#         "status": "pending",
-#         "reason": "",
-#     },
-#     {
-#         "id": 3,
-#         "name": "Siyanda Kunene",
-#         "submitted": "Form submitted by Siyanda Kunene",
-#         "status": "pending",
-#         "reason": "",
-#     },
-#     {
-#         "id": 4,
-#         "name": "Ethan Walton",
-#         "submitted": "Form submitted by Ethan Walton",
-#         "status": "pending",
-#         "reason": "",
-#     },
-#     {
-#         "id": 5,
-#         "name": "Chleo Smith",
-#         "submitted": "Form submitted by Chleo Smith",
-#         "status": "pending",
-#         "reason": "",
-#     },
-# ]
-
-# approved = []
-
-# rejected = []
 
 
 def get_all_submissions_data():
@@ -84,7 +43,9 @@ def get_all_pending_submissions():
     ]
 
 
+# TODO: only allow admin accs
 @admin_bp.route("/")
+@login_required
 def admin_home_page():
     return render_template(
         "admin.html",
@@ -95,6 +56,7 @@ def admin_home_page():
 
 
 @admin_bp.route("/review/<id>", methods=["GET", "POST"])
+@login_required
 def admin_review(id):
     submission = next(
         item for item in get_all_submissions_data() if item["claim_id"] == id

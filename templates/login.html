@@ -8,7 +8,7 @@
       </div>
 
       <form
-        action="{{url_for('login_bp.log_in_auth')}}"
+        action="{{url_for('auth_bp.submit_login_page')}}"
         method="POST"
         class="login-form"
       >
@@ -29,7 +29,7 @@
 
       <div class="flex-r">
         <h5>
-          <a class="text-buttons" href="{{url_for('signup_bp.sign_up_screen')}}"
+          <a class="text-buttons" href="{{url_for('auth_bp.signup_page')}}"
             >Sign Up</a
           >
         </h5>

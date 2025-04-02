@@ -7,8 +7,8 @@
       </div>
 
       <form
-        class="signup-form"
-        action="{{url_for('signup_bp.sign_up_user')}}"
+        class="login-form"
+        action="{{url_for('auth_bp.submit_signup_page')}}"
         method="POST"
       >
         <input
@@ -22,6 +22,12 @@
           id="password"
           name="password"
           placeholder="Password"
+        /><br /><br />
+        <input
+          type="password"
+          id="confirm"
+          name="confirm"
+          placeholder="Confirm Password"
         /><br /><br />
         <input
           type="text"
