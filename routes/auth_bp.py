@@ -1,5 +1,5 @@
 from flask import Blueprint, redirect, render_template, request, url_for
-from flask_login import login_user, logout_user
+from flask_login import login_required, login_user, logout_user
 from werkzeug.security import check_password_hash, generate_password_hash
 
 from extensions import db
@@ -32,6 +32,8 @@ def submit_login_page():
 
         user_from_db = User.query.filter_by(username=username).first()
 
+        print(user_from_db)
+
         if not (user_from_db and check_password_hash(user_from_db.password, password)):
             raise ValueError("Credentials not valid")
 
@@ -41,7 +43,7 @@ def submit_login_page():
 
         return redirect(url_for("dashboard_bp.dashboard_page"))
     except Exception as e:
-        print(e)
+        print("ERROR:", e)
         db.session.rollback()
         return redirect(url_for("auth_bp.login_page"))
 
@@ -80,11 +82,12 @@ def submit_signup_page():
 
         return redirect(url_for("dashboard_bp.dashboard_page"))
     except Exception as e:
-        print(e)
+        print("ERROR:", e)
         db.session.rollback()
         return redirect(url_for("home_bp.home_screen"))
 
 
+@login_required
 @auth_bp.get("/logout")
 def logout_page():
     logout_user()

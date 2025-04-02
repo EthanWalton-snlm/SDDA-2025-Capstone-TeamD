@@ -30,3 +30,6 @@ class User(UserMixin, db.Model):
             "id_number": self.id_number,
             "is_admin": self.is_admin,
         }
+
+    def get_id(self):
+        return self.username
