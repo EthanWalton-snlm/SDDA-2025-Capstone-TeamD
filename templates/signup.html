@@ -1,5 +1,5 @@
 {% extends "navigation-bar.html" %} {% block content%}
-<body style="overflow-x: hidden; overflow-y: scroll">
+<body>
   <div class="main">
     <div class="card">
       <div class="title">
@@ -7,7 +7,7 @@
       </div>
 
       <form
-        class="login-form"
+        class="signup-form"
         action="{{url_for('signup_bp.sign_up_user')}}"
         method="POST"
       >

@@ -21,7 +21,7 @@
 }
 
 .main {
-  margin-bottom: 10em;
+  margin-bottom: 17em;
   display: grid;
   place-content: center;
 }
@@ -450,14 +450,12 @@ textarea {
   background: var(--white);
   color: white;
   width: 100%;
-  padding: 0;
-  padding-top: 3em;
+  padding: 1em 0;
+  padding-top: 2em;
   z-index: 10;
   box-shadow: 0px -7px 29px 0px rgba(100, 100, 111, 0.2);
   border-top-left-radius: 1em;
   border-top-right-radius: 1em;
-  position: absolute;
-  bottom: -3em;
 }
 
 .footer-content {
@@ -486,10 +484,13 @@ textarea {
   color: #aaa;
 }
 
-#footer {
-  position: absolute;
+.footer {
+  position: fixed;
+  left: 0;
   bottom: 0;
   width: 100%;
+  color: white;
+  text-align: left;
 }
 /* footer styling : end   */
 
@@ -750,5 +751,9 @@ faq cntent styling */
 }
 
 .login-form {
+  margin: 2em 0em;
+}
+
+.signup-form {
   margin: 2em 0em;
 }
