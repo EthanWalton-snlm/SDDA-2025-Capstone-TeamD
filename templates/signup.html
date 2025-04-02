@@ -1,15 +1,14 @@
 {% extends "navigation-bar.html" %} {% block content%}
-<body style="overflow-x: hidden; overflow-y: scroll">
+<body>
   <div class="main">
     <div class="card">
       <div class="title">
-        <h1>Phone Insurance</h1>
-        <h2>Sign Up</h2>
+        <h3>Sign Up</h3>
       </div>
 
       <form
         class="login-form"
-        action="{{url_for('signup_bp.sign_up_user')}}"
+        action="{{url_for('auth_bp.submit_signup_page')}}"
         method="POST"
       >
         <input
@@ -23,6 +22,12 @@
           id="password"
           name="password"
           placeholder="Password"
+        /><br /><br />
+        <input
+          type="password"
+          id="confirm"
+          name="confirm"
+          placeholder="Confirm Password"
         /><br /><br />
         <input
           type="text"
@@ -59,7 +64,11 @@
 
       <div class="flex-r">
         <h5>Already have an account?</h5>
-        <h5 class="text-buttons">Log-in</h5>
+        <h5>
+          <a class="text-buttons" href="{{url_for('login_bp.log_in_screen')}}"
+            >Log In</a
+          >
+        </h5>
       </div>
     </div>
   </div>

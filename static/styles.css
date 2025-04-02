@@ -12,7 +12,7 @@
   --light-gradient: rgba(0, 117, 201, 0.5);
 
   --pale-blue-gradient-a: rgba(100, 147, 194, 0.377);
-  --pale-blue-gradient-b: rgba(100, 147, 194, 0.711);
+  --pale-blue-gradient-b: rgba(100, 147, 194, 0.377);
 }
 
 * {
@@ -21,7 +21,7 @@
 }
 
 .main {
-  margin-bottom: 10em;
+  margin-bottom: 17em;
   display: grid;
   place-content: center;
 }
@@ -32,6 +32,7 @@ body {
   font-family: "Roboto", sans-serif;
   min-height: 100%;
   background-image: linear-gradient(var(--white), var(--pale-blue-gradient-b));
+  overflow-x: hidden;
 }
 
 h1 {
@@ -75,6 +76,7 @@ input {
 
 input[type="submit"] {
   background-color: var(--border);
+  margin-top: 1em;
 }
 
 button {
@@ -342,7 +344,7 @@ li.margin-adjustment {
   height: 100%;
   width: 100%;
   background-image: linear-gradient(var(--pale-blue-gradient-b), var(--white)),
-    url("https://insidesources.com/wp-content/uploads/2015/06/bigstock-Person-holding-smart-phone-in-618304671.jpg");
+    url("https://images.unsplash.com/photo-1689799515027-878d0b0cd1a5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
   background-size: cover;
   z-index: -1;
   transform: scale(1.1);
@@ -445,18 +447,21 @@ textarea {
 
 /* footer styling :start   */
 .main-footer {
-  background: #333;
+  background: var(--white);
   color: white;
   width: 100%;
-  padding: 40px 0;
-  position: relative;
+  padding: 1em 0;
+  padding-top: 2em;
   z-index: 10;
+  box-shadow: 0px -7px 29px 0px rgba(100, 100, 111, 0.2);
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
 }
 
 .footer-content {
   display: flex;
   justify-content: space-around;
-  max-width: 1200px;
+  max-width: 65%;
   margin: 0 auto;
 }
 
@@ -478,22 +483,32 @@ textarea {
 .footer-section ul li:hover {
   color: #aaa;
 }
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: left;
+}
 /* footer styling : end   */
 
 .main-mid-section {
-  height: 640px;
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
   text-align: center;
   background: transparent;
+  height: 30em;
 }
 
 .main-mid-section-content {
-  background: rgba(112, 102, 102, 0.637);
   padding: 40px;
   border-radius: 10px;
+  background-color: var(--white);
+  box-shadow: 0px 7px 29px 0px rgba(100, 100, 111, 0.2);
 }
 
 .main-mid-section h1 {
@@ -673,7 +688,8 @@ faq cntent styling */
 .faq-body {
   max-width: 90%;
   padding-left: 100px;
-=======
+}
+
 .account-details-profile-pic {
   width: 7.5em;
   border-radius: 50%;
@@ -732,4 +748,12 @@ faq cntent styling */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.login-form {
+  margin: 2em 0em;
+}
+
+.signup-form {
+  margin: 2em 0em;
 }

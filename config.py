@@ -7,6 +7,5 @@ load_dotenv()
 
 class Config:
     SQLALCHEMY_DATABASE_URI = environ.get("LOCAL_DATABASE_URL")
+    SECRET_KEY = environ.get("SECRET_KEY")
     SQL_ALCHEMY_TRACK_MODIFICATIONS = False
-
-    SECRET_KEY = "reallystrongkey"
