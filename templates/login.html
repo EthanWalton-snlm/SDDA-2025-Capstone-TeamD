@@ -4,8 +4,7 @@
   <div class="main">
     <div class="card">
       <div class="title">
-        <h1>Phone Insurance</h1>
-        <h2>Log In</h2>
+        <h3>Log In</h3>
       </div>
 
       <form
@@ -29,8 +28,12 @@
       </form>
 
       <div class="flex-r">
-        <h5 class="text-buttons">Sign Up</h5>
-        <h5 class="text-buttons">Forgot Password</h5>
+        <h5>
+          <a class="text-buttons" href="{{url_for('signup_bp.sign_up_screen')}}"
+            >Sign Up</a
+          >
+        </h5>
+        <h5><a class="text-buttons" href="/sign-up">Forgot Password</a></h5>
       </div>
     </div>
   </div>
