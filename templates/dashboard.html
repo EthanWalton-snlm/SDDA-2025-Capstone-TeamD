@@ -2,7 +2,76 @@
 
 <body style="overflow-x: hidden">
   <div class="main">
-    <div class="cover-card premium-reducers">
+    <div class="dash-flex">
+      <div class="cover-card">
+        <div class="phone-cover">
+          <h2>iPhone 12 Pro</h2>
+          <h5>Business Plan</h5>
+          <h2>R{{price}}</h2>
+          <ul>
+            <li>Yada Yada Yada Yada Yada</li>
+            <li>Yada Yada Yada Yada Yada</li>
+            <li>Yada Yada Yada Yada Yada</li>
+          </ul>
+
+          <div class="claim-upgrade-buttons">
+            <a
+              href="{{ url_for('claims_bp.claims_page') }}"
+              class="btn btn-primary"
+              >Claim</a
+            >
+            <button class="btn btn-secondary">Upgrade</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="cover-card">
+        <div class="phone-cover">
+          <h2>Samsung A2A</h2>
+          <h5>Fresher Plan</h5>
+          <h2>R{{price}}</h2>
+          <ul>
+            <li>Yada Yada Yada Yada Yada</li>
+            <li>Yada Yada Yada Yada Yada</li>
+            <li>Yada Yada Yada Yada Yada</li>
+          </ul>
+
+          <div class="claim-upgrade-buttons">
+            <a
+              href="{{ url_for('claims_bp.claims_page') }}"
+              class="btn btn-primary"
+              >Claim</a
+            >
+            <button class="btn btn-secondary">Upgrade</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="cover-card">
+        <div class="phone-cover">
+          <h2>iPhone 15 Pro</h2>
+          <h5>Grand Plan</h5>
+          <h2>R{{price}}</h2>
+          <ul>
+            <li>Yada Yada Yada Yada Yada</li>
+            <li>Yada Yada Yada Yada Yada</li>
+            <li>Yada Yada Yada Yada Yada</li>
+          </ul>
+
+          <div class="claim-upgrade-buttons">
+            <a
+              href="{{ url_for('claims_bp.claims_page') }}"
+              class="btn btn-primary"
+              >Claim</a
+            >
+            <button class="btn btn-secondary">Upgrade</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TODO: Move to upgrade page -->
+    <!-- <div class="cover-card premium-reducers">
       <h1>Premium Reducers</h1>
 
       <div class="premium-reducer-margin">
@@ -23,66 +92,7 @@
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="dash-flex">
-      <div class="cover-card">
-        <div class="phone-cover">
-          <h1>iPhone 12 Pro</h1>
-          <h4>Business Plan</h4>
-          <h2>R{{price}}</h2>
-          <ul>
-            <li>Yada Yada Yada Yada Yada</li>
-            <li>Yada Yada Yada Yada Yada</li>
-            <li>Yada Yada Yada Yada Yada</li>
-          </ul>
-
-          <div class="claim-upgrade-buttons">
-            <a href="{{ url_for('claims_bp.claims_page') }}" class="btn btn-primary">Claim</a>
-            <button class="btn btn-secondary">Upgrade</button>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="cover-card">
-        <div class="phone-cover">
-          <h1>Samsung A2A</h1>
-          <h4>Fresher Plan</h4>
-          <h2>R{{price}}</h2>
-          <ul>
-            <li>Yada Yada Yada Yada Yada</li>
-            <li>Yada Yada Yada Yada Yada</li>
-            <li>Yada Yada Yada Yada Yada</li>
-          </ul>
-
-          <div class="claim-upgrade-buttons">
-            <a href="{{ url_for('claims_bp.claims_page') }}" class="btn btn-primary">Claim</a>
-            <button class="btn btn-secondary">Upgrade</button>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="cover-card">
-        <div class="phone-cover">
-          <h1>iPhone 15 Pro Max</h1>
-          <h4>Grand Plan</h4>
-          <h2>R{{price}}</h2>
-          <ul>
-            <li>Yada Yada Yada Yada Yada</li>
-            <li>Yada Yada Yada Yada Yada</li>
-            <li>Yada Yada Yada Yada Yada</li>
-          </ul>
-
-          <div class="claim-upgrade-buttons">
-            <a href="{{ url_for('claims_bp.claims_page') }}" class="btn btn-primary">Claim</a>
-            <button class="btn btn-secondary">Upgrade</button>
-          </div>
-
-        </div>
-      </div>
-    </div>
+    </div> -->
   </div>
 </body>
 {% endblock %}
