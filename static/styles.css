@@ -443,6 +443,237 @@ textarea {
   font-weight: 200;
 }
 
+/* footer styling :start   */
+.main-footer {
+  background: #333;
+  color: white;
+  width: 100%;
+  padding: 40px 0;
+  position: relative;
+  z-index: 10;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-around;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-section h1 {
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+.footer-section ul {
+  list-style-type: none;
+}
+
+.footer-section ul li {
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.footer-section ul li:hover {
+  color: #aaa;
+}
+/* footer styling : end   */
+
+.main-mid-section {
+  height: 640px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  background: transparent;
+}
+
+.main-mid-section-content {
+  background: rgba(112, 102, 102, 0.637);
+  padding: 40px;
+  border-radius: 10px;
+}
+
+.main-mid-section h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.main-mid-section p {
+  font-size: 24px;
+}
+/* main screen center text styling end*/
+
+/* main screen image */
+.background-container {
+  background: url("https://images.unsplash.com/photo-1689799515027-878d0b0cd1a5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+    no-repeat center center;
+  background-size: cover;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 800px;
+  z-index: -1;
+  filter: brightness(0.7);
+}
+
+/* spacing for policy items on policy list */
+.tile-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+/* background tile for policy items */
+.tile-info {
+  background-color: var(--background-transparent);
+  width: 20%;
+  height: 350px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+/* style for text on policy info page */
+.tile-text {
+  color: var(--dark);
+  display: flex;
+  text-transform: uppercase;
+  font-weight: 200;
+  padding-left: 30px;
+  line-height: 40px;
+}
+
+/* style for list items on policy list */
+.policy-info-list {
+  color: var(--dark);
+  list-style: none;
+  font-weight: 200;
+}
+
+.policy-info-list-gray {
+  color: var(--border-transparent);
+  list-style: none;
+  font-weight: 200;
+  line-height: 30px;
+}
+/* highlights price text on policy list */
+.price-highlight {
+  color: var(--dark);
+  font-weight: 500;
+}
+
+/* style for icons on policy list */
+.fa-lock {
+  color: var(--dark);
+  padding-right: 10px;
+}
+
+.fa-heart-crack {
+  color: var(--dark);
+  padding-right: 10px;
+}
+
+.fa-heart-crack-gray {
+  color: var(--border-transparent);
+  padding-right: 10px;
+}
+
+.fa-droplet {
+  color: var(--dark);
+  padding-right: 10px;
+}
+
+.fa-droplet-gray {
+  color: var(--border-transparent);
+  padding-right: 10px;
+}
+
+.fa-square-caret-up {
+  color: var(--dark);
+  padding-right: 10px;
+}
+
+.fa-square-caret-up-gray {
+  color: var(--border-transparent);
+  padding-right: 10px;
+}
+
+/* policy button styling */
+.btn-outline-primary {
+  width: 50%;
+  background-color: var(--background-transparent);
+  margin-left: 65px;
+}
+
+/* styling for image on partner page */
+.tile-img {
+  height: 40%;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* styling for body text on partner page */
+.tile-body-text {
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+  padding-right: 10px;
+  font-weight: 200;
+  font-size: small;
+  line-height: 20px;
+}
+
+/* input for faq page */
+.faq-input {
+  display: none;
+}
+
+/* label for faq page */
+.faq-label {
+  display: block;
+  padding: 8px 22px;
+  margin: 0 0 1px 0;
+  cursor: pointer;
+  background: var(--background-transparent);
+  border-radius: 3px;
+  color: var(--dark);
+  transition: ease 0.5s;
+  min-width: fit-content;
+  max-width: 100%;
+}
+
+/* label hover for faq button*/
+.faq-label:hover {
+  background: var(--dark);
+  color: var(--white);
+}
+/*
+faq cntent styling */
+.faq-content {
+  background: #e2e5f6;
+  padding: 10px 25px;
+  border: 1px solid #a7a7a7;
+  margin: 0 0 1px 0;
+  border-radius: 3px;
+  max-width: 100%;
+}
+
+.faq-input + .faq-label + .faq-content {
+  display: none;
+}
+
+.faq-input:checked + .faq-label + .faq-content {
+  display: block;
+}
+
+.faq-body {
+  max-width: 90%;
+  padding-left: 100px;
+=======
 .account-details-profile-pic {
   width: 7.5em;
   border-radius: 50%;

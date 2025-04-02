@@ -1,0 +1,102 @@
+{% extends "navigation-bar.html" %} {% block content%}
+<body style="overflow-y: scroll; overflow-x: hidden">
+  <div class="login-bg"></div>
+  <div class="main">
+    <div class="card">
+      <div class="title">
+        <h1>Cellsure</h1>
+        <h2>New Policy</h2>
+      </div>
+
+      <form
+        class="new-policy-form"
+        action="{{url_for('policies_bp.new_policy_sign_up')}}"
+        method="POST"
+      >
+        <label>
+          User Name:
+          <input
+            type="text"
+            id="username"
+            name="username"
+            value="Name"
+          /><br /><br />
+
+          <!-- Account Password:
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value="Password"
+          /><br /><br /> -->
+
+          Phone Name:
+          <input
+            type="text"
+            id="phone_name"
+            name="phone_name"
+            value="e.g iPhone 12"
+            required
+          /><br /><br />
+
+          <fieldset>
+            <legend>Which Policy would you like to select?</legend>
+            <label
+              ><input type="radio" name="radio" value="Fresher" />Fresher</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="radio"
+                value="Personal"
+              />Personal</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="radio"
+                value="Business"
+              />Business</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="radio"
+                value="Platinum"
+              />Platinum</label
+            >
+          </fieldset>
+          <br /><br />
+
+          <fieldset>
+            <legend>Which extra features do you have?</legend>
+            <label
+              ><input
+                type="checkbox"
+                name="phone-case"
+                value="phone-case"
+              />Phone Case</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                name="screen-protector"
+                value="screen-protector"
+              />Screen Protector</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                name="waterproof-phone"
+                value="waterproof-phone"
+              />Waterproof Phone</label
+            >
+          </fieldset>
+          <br /><br />
+        </label>
+        <button class="submit-button">Submit</button>
+      </form>
+    </div>
+  </div>
+</body>
+{% endblock %}
