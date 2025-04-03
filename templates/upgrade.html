@@ -1,0 +1,133 @@
+{% extends "navigation-bar-logged-in.html" %} {% block content%}
+
+<body style="overflow-x: hidden">
+  <div class="main">
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card">
+            <div class="card-header bg-primary text-white">
+              <h3 class="mb-0">Upgrade Your Policy</h3>
+            </div>
+            <div class="card-body">
+              <div class="mb-4">
+                <h4>Current Policy Details</h4>
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ phone_name }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ current_policy_type.name }} Plan</h6>
+                    <p class="card-text">Current Premium: R{{ current_policy_type.premium }} per month</p>
+                    <p class="card-text">{{ current_policy_type.summary }}</p>
+                  </div>
+                </div>
+              </div>
+
+              <h4>Available Upgrades</h4>
+
+              {% if higher_policy_types %}
+              <form action="{{ url_for('policies_bp.confirm_upgrade') }}" method="POST">
+                <input type="hidden" name="policy_id" value="{{ current_policy.policy_id }}">
+
+                <div class="row">
+                  {% for policy_type in higher_policy_types %}
+                  <div class="col-md-6 mb-3">
+                    <div
+                      class="card h-100 {% if policy_type.premium > current_policy_type.premium %}border-success{% endif %}">
+                      <div class="card-body">
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="new_policy_type_id"
+                            id="policy_{{ policy_type.policy_type_id }}" value="{{ policy_type.policy_type_id }}"
+                            required>
+                          <label class="form-check-label" for="policy_{{ policy_type.policy_type_id }}">
+                            <h5 class="card-title">{{ policy_type.name }} Plan</h5>
+                          </label>
+                        </div>
+                        <h6 class="card-subtitle mb-2 text-muted">R{{ policy_type.premium }} per month</h6>
+                        <p class="card-text">{{ policy_type.summary }}</p>
+
+                        <!-- Policy benefits based on type -->
+                        <ul class="list-group list-group-flush mt-3">
+                          <li class="list-group-item">
+                            <i class="fa-solid fa-lock text-success"></i> Theft Protection
+                          </li>
+
+                          {% if policy_type.name in ['Personal', 'Business', 'Platinum'] %}
+                          <li class="list-group-item">
+                            <i class="fa-solid fa-heart-crack text-success"></i> Screen Damage Protection
+                          </li>
+                          {% endif %}
+
+                          {% if policy_type.name in ['Business', 'Platinum'] %}
+                          <li class="list-group-item">
+                            <i class="fa-solid fa-droplet text-success"></i> Water Damage Protection
+                          </li>
+                          {% endif %}
+
+                          {% if policy_type.name == 'Platinum' %}
+                          <li class="list-group-item">
+                            <i class="fa-solid fa-square-caret-up text-success"></i> Phone Upgrade Costs
+                          </li>
+                          {% endif %}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+
+                <div class="mt-4">
+                  <h5>Additional Premium Reducers</h5>
+                  <div class="row mt-3">
+                    <div class="col-md-4">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="phone-case" id="phone-case">
+                        <label class="form-check-label" for="phone-case">
+                          <i class="fa-solid fa-shield-halved me-2"></i> Phone Case
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="screen-protector" id="screen-protector">
+                        <label class="form-check-label" for="screen-protector">
+                          <i class="fa-solid fa-shield-halved me-2"></i> Screen Protector
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="waterproof-phone" id="waterproof-phone">
+                        <label class="form-check-label" for="waterproof-phone">
+                          <i class="fa-solid fa-droplet me-2"></i> Waterproof Phone
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-4">
+                  <button type="submit" class="btn btn-success btn-lg">
+                    Confirm Upgrade
+                  </button>
+                  <a href="{{ url_for('dashboard_bp.dashboard') }}" class="btn btn-outline-secondary btn-lg ms-2">
+                    Cancel
+                  </a>
+                </div>
+              </form>
+              {% else %}
+              <div class="alert alert-info">
+                <i class="fa-solid fa-info-circle"></i>
+                You already have our highest tier plan. No upgrades are available.
+              </div>
+              <a href="{{ url_for('dashboard_bp.dashboard') }}" class="btn btn-primary mt-3">
+                Return to Dashboard
+              </a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+{% endblock %}

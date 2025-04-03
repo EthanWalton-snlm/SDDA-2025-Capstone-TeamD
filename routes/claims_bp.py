@@ -1,12 +1,12 @@
-
+## dashboard functionality comes before
 from functools import wraps
+
 from extensions import db
 from flask import Blueprint, flash, redirect, render_template, request, session, url_for
-from models import claims
 from flask_login import current_user, login_required
+from models import claims
 from models.claims import Claim
 from models.policy_types import PolicyType
-
 
 claims_bp = Blueprint("claims_bp", __name__)
 
@@ -44,7 +44,6 @@ def submit_claim():
 
     # Create new claim
     try:
-
         new_claim = Claim(
             status="Pending",  # Initial status
             reason=reason,
@@ -63,7 +62,6 @@ def submit_claim():
             "policy_id": policy_id,
         }
         new_claim = Claim(**data)
-
 
         # Add and commit to database
         db.session.add(new_claim)
