@@ -1,8 +1,7 @@
-from flask import Blueprint, redirect, render_template, request, url_for
-from flask_login import login_required
-
 from constants import CLAIM_STATUS_CODE
 from extensions import db
+from flask import Blueprint, redirect, render_template, request, url_for
+from flask_login import login_required
 from models.claims import Claim
 
 admin_bp = Blueprint("admin_bp", __name__)
