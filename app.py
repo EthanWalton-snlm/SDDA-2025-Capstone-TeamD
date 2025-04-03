@@ -1,17 +1,24 @@
+
 from config import Config
 from extensions import db
 from flask import Flask
-from routes.account_details_bp import account_details_bp
-from routes.admin_bp import admin_bp
-from routes.claims_bp import claims_bp
-from routes.dashboard_bp import dashboard_bp
-from routes.home_bp import home_bp
+from flask_login import LoginManager
+from models.users import User
 
 # blueprint imports
 from routes.login_bp import login_bp
 from routes.signout_bp import signout_bp
 from routes.signup_bp import signup_bp
 from sqlalchemy.sql import text
+from routes.partners_bp import partners_bp
+from routes.policies_bp import policies_bp
+from routes.account_details_bp import account_details_bp
+from routes.admin_bp import admin_bp
+from routes.auth_bp import auth_bp
+from routes.claims_bp import claims_bp
+from routes.dashboard_bp import dashboard_bp
+from routes.faq_bp import faq_bp
+from routes.home_bp import home_bp
 
 
 def create_app():
@@ -19,6 +26,14 @@ def create_app():
     app.config.from_object(Config)
 
     db.init_app(app)
+
+    login_manager = LoginManager()
+    login_manager.init_app(app)
+    login_manager.login_view = "auth_bp.login_page"  # type: ignore
+
+    @login_manager.user_loader
+    def load_user(user_id):
+        return User.query.get(user_id)  # maintains tokens for specific users
 
     with app.app_context():
         try:
@@ -29,14 +44,15 @@ def create_app():
         except Exception as e:
             print("Error connecting to the database:", e)
 
-    app.register_blueprint(login_bp)
-    app.register_blueprint(signup_bp)
+    app.register_blueprint(auth_bp)
     app.register_blueprint(home_bp)
     app.register_blueprint(dashboard_bp, url_prefix="/dashboard")
     app.register_blueprint(claims_bp, url_prefix="/claims")
     app.register_blueprint(admin_bp, url_prefix="/admin")
     app.register_blueprint(account_details_bp, url_prefix="/account")
-    app.register_blueprint(signout_bp, url_prefix="/sign-out")
+    app.register_blueprint(policies_bp)
+    app.register_blueprint(partners_bp)
+    app.register_blueprint(faq_bp)
     return app
 
 

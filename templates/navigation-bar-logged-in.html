@@ -30,16 +30,15 @@
     />
   </head>
   <body>
-    <div class="home-screen-bg"></div>
-    {% block background_img %}{% endblock %}
+    <div class="logged-in-bg"></div>
     <div class="website-header-container">
-      <h1 class="website-header-name">Phone Insurance</h1>
+      <h1 class="website-header-name">CellSure</h1>
       <header>
         <nav>
           <ul class="nav-link-container">
             <li><a href="/dashboard"> Home</a></li>
             <li><a href="/account"> Account</a></li>
-            <li><a href="/sign-out"> Sign Out</a></li>
+            <li><a href="/logout"> Sign Out</a></li>
           </ul>
         </nav>
       </header>
@@ -50,6 +49,6 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
-    {% block content %}{% endblock%}
+    {% block content %}{% endblock%} {% extends "footer.html" %}
   </body>
 </html>

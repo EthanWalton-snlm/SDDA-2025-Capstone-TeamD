@@ -23,6 +23,22 @@ CREATE TABLE policies (
 );
 
 ALTER TABLE policies
+ADD phone_name NVARCHAR(50);
+
+ALTER TABLE policies
+ADD policy_name NVARCHAR(50);
+
+ALTER TABLE policies
+ADD phone_case NVARCHAR(50);
+
+ALTER TABLE policies
+ADD screen_protector NVARCHAR(50);
+
+ALTER TABLE policies
+ADD waterproof_phone NVARCHAR(50);
+
+
+ALTER TABLE policies
 ADD username NVARCHAR(100)
 REFERENCES users(username);
 
@@ -63,3 +79,4 @@ VALUES
 INSERT INTO policyTypes VALUES ('BPLAN', 'Business Plan', 'For business people');
 
 SELECT * FROM users;
+select * from policies;

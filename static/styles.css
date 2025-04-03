@@ -12,7 +12,7 @@
   --light-gradient: rgba(0, 117, 201, 0.5);
 
   --pale-blue-gradient-a: rgba(100, 147, 194, 0.377);
-  --pale-blue-gradient-b: rgba(100, 147, 194, 0.711);
+  --pale-blue-gradient-b: rgba(100, 147, 194, 0.377);
 }
 
 * {
@@ -21,7 +21,7 @@
 }
 
 .main {
-  margin-bottom: 5em;
+  margin-bottom: 17em;
   display: grid;
   place-content: center;
 }
@@ -31,6 +31,8 @@ body {
   place-content: center;
   font-family: "Roboto", sans-serif;
   min-height: 100%;
+  background-image: linear-gradient(var(--white), var(--pale-blue-gradient-b));
+  overflow-x: hidden;
 }
 
 h1 {
@@ -63,10 +65,6 @@ h4 {
   text-align: center;
 }
 
-.login-form {
-  margin-top: 2em;
-}
-
 input {
   padding: 0.75em;
   width: 100%;
@@ -78,6 +76,7 @@ input {
 
 input[type="submit"] {
   background-color: var(--border);
+  margin-top: 1em;
 }
 
 button {
@@ -127,7 +126,6 @@ input[type="submit"]:hover {
   padding: 2em 0em;
   box-shadow: 0px 7px 29px 0px var(--border-transparent);
   border-radius: 1.5em;
-  text-align: center;
   display: flex;
   flex-direction: column;
 }
@@ -170,7 +168,6 @@ li.margin-adjustment {
 }
 
 .dash-flex {
-  margin-top: 5em;
   display: flex;
   flex-direction: row;
   gap: 5em;
@@ -188,7 +185,6 @@ li.margin-adjustment {
 
 .premium-reducers {
   width: 90em;
-  margin-top: 4em;
 }
 
 .phone-cover-margin {
@@ -206,15 +202,19 @@ li.margin-adjustment {
 .phone-cover {
   display: flex;
   flex-direction: column;
-  text-align: center;
+  text-align: left;
   padding: 0em 5em;
   min-height: 30em;
   /* max-height: 30em; */
   height: 100%;
 }
 
+.phone-cover h2 {
+  margin-top: 0.75em;
+}
+
 .phone-cover ul {
-  margin-top: 4em;
+  margin-top: 2em;
   list-style: "➡️";
 }
 
@@ -224,9 +224,10 @@ li.margin-adjustment {
 
 .claim-upgrade-buttons {
   display: flex;
-  gap: 1em;
+  flex-direction: column;
+  gap: 0.5em;
   margin-top: auto;
-  padding: 0 2em 2em 2em;
+  margin-bottom: 1em;
 }
 
 .btn {
@@ -302,7 +303,7 @@ li.margin-adjustment {
 .nav-link-container {
   display: flex;
   justify-content: right;
-  color: black;
+  color: var(--dark);
   list-style: none;
   gap: 30px;
 }
@@ -315,17 +316,15 @@ li.margin-adjustment {
   background-color: rgba(255, 255, 255, 0);
   text-align: center;
   width: 8em;
-  color: var(--white);
+  color: var(--dark);
 }
 .nav-link-container li:hover {
-  background-color: var(--white);
+  background-color: var(--dark);
+  color: var(--white);
 }
 .nav-link-container a {
   text-decoration: none;
-  color: black;
-}
-.nav-link-container a:hover {
-  color: var(--vibrant);
+  color: inherit;
 }
 
 .header-link-container {
@@ -336,7 +335,7 @@ li.margin-adjustment {
 }
 
 .website-header-name {
-  color: black;
+  color: var(--dark);
   text-align: left;
 }
 
@@ -344,11 +343,8 @@ li.margin-adjustment {
   position: absolute;
   height: 100%;
   width: 100%;
-  background-image: linear-gradient(
-      var(--pale-blue-gradient-a),
-      var(--pale-blue-gradient-b)
-    ),
-    url("https://insidesources.com/wp-content/uploads/2015/06/bigstock-Person-holding-smart-phone-in-618304671.jpg");
+  background-image: linear-gradient(var(--pale-blue-gradient-b), var(--white)),
+    url("https://images.unsplash.com/photo-1689799515027-878d0b0cd1a5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
   background-size: cover;
   z-index: -1;
   transform: scale(1.1);
@@ -357,8 +353,15 @@ li.margin-adjustment {
 .website-header-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  align-items: top;
   width: 100vw;
-  padding: 2em 5em;
+  padding: 1em 5em 0em 5em;
+  margin: 0;
+  background-color: var(--white);
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
+  margin-bottom: 5em;
+  box-shadow: 0px 7px 29px 0px rgba(100, 100, 111, 0.2);
 }
 
 .box-container {
@@ -440,4 +443,317 @@ textarea {
 .account-details-grid h3 {
   font-size: 28px;
   font-weight: 200;
+}
+
+/* footer styling :start   */
+.main-footer {
+  background: var(--white);
+  color: white;
+  width: 100%;
+  padding: 1em 0;
+  padding-top: 2em;
+  z-index: 10;
+  box-shadow: 0px -7px 29px 0px rgba(100, 100, 111, 0.2);
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-around;
+  max-width: 65%;
+  margin: 0 auto;
+}
+
+.footer-section h1 {
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+.footer-section ul {
+  list-style-type: none;
+}
+
+.footer-section ul li {
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.footer-section ul li:hover {
+  color: #aaa;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: left;
+}
+/* footer styling : end   */
+
+.main-mid-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  background: transparent;
+  height: 30em;
+}
+
+.main-mid-section-content {
+  padding: 40px;
+  border-radius: 10px;
+  background-color: var(--white);
+  box-shadow: 0px 7px 29px 0px rgba(100, 100, 111, 0.2);
+}
+
+.main-mid-section h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.main-mid-section p {
+  font-size: 24px;
+}
+/* main screen center text styling end*/
+
+/* main screen image */
+.background-container {
+  background: url("https://images.unsplash.com/photo-1689799515027-878d0b0cd1a5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+    no-repeat center center;
+  background-size: cover;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 800px;
+  z-index: -1;
+  filter: brightness(0.7);
+}
+
+/* spacing for policy items on policy list */
+.tile-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+/* background tile for policy items */
+.tile-info {
+  background-color: var(--background-transparent);
+  width: 20%;
+  height: 350px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+/* style for text on policy info page */
+.tile-text {
+  color: var(--dark);
+  display: flex;
+  text-transform: uppercase;
+  font-weight: 200;
+  padding-left: 30px;
+  line-height: 40px;
+}
+
+/* style for list items on policy list */
+.policy-info-list {
+  color: var(--dark);
+  list-style: none;
+  font-weight: 200;
+}
+
+.policy-info-list-gray {
+  color: var(--border-transparent);
+  list-style: none;
+  font-weight: 200;
+  line-height: 30px;
+}
+/* highlights price text on policy list */
+.price-highlight {
+  color: var(--dark);
+  font-weight: 500;
+}
+
+/* style for icons on policy list */
+.fa-lock {
+  color: var(--dark);
+  padding-right: 10px;
+}
+
+.fa-heart-crack {
+  color: var(--dark);
+  padding-right: 10px;
+}
+
+.fa-heart-crack-gray {
+  color: var(--border-transparent);
+  padding-right: 10px;
+}
+
+.fa-droplet {
+  color: var(--dark);
+  padding-right: 10px;
+}
+
+.fa-droplet-gray {
+  color: var(--border-transparent);
+  padding-right: 10px;
+}
+
+.fa-square-caret-up {
+  color: var(--dark);
+  padding-right: 10px;
+}
+
+.fa-square-caret-up-gray {
+  color: var(--border-transparent);
+  padding-right: 10px;
+}
+
+/* policy button styling */
+.btn-outline-primary {
+  width: 50%;
+  background-color: var(--background-transparent);
+  margin-left: 65px;
+}
+
+/* styling for image on partner page */
+.tile-img {
+  height: 40%;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* styling for body text on partner page */
+.tile-body-text {
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+  padding-right: 10px;
+  font-weight: 200;
+  font-size: small;
+  line-height: 20px;
+}
+
+/* input for faq page */
+.faq-input {
+  display: none;
+}
+
+/* label for faq page */
+.faq-label {
+  display: block;
+  padding: 8px 22px;
+  margin: 0 0 1px 0;
+  cursor: pointer;
+  background: var(--background-transparent);
+  border-radius: 3px;
+  color: var(--dark);
+  transition: ease 0.5s;
+  min-width: fit-content;
+  max-width: 100%;
+}
+
+/* label hover for faq button*/
+.faq-label:hover {
+  background: var(--dark);
+  color: var(--white);
+}
+/*
+faq cntent styling */
+.faq-content {
+  background: #e2e5f6;
+  padding: 10px 25px;
+  border: 1px solid #a7a7a7;
+  margin: 0 0 1px 0;
+  border-radius: 3px;
+  max-width: 100%;
+}
+
+.faq-input + .faq-label + .faq-content {
+  display: none;
+}
+
+.faq-input:checked + .faq-label + .faq-content {
+  display: block;
+}
+
+.faq-body {
+  max-width: 90%;
+  padding-left: 100px;
+}
+
+.account-details-profile-pic {
+  width: 7.5em;
+  border-radius: 50%;
+}
+
+.acc-details-card {
+  background-color: var(--background-transparent);
+  width: 45vw;
+  padding: 2em 4em;
+  box-shadow: 0px 7px 29px 0px rgba(100, 100, 111, 0.2);
+  border-radius: 1.5em;
+}
+
+.acc-details-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.acc-details-form h4 {
+  font-weight: 400;
+}
+
+.acc-details-btn {
+  margin-top: 1em;
+  padding: 0.75em;
+  width: 100%;
+  border-radius: 0.5em;
+  border: 0.1em solid var(--border-transparent);
+  font-family: "Roboto", sans-serif;
+  background-color: var(--border-opaque);
+  color: var(--white);
+}
+
+.acc-details-btn:hover {
+  background-color: var(--white);
+  color: var(--border-opaque);
+  cursor: pointer;
+}
+
+.acc-details-form-label {
+  margin-bottom: 1.5em;
+}
+
+.acc-details-greeting {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 3em;
+}
+
+.acc-details-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.login-form {
+  margin: 2em 0em;
+}
+
+.signup-form {
+  margin: 2em 0em;
 }
