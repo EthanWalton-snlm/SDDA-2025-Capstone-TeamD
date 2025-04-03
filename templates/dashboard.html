@@ -26,7 +26,7 @@
               <i class="fa-solid fa-square-caret-up"></i>Phone Upgrade Costs
             </li>
           </ul>
-          {%elif policy.policy_name == "Personal"%}
+          {%endif%} {%if policy.policy_name == "Personal"%}
           <ul>
             <li class="policy-info-list">
               <i class="fa-solid fa-lock"></i>Theft Protection
@@ -41,7 +41,7 @@
               <i class="fa-solid fa-square-caret-up"></i>Phone Upgrade Costs
             </li>
           </ul>
-          {%elif policy.policy_name == "Business"%}
+          {%endif%} {%if policy.policy_name == "Business"%}
           <ul>
             <li class="policy-info-list">
               <i class="fa-solid fa-lock"></i>Theft Protection
@@ -56,7 +56,7 @@
               <i class="fa-solid fa-square-caret-up"></i>Phone Upgrade Costs
             </li>
           </ul>
-          {%elif policy.policy_name == "Platinum"%}
+          {%endif%} {%if policy.policy_name == "Platinum"%}
           <ul>
             <li class="policy-info-list">
               <i class="fa-solid fa-lock"></i>Theft Protection
