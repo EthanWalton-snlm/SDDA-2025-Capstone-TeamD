@@ -240,23 +240,23 @@ li.margin-adjustment {
 }
 
 .btn-primary {
-  background-color: var(--light);
-  color: var(--white);
+  background-color: black; /*transparent;*/
+  color: black; /*var(--white);*/
   border: none;
 }
 
 .btn-primary:hover {
-  background-color: var(--dark);
+  background-color: black; /*var(--border-transparent);*/
 }
 
 .btn-secondary {
-  background-color: transparent;
-  color: var(--dark);
+  background-color: black; /*var(--light);*/
+  color: black; /*var(--dark);*/
   border: 1px solid var(--border-transparent);
 }
 
 .btn-secondary:hover {
-  background-color: var(--border-transparent);
+  background-color: var(--dark);
 }
 
 @media (max-width: 1400px) {
