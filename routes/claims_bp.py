@@ -1,8 +1,7 @@
 from functools import wraps
 
-from flask import Blueprint, flash, redirect, render_template, request, session, url_for
-
 from extensions import db
+from flask import Blueprint, flash, redirect, render_template, request, session, url_for
 from models import claims
 from models.claims import Claim
 from models.policy_types import PolicyType
@@ -35,6 +34,8 @@ def submit_claim():
     # Get form data
     policy_id = request.form.get("policy_id")
     reason = request.form.get("reason")
+    affidavit_link = request.form.get("affidavit_link")
+    image_link = request.form.get("image_link")
 
     # Basic form validation
     if not policy_id or not reason:
@@ -59,6 +60,8 @@ def submit_claim():
             admin_comment="",  # Empty initially
             username=session.get("username"),  # Get username from session
             policy_id=policy_id,
+            affidavit_link=affidavit_link,  # Add the affidavit link
+            image_link=image_link,
         )
 
         # Add and commit to database
