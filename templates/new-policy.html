@@ -12,6 +12,7 @@
         class="new-policy-form"
         action="{{url_for('policies_bp.new_policy_sign_up')}}"
         method="POST"
+        enctype="multipart/form-data"
       >
         <label>
           User Name:
@@ -38,6 +39,10 @@
             value="e.g iPhone 12"
             required
           /><br /><br />
+
+          Please take of yourself with your phone visible (a mirror is
+          perfect!):
+          <input type="file" id="image" name="image" required /><br /><br />
 
           <fieldset>
             <legend>Which Policy would you like to select?</legend>

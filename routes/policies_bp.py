@@ -1,5 +1,9 @@
+import os
+from datetime import datetime
+
 from flask import Blueprint, redirect, render_template, request, url_for
 
+from constants import UPLOAD_FOLDER
 from extensions import db
 from models.policies import Policies
 
@@ -26,10 +30,26 @@ def new_policy_sign_up():
         "screen_protector": request.form.get("screen-protector"),
         "waterproof_phone": request.form.get("waterproof-phone"),
     }
-    new_user = Policies(**data)
+
+    if "image" not in request.files:
+        raise ValueError("Please upload a valid image")
+
+    img = request.files["image"]
+
+    if img.filename == "":
+        raise ValueError("Please upload a valid image")
+
+    if img:
+        filename = f"{data['username']}-policy-{datetime.date}"
+
+        img.save(os.path.join(str(UPLOAD_FOLDER), str(filename)))
+
+        print("Image uploaded successfully")
+
+    new_policy = Policies(**data)
     # print(new_user.to_dict())
     try:
-        db.session.add(new_user)
+        db.session.add(new_policy)
         db.session.commit()
         return redirect(url_for("dashboard_bp.dashboard_page"))
     except Exception as e:
