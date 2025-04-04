@@ -1,0 +1,50 @@
+{% extends "base.html" %} {% block content%}
+
+<div class="main">
+  <div class="card">
+    <div class="title">
+      <h3>Contact Me</h3>
+    </div>
+
+    <form
+      class="login-form"
+      action="{{url_for('auth_bp.submit_signup_page')}}"
+      method="POST"
+    >
+      <input type="text" id="name" name="name" placeholder="Name" /><br /><br />
+      <input
+        type="text"
+        id="surname"
+        name="surname"
+        placeholder="Surname"
+      /><br /><br />
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Email"
+      /><br /><br />
+      <input
+        type="text"
+        id="phone_number"
+        name="phone_number"
+        placeholder="Phone Number"
+      /><br /><br />
+      <select class="form-control" id="exampleFormControlSelect1">
+        <option value="" disabled selected>Preferred method of contact</option>
+        <option>Cellphone</option>
+        <option>Email</option>
+      </select>
+      <br />
+      <textarea
+        class="form-control"
+        id="exampleFormControlTextarea1"
+        rows="3"
+        placeholder="Message"
+      ></textarea>
+      <input type="submit" value="Submit" />
+    </form>
+  </div>
+</div>
+
+{% endblock %}
