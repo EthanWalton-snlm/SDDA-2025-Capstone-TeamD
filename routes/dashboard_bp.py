@@ -2,7 +2,6 @@ from flask import Blueprint, render_template
 from flask_login import current_user, login_required
 
 from models.policies import Policies
-from models.users import User
 
 dashboard_bp = Blueprint("dashboard_bp", __name__)
 

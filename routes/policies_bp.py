@@ -2,6 +2,7 @@ import os
 from datetime import datetime
 
 from flask import Blueprint, redirect, render_template, request, url_for
+from flask_login import current_user, login_required
 
 from constants import UPLOAD_FOLDER
 from extensions import db
@@ -16,6 +17,7 @@ def policies_screen():
 
 
 @policies_bp.get("/policies/new-policy")
+@login_required
 def new_policy_page():
     return render_template("new-policy.html")
 
@@ -23,7 +25,7 @@ def new_policy_page():
 @policies_bp.post("/policies/new-policy-sign-up")
 def new_policy_sign_up():
     data = {
-        "username": request.form.get("username"),
+        "username": current_user.username,
         "phone_name": request.form.get("phone_name"),
         "policy_name": request.form.get("radio"),
         "phone_case": request.form.get("phone-case"),
@@ -40,7 +42,8 @@ def new_policy_sign_up():
         raise ValueError("Please upload a valid image")
 
     if img:
-        filename = f"{data['username']}-policy-{datetime.date}"
+        extension = os.path.splitext(f"{img.filename}")[1]
+        filename = f"policy-{datetime.today().strftime('%Y-%m-%d')}-{data['username']}{extension}"
 
         img.save(os.path.join(str(UPLOAD_FOLDER), str(filename)))
 
