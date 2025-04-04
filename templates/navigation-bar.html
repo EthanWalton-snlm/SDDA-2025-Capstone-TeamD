@@ -29,7 +29,7 @@
       referrerpolicy="no-referrer"
     />
   </head>
-  <body>
+  <body class="content-body" style="overflow-y">
     <div class="home-screen-bg"></div>
     <div class="website-header-container">
       <h1 class="website-header-name">CellSure</h1>
@@ -43,6 +43,8 @@
         </nav>
       </header>
     </div>
-    {% block content %}{% endblock%} {% extends "footer.html" %}
+
+    <div class="content">{% block content %} {% endblock%}</div>
+    {% extends "footer.html" %}
   </body>
 </html>
