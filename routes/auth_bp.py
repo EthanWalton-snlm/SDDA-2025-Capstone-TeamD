@@ -1,8 +1,9 @@
-from extensions import db
 from flask import Blueprint, redirect, render_template, request, url_for
 from flask_login import login_required, login_user, logout_user
-from models.users import User
 from werkzeug.security import check_password_hash, generate_password_hash
+
+from extensions import db
+from models.users import User
 
 auth_bp = Blueprint("auth_bp", __name__)
 
@@ -30,8 +31,6 @@ def submit_login_page():
             raise ValueError("Password must be filled")
 
         user_from_db = User.query.filter_by(username=username).first()
-
-        print(user_from_db)
 
         if not (user_from_db and check_password_hash(user_from_db.password, password)):
             raise ValueError("Credentials not valid")
