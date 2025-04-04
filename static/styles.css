@@ -470,6 +470,7 @@ textarea {
   gap: 30px;
   max-width: 65%;
   margin: 0 auto;
+  font-size: medium;
 }
 
 .footer-section h1 {
