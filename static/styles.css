@@ -506,10 +506,16 @@ textarea {
 .footer-content {
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 25px;
   max-width: 65%;
   margin: 0 auto;
-  font-size: medium;
+  font-size: small;
+}
+
+.footer-icon {
+  font-size: large;
+  display: flex;
+  align-items: start;
 }
 
 .footer-section h1 {

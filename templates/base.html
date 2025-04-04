@@ -33,7 +33,7 @@
     <!-- <div class="home-screen-bg"></div> -->
     <div id="wrapper" class="home-bg">
       <div class="website-header-container">
-        <h1 class="website-header-name">CellSure</h1>
+        <h1 class="website-header-name">CellSure <i class="fa-solid fa-shield-halved"></i></h1>
         <header>
           <nav>
             {% if current_user.is_authenticated %}
@@ -60,6 +60,9 @@
         <footer class="main-footer">
           <h2 class = "sr-only"></h2>
           <section class="footer-content">
+            <div class = "footer-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <div><i class="fa-regular fa-copyright"></i> 2025 CellSure, Inc.</div>
+
             <div class="footer-section footer-policies">
               <a href="/policies">
                 <p>Policies</p>
@@ -67,7 +70,6 @@
             </div>
 
             <div class="footer-section footer-faq">
-              <ul>
                 <a href="/faq">
                   <p>FAQs</p>
                 </a>
@@ -91,41 +93,6 @@
           </section>
         </footer>
       </div>
-      <!-- <div class="footer">
-        <footer class="main-footer">
-          <h2 class = "sr-only"></h2>
-          <section class="footer-content">
-            <div class="footer-section footer-policies">
-              <a href="/policies">
-                <p>Policies</p>
-              </a>
-            </div>
-
-            <div class="footer-section footer-faq">
-              <ul>
-                <a href="/faq">
-                  <p>FAQs</p>
-                </a>
-
-            </div>
-
-            <div class="footer-section footer-partners">
-                <a href="/partners">
-                  <p>Partnerships</p>
-                </a>
-            </div>
-
-            <div class="footer-section footer-claims">
-              <p>Claim</p>
-            </div>
-
-            <div class="footer-section footer-contact">
-                <p>Contact Form</p>
-
-            </div>
-          </section>
-        </footer>
-      </div> -->
     </div>
   </body>
 </html>
