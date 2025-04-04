@@ -14,7 +14,7 @@
   --pale-blue-gradient-a: rgba(100, 147, 194, 0.377);
   --pale-blue-gradient-b: rgba(100, 147, 194, 0.377);
 }
-
+/*  */
 * {
   box-sizing: border-box;
   color: var(--dark);
