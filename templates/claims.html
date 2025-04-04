@@ -1,63 +1,82 @@
-{% extends "navigation-bar-logged-in.html" %} {% block content%}
+{% extends "base.html" %} {% block content%}
 
-<body style="overflow-x: hidden">
-  <div class="main">
-
-    <!-- <iframe
+<div class="main">
+  <!-- <iframe
       src="https://docs.google.com/spreadsheets/d/17INviqEQ-dqytOsy9q3zAb-Jl79HaZU0D8w_q-RF_ik/edit?usp=sharing/pubhtml?widget=true&headers=false"
       width="600" height="380"></iframe> -->
 
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">Submit a Claim</h3>
+          </div>
+          <div class="card-body">
+            {% if error %}
+            <div class="alert alert-danger">{{ error }}</div>
+            {% endif %} {% if success %}
+            <div class="alert alert-success">{{ success }}</div>
+            {% endif %}
 
-    <div class="container mt-5">
-      <div class="row justify-content-center">
-        <div class="col-md-8">
-          <div class="card">
-            <div class="card-header bg-primary text-white">
-              <h3 class="mb-0">Submit a Claim</h3>
-            </div>
-            <div class="card-body">
-              {% if error %}
-              <div class="alert alert-danger">{{ error }}</div>
-              {% endif %}
+            <form
+              id="claim-form"
+              method="POST"
+              action="{{ url_for('claims_bp.submit_claim') }}"
+            >
+              <div class="mb-3">
+                <label for="policy_id" class="form-label">Policy Type</label>
+                <select
+                  class="form-select"
+                  id="policy_id"
+                  name="policy_id"
+                  required
+                >
+                  <option value="" selected disabled>
+                    Select a policy type
+                  </option>
+                  {% for policy in policy_types %}
+                  <option value="{{ policy.policy_type_id }}">
+                    {{ policy.name }}
+                  </option>
+                  {% endfor %}
+                </select>
+              </div>
 
-              {% if success %}
-              <div class="alert alert-success">{{ success }}</div>
-              {% endif %}
+              <div class="mb-3">
+                <label for="reason" class="form-label">Reason for Claim</label>
+                <textarea
+                  class="form-control"
+                  id="reason"
+                  name="reason"
+                  rows="5"
+                  placeholder="Please describe the reason for your claim in detail"
+                  required
+                ></textarea>
+                <div class="form-text">Maximum 500 characters</div>
+              </div>
 
-              <form id="claim-form" method="POST" action="{{ url_for('claims_bp.submit_claim') }}">
-                <div class="mb-3">
-                  <label for="policy_id" class="form-label">Policy Type</label>
-                  <select class="form-select" id="policy_id" name="policy_id" required>
-                    <option value="" selected disabled>Select a policy type</option>
-                    {% for policy in policy_types %}
-                    <option value="{{ policy.policy_type_id }}">{{ policy.name }}</option>
-                    {% endfor %}
-                  </select>
-                </div>
-
-                <div class="mb-3">
-                  <label for="reason" class="form-label">Reason for Claim</label>
-                  <textarea class="form-control" id="reason" name="reason" rows="5"
-                    placeholder="Please describe the reason for your claim in detail" required></textarea>
-                  <div class="form-text">Maximum 500 characters</div>
-                </div>
-
-                <div class="d-grid gap-2">
-                  <button type="submit" class="btn btn-primary">Submit Claim</button>
-                </div>
-              </form>
-            </div>
+              <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary">
+                  Submit Claim
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
     </div>
-
-    <iframe
-      src="https://docs.google.com/forms/d/e/1FAIpQLSeU-D7FSqyNyTNz2gQF0HaWaoeiGTu2x9bR5Q8kJBBVmQXgog/viewform?embedded=true"
-      width="640" height="1137" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-
   </div>
 
-</body>
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSeU-D7FSqyNyTNz2gQF0HaWaoeiGTu2x9bR5Q8kJBBVmQXgog/viewform?embedded=true"
+    width="640"
+    height="1137"
+    frameborder="0"
+    marginheight="0"
+    marginwidth="0"
+    >Loading…</iframe
+  >
+</div>
 
 {% endblock %}
