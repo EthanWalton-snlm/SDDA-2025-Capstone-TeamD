@@ -1,12 +1,5 @@
 from flask import Flask
 from flask_login import LoginManager
-
-# blueprint imports
-
-from routes.login_bp import login_bp
-from routes.signout_bp import signout_bp
-from routes.signup_bp import signup_bp
-
 from sqlalchemy.sql import text
 
 from config import Config
