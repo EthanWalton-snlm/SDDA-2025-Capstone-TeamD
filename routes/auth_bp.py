@@ -32,8 +32,6 @@ def submit_login_page():
 
         user_from_db = User.query.filter_by(username=username).first()
 
-        print(user_from_db)
-
         if not (user_from_db and check_password_hash(user_from_db.password, password)):
             raise ValueError("Credentials not valid")
 

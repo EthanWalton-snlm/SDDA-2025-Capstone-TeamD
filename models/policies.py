@@ -1,9 +1,8 @@
 import uuid
 
-from sqlalchemy import ForeignKey
-
 from extensions import db
 from models.policy_types import PolicyType
+from sqlalchemy import ForeignKey
 
 
 class Policies(db.Model):

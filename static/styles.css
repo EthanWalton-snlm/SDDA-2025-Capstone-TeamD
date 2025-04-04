@@ -14,7 +14,7 @@
   --pale-blue-gradient-a: rgba(100, 147, 194, 0.377);
   --pale-blue-gradient-b: rgba(100, 147, 194, 0.377);
 }
-
+/*  */
 * {
   box-sizing: border-box;
   color: var(--dark);
@@ -188,7 +188,7 @@ li.margin-adjustment {
   /* justify-content: space-between; */
   justify-content: space-around;
 }
-
+/*  */
 .premium-reducer {
   display: flex;
   flex-direction: column;
@@ -537,6 +537,10 @@ textarea {
   color: #aaa;
 }
 
+.footer-list {
+  padding-left: 0px;
+}
+
 .footer {
   /* position: sticky; */
   left: 0;
@@ -623,6 +627,7 @@ textarea {
   font-weight: 200;
   padding-left: 30px;
   line-height: 40px;
+  margin-top: 20px;
 }
 
 /* style for list items on policy list */
@@ -644,6 +649,8 @@ textarea {
   list-style: none;
   font-weight: 200;
   line-height: 30px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
 }
 /* highlights price text on policy list */
 .price-highlight {
@@ -662,8 +669,18 @@ textarea {
   padding-right: 10px;
 }
 
+#fa-heart-crack-gray {
+  color: var(--border-transparent);
+  padding-right: 10px;
+}
+
 .fa-droplet {
   color: var(--dark);
+  padding-right: 10px;
+}
+/*  */
+#fa-droplet-gray {
+  color: var(--border-transparent);
   padding-right: 10px;
 }
 
@@ -672,11 +689,17 @@ textarea {
   padding-right: 10px;
 }
 
+#fa-square-caret-up-gray {
+  color: var(--border-transparent);
+  padding-right: 10px;
+}
+
 /* policy button styling */
 .btn-outline-primary {
   width: 50%;
   background-color: var(--background-transparent);
-  margin-left: 65px;
+  margin-left: 4px;
+  margin-top: 17px;
 }
 
 /* styling for image on partner page */
