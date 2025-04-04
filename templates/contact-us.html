@@ -7,10 +7,16 @@
     </div>
 
     <form
-      class="login-form"
-      action="{{url_for('auth_bp.submit_signup_page')}}"
+      class="contact-form"
+      action="{{url_for('contact_us_bp.submit_contact_info')}}"
       method="POST"
     >
+      <input
+        type="text"
+        id="id_number"
+        name="id_number"
+        placeholder="ID number"
+      /><br /><br />
       <input type="text" id="name" name="name" placeholder="Name" /><br /><br />
       <input
         type="text"
