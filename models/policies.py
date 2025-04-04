@@ -31,3 +31,6 @@ class Policies(db.Model):
             "screen_protector": self.screen_protector,
             "waterproof_phone": self.waterproof_phone,
         }
+
+    def get_id(self):
+        return self.policy_id
