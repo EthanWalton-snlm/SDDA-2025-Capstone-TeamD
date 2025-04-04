@@ -484,6 +484,10 @@ textarea {
   color: #aaa;
 }
 
+.footer-list {
+  padding-left: 0px;
+}
+
 .footer {
   position: fixed;
   left: 0;
@@ -574,6 +578,8 @@ textarea {
   list-style: none;
   font-weight: 200;
   line-height: 30px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
 }
 /* highlights price text on policy list */
 .price-highlight {
