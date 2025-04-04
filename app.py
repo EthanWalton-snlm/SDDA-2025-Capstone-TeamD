@@ -1,17 +1,8 @@
-
 from config import Config
 from extensions import db
 from flask import Flask
 from flask_login import LoginManager
 from models.users import User
-
-# blueprint imports
-from routes.login_bp import login_bp
-from routes.signout_bp import signout_bp
-from routes.signup_bp import signup_bp
-from sqlalchemy.sql import text
-from routes.partners_bp import partners_bp
-from routes.policies_bp import policies_bp
 from routes.account_details_bp import account_details_bp
 from routes.admin_bp import admin_bp
 from routes.auth_bp import auth_bp
@@ -19,6 +10,14 @@ from routes.claims_bp import claims_bp
 from routes.dashboard_bp import dashboard_bp
 from routes.faq_bp import faq_bp
 from routes.home_bp import home_bp
+from routes.partners_bp import partners_bp
+from routes.policies_bp import policies_bp
+
+# blueprint imports
+# from routes.login_bp import login_bp
+# from routes.signout_bp import signout_bp
+# from routes.signup_bp import signup_bp
+from sqlalchemy.sql import text
 
 
 def create_app():
