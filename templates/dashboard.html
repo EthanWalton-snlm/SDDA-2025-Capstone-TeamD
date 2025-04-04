@@ -1,77 +1,91 @@
-{% extends "navigation-bar-logged-in.html" %} {% block content%}
+{% extends "base.html" %} {% block content%}
 
-<body style="overflow-x: hidden">
-  <div class="main">
-    <div class="dash-flex">
-      <div class="cover-card">
-        <div class="phone-cover">
-          <h2>iPhone 12 Pro</h2>
-          <h5>Business Plan</h5>
-          <h2>R{{price}}</h2>
-          <ul>
-            <li>Yada Yada Yada Yada Yada</li>
-            <li>Yada Yada Yada Yada Yada</li>
-            <li>Yada Yada Yada Yada Yada</li>
-          </ul>
+<div class="main">
+  <div class="dash-flex">
+    {% for policy in policies %} {% if policy.username == user.username%}
+    <div class="cover-card">
+      <div class="phone-cover">
+        <h2>{{policy.phone_name}}</h2>
+        <h5>{{policy.policy_name}}</h5>
+        <h2>R{{policy.premium}}</h2>
+        <h6>Policy Covers:</h6>
 
-          <div class="claim-upgrade-buttons">
-            <a
-              href="{{ url_for('claims_bp.claims_page') }}"
-              class="btn btn-primary"
-              >Claim</a
-            >
-            <button class="btn btn-secondary">Upgrade</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="cover-card">
-        <div class="phone-cover">
-          <h2>Samsung A2A</h2>
-          <h5>Fresher Plan</h5>
-          <h2>R{{price}}</h2>
-          <ul>
-            <li>Yada Yada Yada Yada Yada</li>
-            <li>Yada Yada Yada Yada Yada</li>
-            <li>Yada Yada Yada Yada Yada</li>
-          </ul>
-
-          <div class="claim-upgrade-buttons">
-            <a
-              href="{{ url_for('claims_bp.claims_page') }}"
-              class="btn btn-primary"
-              >Claim</a
-            >
-            <button class="btn btn-secondary">Upgrade</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="cover-card">
-        <div class="phone-cover">
-          <h2>iPhone 15 Pro</h2>
-          <h5>Grand Plan</h5>
-          <h2>R{{price}}</h2>
-          <ul>
-            <li>Yada Yada Yada Yada Yada</li>
-            <li>Yada Yada Yada Yada Yada</li>
-            <li>Yada Yada Yada Yada Yada</li>
-          </ul>
-
-          <div class="claim-upgrade-buttons">
-            <a
-              href="{{ url_for('claims_bp.claims_page') }}"
-              class="btn btn-primary"
-              >Claim</a
-            >
-            <button class="btn btn-secondary">Upgrade</button>
-          </div>
+        {%if policy.policy_name == "Fresher"%}
+        <ul>
+          <li class="policy-info-list">
+            <i class="fa-solid fa-lock"></i>Theft Protection
+          </li>
+          <li class="policy-info-list-gray">
+            <i class="fa-solid fa-heart-crack"></i>Screen Damage Protection
+          </li>
+          <li class="policy-info-list-gray">
+            <i class="fa-solid fa-droplet"></i>Water Damage Protection
+          </li>
+          <li class="policy-info-list-gray">
+            <i class="fa-solid fa-square-caret-up"></i>Phone Upgrade Costs
+          </li>
+        </ul>
+        {%endif%} {%if policy.policy_name == "Personal"%}
+        <ul>
+          <li class="policy-info-list">
+            <i class="fa-solid fa-lock"></i>Theft Protection
+          </li>
+          <li class="policy-info-list">
+            <i class="fa-solid fa-heart-crack"></i>Screen Damage Protection
+          </li>
+          <li class="policy-info-list-gray">
+            <i class="fa-solid fa-droplet"></i>Water Damage Protection
+          </li>
+          <li class="policy-info-list-gray">
+            <i class="fa-solid fa-square-caret-up"></i>Phone Upgrade Costs
+          </li>
+        </ul>
+        {%endif%} {%if policy.policy_name == "Business"%}
+        <ul>
+          <li class="policy-info-list">
+            <i class="fa-solid fa-lock"></i>Theft Protection
+          </li>
+          <li class="policy-info-list">
+            <i class="fa-solid fa-heart-crack"></i>Screen Damage Protection
+          </li>
+          <li class="policy-info-list">
+            <i class="fa-solid fa-droplet"></i>Water Damage Protection
+          </li>
+          <li class="policy-info-list-gray">
+            <i class="fa-solid fa-square-caret-up"></i>Phone Upgrade Costs
+          </li>
+        </ul>
+        {%endif%} {%if policy.policy_name == "Platinum"%}
+        <ul>
+          <li class="policy-info-list">
+            <i class="fa-solid fa-lock"></i>Theft Protection
+          </li>
+          <li class="policy-info-list">
+            <i class="fa-solid fa-heart-crack"></i>Screen Damage Protection
+          </li>
+          <li class="policy-info-list">
+            <i class="fa-solid fa-droplet"></i>Water Damage Protection
+          </li>
+          <li class="policy-info-list">
+            <i class="fa-solid fa-square-caret-up"></i>Phone Upgrade Costs
+          </li>
+        </ul>
+        {%endif%}
+        <div class="claim-upgrade-buttons">
+          <a
+            href="{{ url_for('claims_bp.claims_page') }}"
+            class="btn btn-primary"
+            >Claim</a
+          >
+          <button class="btn btn-secondary">Upgrade</button>
         </div>
       </div>
     </div>
+    {%endif%} {% endfor %}
+  </div>
 
-    <!-- TODO: Move to upgrade page -->
-    <!-- <div class="cover-card premium-reducers">
+  <!-- TODO: Move to upgrade page -->
+  <!-- <div class="cover-card premium-reducers">
       <h1>Premium Reducers</h1>
 
       <div class="premium-reducer-margin">
@@ -93,6 +107,6 @@
         </div>
       </div>
     </div> -->
-  </div>
-</body>
+</div>
+
 {% endblock %}

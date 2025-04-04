@@ -1,51 +1,46 @@
-{% extends "navigation-bar.html"%} {% block content%}
-
-<body style="overflow-y: scroll; overflow-x: hidden">
-  <!-- main container -->
-  <div class="tile-container">
-    <!-- fresher policy div -->
-    <div class="tile-info">
-      <h1 class="tile-text">Fresher</h1>
+{% extends "base.html"%} {% block content%}
+<!-- main container -->
+<div class="dash-flex">
+  <!-- fresher policy div -->
+  <div class="cover-card">
+    <div class="phone-cover">
+      <h2>Fresher</h2>
 
       <!-- price -->
-      <h1 class="tile-text">
+      <h2>
         <span class="price-highlight">R 50 p/m</span>
-      </h1>
-      <!--  -->
+      </h2>
+
       <!-- fresher policy list -->
       <ul>
         <li class="policy-info-list">
           <i class="fa-solid fa-lock"></i>Theft Protection
         </li>
         <li class="policy-info-list-gray">
-          <i id="fa-heart-crack-gray" class="fa-solid fa-heart-crack"></i>Screen Damage Protection
+          <i class="fa-solid fa-heart-crack"></i>Screen Damage Protection
         </li>
         <li class="policy-info-list-gray">
-          <i id="fa-droplet-gray" class="fa-solid fa-droplet"></i>Water Damage Protection
+          <i class="fa-solid fa-droplet"></i>Water Damage Protection
         </li>
         <li class="policy-info-list-gray">
-          <i id="fa-square-caret-up-gray" class="fa-solid fa-square-caret-up"></i>Phone Upgrade Costs
+          <i class="fa-solid fa-square-caret-up"></i>Phone Upgrade Costs
         </li>
       </ul>
 
-
       <!-- button -->
       <div class="text-center">
-        <button type="button" class="btn btn-outline-primary">
-          <a href="policies/new-policy"> Get Policy</a>
-        </button>
+        <a href="policies/new-policy" class="btn btn-primary">Get Policy</a>
       </div>
     </div>
-
-    <!-- personal policy div -->
-    <div class="tile-info">
-      <h1 class="tile-text">Personal</h1>
+  </div>
+  <div class="cover-card">
+    <div class="phone-cover">
+      <h2>Personal</h2>
 
       <!-- price -->
-      <h1 class="tile-text">
+      <h2>
         <span class="price-highlight">R 75 p/m</span>
-      </h1>
-
+      </h2>
       <!-- personal policy list -->
       <ul>
         <li class="policy-info-list">
@@ -55,30 +50,27 @@
           <i class="fa-solid fa-heart-crack"></i>Screen Damage Protection
         </li>
         <li class="policy-info-list-gray">
-          <i id="fa-droplet-gray" class="fa-solid fa-droplet"></i>Water Damage Protection
+          <i class="fa-solid fa-droplet"></i>Water Damage Protection
         </li>
         <li class="policy-info-list-gray">
-          <i id="fa-square-caret-up-gray" class="fa-solid fa-square-caret-up"></i>Phone Upgrade Costs
+          <i class="fa-solid fa-square-caret-up"></i>Phone Upgrade Costs
         </li>
       </ul>
 
       <!-- button -->
       <div class="text-center">
-        <button type="button" class="btn btn-outline-primary">
-          <a href="policies/new-policy"> Get Policy</a>
-        </button>
+        <a href="policies/new-policy" class="btn btn-primary">Get Policy</a>
       </div>
     </div>
-
-    <!-- business policy div -->
-    <div class="tile-info">
-      <h1 class="tile-text">Business</h1>
+  </div>
+  <div class="cover-card">
+    <div class="phone-cover">
+      <h2>Business</h2>
 
       <!-- price -->
-      <h1 class="tile-text">
-        <span class="price-highlight">R 100 p/m</span>
-      </h1>
-
+      <h2>
+        <span class="price-highlight">R 700 p/m</span>
+      </h2>
       <!-- business policy list -->
       <ul>
         <li class="policy-info-list">
@@ -91,27 +83,25 @@
           <i class="fa-solid fa-droplet"></i>Water Damage Protection
         </li>
         <li class="policy-info-list-gray">
-          <i id="fa-square-caret-up-gray" class="fa-solid fa-square-caret-up"></i>Phone Upgrade Costs
+          <i class="fa-solid fa-square-caret-up"></i>Phone Upgrade Costs
         </li>
       </ul>
 
       <!-- button -->
+      <!-- button -->
       <div class="text-center">
-        <button type="button" class="btn btn-outline-primary">
-          <a href="policies/new-policy"> Get Policy</a>
-        </button>
+        <a href="policies/new-policy" class="btn btn-primary">Get Policy</a>
       </div>
     </div>
-
-    <!-- platinum policy div -->
-    <div class="tile-info">
-      <h1 class="tile-text">Platinum</h1>
+  </div>
+  <div class="cover-card">
+    <div class="phone-cover">
+      <h2>Fresher</h2>
 
       <!-- price -->
-      <h1 class="tile-text">
+      <h2>
         <span class="price-highlight">R 200 p/m</span>
-      </h1>
-
+      </h2>
       <!-- platinum policy list -->
       <ul>
         <li class="policy-info-list">
@@ -130,11 +120,9 @@
 
       <!-- button -->
       <div class="text-center">
-        <button type="button" class="btn btn-outline-primary">
-          <a href="policies/new-policy"> Get Policy</a>
-        </button>
+        <a href="policies/new-policy" class="btn btn-primary">Get Policy</a>
       </div>
     </div>
   </div>
-</body>
+</div>
 {% endblock %}
