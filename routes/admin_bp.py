@@ -1,7 +1,8 @@
-from constants import CLAIM_STATUS_CODE
-from extensions import db
 from flask import Blueprint, redirect, render_template, request, url_for
 from flask_login import login_required
+
+from constants import CLAIM_STATUS_CODE
+from extensions import db
 from models.claims import Claim
 
 admin_bp = Blueprint("admin_bp", __name__)
@@ -107,9 +108,9 @@ def update_claim_reason(id, admin_comment):
 # def add_claim():
 #     data = {
 #         "username": request.form.get("username"),
-#         "password": encrypt_password(
-#             request.form.get("password")
-#         ),  # TODO: encrypt in html [using encrypt_password()]
+#         "password":  # encrypt_password(
+#         request.form.get("password"),
+#         # ),  # TODO: encrypt in html [using encrypt_password()]
 #         "first_name": request.form.get("first_name"),
 #         "last_name": request.form.get("last_name"),
 #         "email": request.form.get("email"),
@@ -117,7 +118,7 @@ def update_claim_reason(id, admin_comment):
 #         "id_number": request.form.get("id_number"),
 #     }
 
-#     new_user = User(**data)
+#     new_user = Claim(**data)
 
 #     try:
 #         db.session.add(new_user)

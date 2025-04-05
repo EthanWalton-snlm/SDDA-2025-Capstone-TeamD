@@ -24,6 +24,7 @@ def submit_claim():
     reason = request.form.get("reason")
     affidavit_link = request.form.get("affidavit_link")
     image_link = request.form.get("image_link")
+    claim_amount = request.form.get("claim_amount")
 
     # Basic form validation
     if not policy_id or not reason:
@@ -47,9 +48,10 @@ def submit_claim():
             "reason": reason,
             "admin_comment": "",
             "username": current_user.username,
-            "policy_id": policy_id,
+            "policy_id": 123,  # policy_id,
             "affidavit_link": affidavit_link,
             "image_link": image_link,
+            "claim_amount": claim_amount,
         }
         new_claim = Claim(**data)
 

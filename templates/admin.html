@@ -6,6 +6,7 @@
     {% for submission in submissions %} {% if submission.status == 'Pending' %}
     <div class="submission">
       <p>{{ submission.username }}</p>
+      <p>{{submission.claim_amount}}</p>
       <a
         href="{{ url_for('admin_bp.admin_review', id=submission.claim_id) }}"
         class="view-button"
@@ -20,6 +21,7 @@
     {% for submission in approved %}
     <div class="submission">
       <p>{{ submission.username }}</p>
+
       <p>✅</p>
     </div>
     {% endfor %}
