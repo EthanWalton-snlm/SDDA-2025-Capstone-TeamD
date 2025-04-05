@@ -50,6 +50,7 @@ def create_app():
     app.register_blueprint(partners_bp)
     app.register_blueprint(faq_bp)
     app.register_blueprint(contact_us_bp)
+
     return app
 
 

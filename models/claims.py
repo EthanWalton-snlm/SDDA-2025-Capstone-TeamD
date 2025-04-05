@@ -1,8 +1,9 @@
 import uuid
 
+from sqlalchemy import ForeignKey
+
 from extensions import db
 from models.policy_types import PolicyType
-from sqlalchemy import ForeignKey
 
 
 class Claim(db.Model):
@@ -19,6 +20,8 @@ class Claim(db.Model):
     policy_id = db.Column(db.String(50), ForeignKey(PolicyType.policy_type_id))
     affidavit_link = db.Column(db.String(500), nullable=True)
     image_link = db.Column(db.String(500), nullable=True)
+    claim_amount = db.Column(db.Float)
+    amount_approved = db.Column(db.Float)
 
     # Object -> Dict
     def to_dict(self):
@@ -32,4 +35,6 @@ class Claim(db.Model):
             "policy_id": self.policy_id,
             "affidavit_link": self.affidavit_link,
             "image_link": self.image_link,
+            "claim_amount": self.claim_amount,
+            "amount_approved": self.amount_approved,
         }
