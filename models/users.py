@@ -15,7 +15,7 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(50))
     phone_number = db.Column(db.String(13))
     id_number = db.Column(db.String(13))
-    is_admin = db.Column(db.Boolean)
+    is_admin = db.Column(db.Boolean, default=False)
 
     # Object -> Dict
     def to_dict(self):

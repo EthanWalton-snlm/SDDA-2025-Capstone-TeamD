@@ -31,26 +31,21 @@ def new_policy_sign_up():
         "phone_case": request.form.get("phone-case"),
         "screen_protector": request.form.get("screen-protector"),
         "waterproof_phone": request.form.get("waterproof-phone"),
+        "image_link": request.form.get("image"),  # Store the image URL here
     }
 
-    if "image" not in request.files:
-        raise ValueError("Please upload a valid image")
+    # Validate that image URL is provided (no file upload needed)
+    image_link = data.get("image_link")
+    if not image_link:
+        raise ValueError("Please provide a valid image URL")
 
-    img = request.files["image"]
+    # Make sure the URL is valid (you can add more URL validation as needed)
+    if not image_link.startswith("http"):
+        raise ValueError("Please provide a valid URL that starts with http or https")
 
-    if img.filename == "":
-        raise ValueError("Please upload a valid image")
-
-    if img:
-        extension = os.path.splitext(f"{img.filename}")[1]
-        filename = f"policy-{datetime.today().strftime('%Y-%m-%d')}-{data['username']}{extension}"
-
-        img.save(os.path.join(str(UPLOAD_FOLDER), str(filename)))
-
-        print("Image uploaded successfully")
-
+    # Create a new policy record
     new_policy = Policies(**data)
-    # print(new_user.to_dict())
+
     try:
         db.session.add(new_policy)
         db.session.commit()
