@@ -9,6 +9,15 @@ CREATE TABLE users (
     is_admin INT DEFAULT 0 -- 1 = True
 );
 
+CREATE TABLE usersToContact (
+    id_number NVARCHAR(13) PRIMARY KEY,
+	name NVARCHAR(50),
+    surname NVARCHAR(50),
+    email NVARCHAR(50),
+    phone_number NVARCHAR(13),
+	method_of_contact NVARCHAR(50),
+    message NVARCHAR(max),
+);
 
 CREATE TABLE policyTypes (
     policy_type_id NVARCHAR(50) PRIMARY KEY,
@@ -20,48 +29,26 @@ CREATE TABLE policyTypes (
 CREATE TABLE policies (
     policy_id NVARCHAR(50) PRIMARY KEY,
     premium FLOAT,
+	phone_name NVARCHAR(50),
+	policy_name NVARCHAR(50),
+	phone_case NVARCHAR(50),
+	screen_protector NVARCHAR(50),
+	waterproof_phone NVARCHAR(50),
+	username NVARCHAR(100) REFERENCES users(username),
+	policy_type_id NVARCHAR(50) REFERENCES policyTypes(policy_type_id)
+
 );
 
-ALTER TABLE policies
-ADD phone_name NVARCHAR(50);
-
-ALTER TABLE policies
-ADD policy_name NVARCHAR(50);
-
-ALTER TABLE policies
-ADD phone_case NVARCHAR(50);
-
-ALTER TABLE policies
-ADD screen_protector NVARCHAR(50);
-
-ALTER TABLE policies
-ADD waterproof_phone NVARCHAR(50);
-
-
-ALTER TABLE policies
-ADD username NVARCHAR(100)
-REFERENCES users(username);
-
-ALTER TABLE policies
-ADD policy_type_id NVARCHAR(50)
-REFERENCES policyTypes(policy_type_id);
 
 
 CREATE TABLE claims (
     claim_id NVARCHAR(50) PRIMARY KEY,
     status NVARCHAR(25),
     reason NVARCHAR(500),
-	admin_comment NVARCHAR(500)
+	admin_comment NVARCHAR(500),
+	username NVARCHAR(100) REFERENCES users(username),
+	policy_id NVARCHAR(50) REFERENCES policies(policy_id)
 );
-
-ALTER TABLE claims
-ADD username NVARCHAR(100)
-REFERENCES users(username);
-
-ALTER TABLE claims
-ADD policy_id NVARCHAR(50)
-REFERENCES policies(policy_id);
-
 
 
 INSERT INTO policies VALUES ('123', 100, (SELECT username FROM users WHERE username = 'admin'), (SELECT policy_type_id FROM PolicyTypes WHERE policy_type_id='BPLAN'));
@@ -80,3 +67,4 @@ INSERT INTO policyTypes VALUES ('BPLAN', 'Business Plan', 'For business people')
 
 SELECT * FROM users;
 select * from policies;
+select * from usersToContact;
