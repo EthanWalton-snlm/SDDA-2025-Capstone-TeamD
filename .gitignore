@@ -4,3 +4,4 @@ __pycache__
 .venv
 static/Image/user_uploads/*
 venv
+progress.py

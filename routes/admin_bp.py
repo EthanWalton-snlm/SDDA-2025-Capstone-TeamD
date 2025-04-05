@@ -1,7 +1,8 @@
+from flask import Blueprint, redirect, render_template, request, url_for
+from flask_login import current_user, login_required
+
 from constants import CLAIM_STATUS_CODE
 from extensions import db
-from flask import Blueprint, redirect, render_template, request, url_for
-from flask_login import login_required
 from models.claims import Claim
 
 admin_bp = Blueprint("admin_bp", __name__)
@@ -89,6 +90,32 @@ def change_claim_status(id, status):
         except Exception as e:
             db.session.rollback()  # restores data, cannot be done after commit()
             print(e)
+
+
+# I will use the below change_claim_status once I've fixed my DB issues
+
+# # Function to change claim status and store the admin username
+# def change_claim_status(id, status):
+#     claim = Claim.query.get(id)
+
+#     if claim is not None:
+#         try:
+#             claim.status = status  # Change the claim status
+
+#             # Store the username of the admin who approved or rejected the claim
+#             if status == CLAIM_STATUS_CODE["approve"]:
+#                 claim.approved_by = (
+#                     current_user.username
+#                 )  # Save the admin username who approved
+#             elif status == CLAIM_STATUS_CODE["reject"]:
+#                 claim.rejected_by = (
+#                     current_user.username
+#                 )  # Save the admin username who rejected
+
+#             db.session.commit()  # Commit the changes to the database
+#         except Exception as e:
+#             db.session.rollback()  # If an error occurs, rollback the transaction
+#             print(e)
 
 
 def update_claim_reason(id, admin_comment):

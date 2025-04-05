@@ -7,21 +7,11 @@
       <h2>New Policy</h2>
     </div>
 
-    <form
-      class="new-policy-form"
-      action="{{url_for('policies_bp.new_policy_sign_up')}}"
-      method="POST"
-      enctype="multipart/form-data"
-    >
+    <form class="new-policy-form" action="{{url_for('policies_bp.new_policy_sign_up')}}" method="POST"
+      enctype="multipart/form-data">
       <label>
         User Name:
-        <input
-          type="text"
-          id="username"
-          name="username"
-          value="{{current_user.username}}"
-          disabled
-        /><br /><br />
+        <input type="text" id="username" name="username" value="{{current_user.username}}" disabled /><br /><br />
 
         <!-- Account Password:
           <input
@@ -32,54 +22,26 @@
           /><br /><br /> -->
 
         Phone Name:
-        <input
-          type="text"
-          id="phone_name"
-          name="phone_name"
-          value="e.g iPhone 12"
-          required
-        /><br /><br />
+        <input type="text" id="phone_name" name="phone_name" value="e.g iPhone 12" required /><br /><br />
 
         Please take of yourself with your phone visible (a mirror is perfect!):
-        <input type="file" id="image" name="image" required /><br /><br />
+        <input type="url" id="image" name="image" required /><br /><br />
 
         <fieldset>
           <legend>Which Policy would you like to select?</legend>
-          <label
-            ><input type="radio" name="radio" value="Fresher" />Fresher</label
-          >
-          <label
-            ><input type="radio" name="radio" value="Personal" />Personal</label
-          >
-          <label
-            ><input type="radio" name="radio" value="Business" />Business</label
-          >
-          <label
-            ><input type="radio" name="radio" value="Platinum" />Platinum</label
-          >
+          <label><input type="radio" name="radio" value="Fresher" />Fresher</label>
+          <label><input type="radio" name="radio" value="Personal" />Personal</label>
+          <label><input type="radio" name="radio" value="Business" />Business</label>
+          <label><input type="radio" name="radio" value="Platinum" />Platinum</label>
         </fieldset>
         <br /><br />
 
         <fieldset>
           <legend>Which extra features do you have?</legend>
-          <label
-            ><input type="checkbox" name="phone-case" value="phone-case" />Phone
-            Case</label
-          >
-          <label
-            ><input
-              type="checkbox"
-              name="screen-protector"
-              value="screen-protector"
-            />Screen Protector</label
-          >
-          <label
-            ><input
-              type="checkbox"
-              name="waterproof-phone"
-              value="waterproof-phone"
-            />Waterproof Phone</label
-          >
+          <label><input type="checkbox" name="phone-case" value="phone-case" />Phone
+            Case</label>
+          <label><input type="checkbox" name="screen-protector" value="screen-protector" />Screen Protector</label>
+          <label><input type="checkbox" name="waterproof-phone" value="waterproof-phone" />Waterproof Phone</label>
         </fieldset>
         <br /><br />
       </label>

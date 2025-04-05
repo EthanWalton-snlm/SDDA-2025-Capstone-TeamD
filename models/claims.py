@@ -1,8 +1,9 @@
 import uuid
 
+from sqlalchemy import ForeignKey
+
 from extensions import db
 from models.policy_types import PolicyType
-from sqlalchemy import ForeignKey
 
 
 class Claim(db.Model):
@@ -19,11 +20,17 @@ class Claim(db.Model):
     policy_id = db.Column(db.String(50), ForeignKey(PolicyType.policy_type_id))
     affidavit_link = db.Column(db.String(500), nullable=True)
     image_link = db.Column(db.String(500), nullable=True)
+    quotation_link = db.Column(db.String(500), nullable=True)
+    submission_date = db.Column(db.DateTime, nullable=False, default=db.func.now())
+    date_of_incident = db.Column(db.Date, nullable=False)
+
+    # New fields to store admin info
+    approved_by = db.Column(db.String(100), nullable=True)
+    rejected_by = db.Column(db.String(100), nullable=True)
 
     # Object -> Dict
     def to_dict(self):
         return {
-            # "user_id": self.user_id,
             "claim_id": self.claim_id,
             "status": self.status,
             "reason": self.reason,
@@ -32,4 +39,9 @@ class Claim(db.Model):
             "policy_id": self.policy_id,
             "affidavit_link": self.affidavit_link,
             "image_link": self.image_link,
+            "quotation_link": self.quotation_link,
+            "approved_by": self.approved_by,
+            "rejected_by": self.rejected_by,
+            "submission_date": self.submission_date,
+            "date_of_incident": self.date_of_incident,
         }

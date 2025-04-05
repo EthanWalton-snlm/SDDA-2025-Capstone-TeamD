@@ -5,12 +5,11 @@
     <h2>Pending Submissions</h2>
     {% for submission in submissions %} {% if submission.status == 'Pending' %}
     <div class="submission">
+      <img src="https://th.bing.com/th/id/OIP.V8o0z-WF2LgCV-e2c0MSRAHaHa?w=1306&h=1306&rs=1&pid=ImgDetMain"
+        class="account-details-profile-pic" />
       <p>{{ submission.username }}</p>
-      <a
-        href="{{ url_for('admin_bp.admin_review', id=submission.claim_id) }}"
-        class="view-button"
-        >View Details</a
-      >
+
+      <a href="{{ url_for('admin_bp.admin_review', id=submission.claim_id) }}" class="view-button">View Details</a>
     </div>
     {% endif %} {% endfor %}
   </div>
@@ -18,9 +17,14 @@
   <div class="box-right">
     <h2>Approved Submissions</h2>
     {% for submission in approved %}
+    <p>{{current_use.username}}</p>
     <div class="submission">
+      <img src="https://th.bing.com/th/id/OIP.V8o0z-WF2LgCV-e2c0MSRAHaHa?w=1306&h=1306&rs=1&pid=ImgDetMain"
+        class="account-details-profile-pic" />
       <p>{{ submission.username }}</p>
-      <p>✅</p>
+
+      <p>Amount Approved: R</p>
+      <p>Approved by: {{ submission.approved_by or 'N/A' }} </p>
     </div>
     {% endfor %}
   </div>
@@ -29,9 +33,13 @@
     <h2>Rejected Submissions</h2>
     {% for submission in rejected %}
     <div class="submission">
+      <img src="https://th.bing.com/th/id/OIP.V8o0z-WF2LgCV-e2c0MSRAHaHa?w=1306&h=1306&rs=1&pid=ImgDetMain"
+        class="account-details-profile-pic" />
       <p>{{ submission.username }}</p>
+
       <p>❌</p>
       <p>{{submission.admin_comment}}</p>
+      <p>Rejected by:{{ submission.rejected_by or 'N/A' }} </p>
     </div>
     {% endfor %}
   </div>

@@ -1,8 +1,9 @@
 import uuid
 
+from sqlalchemy import ForeignKey
+
 from extensions import db
 from models.policy_types import PolicyType
-from sqlalchemy import ForeignKey
 
 
 class Policies(db.Model):
@@ -18,6 +19,7 @@ class Policies(db.Model):
     phone_case = db.Column(db.String(50))
     screen_protector = db.Column(db.String(50))
     waterproof_phone = db.Column(db.String(50))
+    image_link = db.Column(db.String(500), nullable=True)
 
     # Object -> Dict
     def to_dict(self):
@@ -30,6 +32,7 @@ class Policies(db.Model):
             "phone_case": self.phone_case,
             "screen_protector": self.screen_protector,
             "waterproof_phone": self.waterproof_phone,
+            "image_link": self.image_link,  # Include the image_link in the dictionary
         }
 
     def get_id(self):
