@@ -9,6 +9,7 @@ from routes.account_details_bp import account_details_bp
 from routes.admin_bp import admin_bp
 from routes.auth_bp import auth_bp
 from routes.claims_bp import claims_bp
+from routes.contact_us_bp import contact_us_bp
 from routes.dashboard_bp import dashboard_bp
 from routes.faq_bp import faq_bp
 from routes.home_bp import home_bp
@@ -48,6 +49,7 @@ def create_app():
     app.register_blueprint(policies_bp)
     app.register_blueprint(partners_bp)
     app.register_blueprint(faq_bp)
+    app.register_blueprint(contact_us_bp)
     return app
 
 

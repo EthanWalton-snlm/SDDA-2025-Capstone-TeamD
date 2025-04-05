@@ -90,3 +90,31 @@ def submit_signup_page():
 def logout_page():
     logout_user()
     return redirect(url_for("home_bp.home_screen"))
+
+
+@auth_bp.post("/contact-us")
+def contact_us_page():
+    username = request.form.get("name")
+    password = request.form.get("surname")
+
+    try:
+        if not username:
+            raise ValueError("Username must be filled")
+
+        if not password:
+            raise ValueError("Password must be filled")
+
+        user_from_db = User.query.filter_by(username=username).first()
+
+        if not (user_from_db and check_password_hash(user_from_db.password, password)):
+            raise ValueError("Credentials not valid")
+
+        login_user(
+            user_from_db
+        )  # Create token & store in cookies for that particular user
+
+        return redirect(url_for("dashboard_bp.dashboard_page"))
+    except Exception as e:
+        print("ERROR:", e)
+        db.session.rollback()
+        return redirect(url_for("auth_bp.login_page"))
