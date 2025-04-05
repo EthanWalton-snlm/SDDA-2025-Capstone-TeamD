@@ -3,7 +3,7 @@
 <div class="main">
   <div class="card">
     <div class="title">
-      <h3>Contact Me</h3>
+      <h3>Contact Us</h3>
     </div>
 
     <form
@@ -36,7 +36,7 @@
         name="phone_number"
         placeholder="Phone Number"
       /><br /><br />
-      <select class="form-control" id="exampleFormControlSelect1">
+      <select class="form-control" id="method_of_contact" name = "method_of_contact">
         <option value="" disabled selected>Preferred method of contact</option>
         <option>Cellphone</option>
         <option>Email</option>
@@ -44,11 +44,15 @@
       <br />
       <textarea
         class="form-control"
-        id="exampleFormControlTextarea1"
+        id="message"
+        name = "message"
         rows="3"
         placeholder="Message"
+
       ></textarea>
+      </label>
       <input type="submit" value="Submit" />
+    </form>
     </form>
   </div>
 </div>

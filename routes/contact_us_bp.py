@@ -11,7 +11,7 @@ def contact_us_screen():
     return render_template("contact-us.html")
 
 
-@contact_us_bp.post("/contact-us")
+@contact_us_bp.post("/contact-us/submission")
 def submit_contact_info():
     id_number = request.form.get("id_number")
     name = request.form.get("name")
@@ -50,4 +50,4 @@ def submit_contact_info():
     except Exception as e:
         print("ERROR:", e)
         db.session.rollback()
-        return redirect(url_for("contact_us_bp.submit_contact_info"))
+        return redirect(url_for("contact_us_bp.contact_us_screen"))
