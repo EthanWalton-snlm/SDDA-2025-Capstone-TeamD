@@ -1,3 +1,9 @@
+DROP TABLE IF EXISTS claims;
+DROP TABLE IF EXISTS policies;
+DROP TABLE IF EXISTS policyTypes;
+DROP TABLE IF EXISTS usersToContact;
+DROP TABLE IF EXISTS users;
+
 CREATE TABLE users (
     username NVARCHAR(100) PRIMARY KEY,
     password NVARCHAR(500),
@@ -56,6 +62,9 @@ CREATE TABLE claims (
 -- Add constraint to set default submission_date to current date/time when claim is created
 ALTER TABLE claims
 ADD CONSTRAINT DF_Claims_SubmissionDate DEFAULT (GETDATE()) FOR submission_date;
+
+ALTER TABLE policies
+ADD image_link NVARCHAR(500) NULL;
 
 INSERT INTO users (username, password, first_name, last_name, is_admin)
 VALUES
