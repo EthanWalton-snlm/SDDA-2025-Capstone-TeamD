@@ -73,7 +73,8 @@
         {%endif%}
         <div class="claim-upgrade-buttons">
           <a href="{{ url_for('claims_bp.claims_page') }}" class="btn btn-primary">Claim</a>
-          <button class="btn btn-secondary">Upgrade</button>
+          <a href="{{ url_for('policies_bp.upgrade_policy', policy_id=policy.policy_id) }}"
+            class="btn btn-secondary">Upgrade</a>
         </div>
       </div>
     </div>
