@@ -20,6 +20,7 @@ class Policies(db.Model):
     screen_protector = db.Column(db.String(50))
     waterproof_phone = db.Column(db.String(50))
     image_link = db.Column(db.String(500), nullable=True)
+    premium = db.Column(db.Float)
 
     # Object -> Dict
     def to_dict(self):
@@ -33,6 +34,7 @@ class Policies(db.Model):
             "screen_protector": self.screen_protector,
             "waterproof_phone": self.waterproof_phone,
             "image_link": self.image_link,  # Include the image_link in the dictionary
+            "premium": self.premium,
         }
 
     def get_id(self):
