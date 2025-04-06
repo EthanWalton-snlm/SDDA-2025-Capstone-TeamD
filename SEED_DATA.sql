@@ -28,7 +28,8 @@ CREATE TABLE usersToContact (
 CREATE TABLE policyTypes (
     policy_type_id NVARCHAR(50) PRIMARY KEY,
     name NVARCHAR(100),
-    summary NVARCHAR(500)
+    summary NVARCHAR(500),
+	start_price FLOAT
 );
 
 CREATE TABLE policies (
@@ -66,11 +67,17 @@ CREATE TABLE claims (
 ALTER TABLE policies
 ADD image_link NVARCHAR(500) NULL;
 
+ALTER TABLE claims
+ADD
+claim_amount FLOAT,
+amount_approved FLOAT;
+
 INSERT INTO users (username, password, first_name, last_name, is_admin)
 VALUES
 ('admin', 'admin', 'Admin', 'Account', 1);
 
-INSERT INTO policyTypes VALUES ('BPLAN', 'Business Plan', 'For business people');
+INSERT INTO policyTypes VALUES ('BPLAN', 'Business Plan', 'For business people', 700);
+INSERT INTO policyTypes VALUES ('FRESH', 'Fresher Plan', 'For fresh people', 50);
 
 INSERT INTO policies VALUES ('123', 100, 'iPhone 13', 'Business Plan', 'Yes', 'Yes', 'No',
     (SELECT username FROM users WHERE username = 'admin'),
@@ -85,3 +92,4 @@ SELECT * FROM users;
 SELECT * FROM policies;
 SELECT * FROM usersToContact;
 SELECT * FROM claims;
+SELECT * FROM policyTypes;
