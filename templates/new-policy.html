@@ -53,9 +53,9 @@
           <legend>Which Policy would you like to select?</legend>
           {% for type in policy_types %}
           <label
-            ><input type="radio" name="radio" value="{{type.name}}" {% if
-            type.policy_type_id == policy_id %} checked {% endif %}
-            />{{type.name}}</label
+            ><input type="radio" name="radios" value="{{type.name}}" {% if
+            type.policy_type_id == policy_id %} checked {% else %} disabled {%
+            endif %} />{{type.name}}</label
           >
           {% endfor %}
         </fieldset>
@@ -95,6 +95,11 @@
         </fieldset>
         <br /><br />
       </label>
+
+      {% for type in policy_types %} {% if type.policy_type_id == policy_id %}
+      <h3>R{{type.start_price}}</h3>
+      {% endif %} {% endfor %}
+
       <button class="submit-button">Submit</button>
     </form>
   </div>
