@@ -854,3 +854,15 @@ faq cntent styling */
 .list-of-benefits {
   padding-left: 0px;
 }
+
+.column-checkboxes {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.checkbox-label-row {
+  display: grid;
+  grid-template-columns: 1fr 8fr;
+  gap: 0.2em;
+}

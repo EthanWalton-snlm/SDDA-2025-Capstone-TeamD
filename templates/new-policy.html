@@ -64,26 +64,37 @@
         </fieldset>
         <br /><br />
 
-        <fieldset>
+        <fieldset class="column-checkboxes">
           <legend>Which extra features do you have?</legend>
-          <label
-            ><input type="checkbox" name="phone-case" value="phone-case" />Phone
-            Case</label
-          >
-          <label
-            ><input
+          <div class="checkbox-label-row">
+            <input
+              type="checkbox"
+              name="phone-case"
+              value="phone-case"
+              id="phone-case"
+            />
+            <label for="phone-case">Phone Case</label>
+          </div>
+
+          <div class="checkbox-label-row">
+            <input
               type="checkbox"
               name="screen-protector"
               value="screen-protector"
-            />Screen Protector</label
-          >
-          <label
-            ><input
+              id="screen-protector"
+            />
+            <label for="screen-protector">Screen Protector</label>
+          </div>
+
+          <div class="checkbox-label-row">
+            <input
               type="checkbox"
               name="waterproof-phone"
               value="waterproof-phone"
-            />Waterproof Phone</label
-          >
+              id="waterproof-phone"
+            />
+            <label for="waterproof-phone">Waterproof Phone</label>
+          </div>
         </fieldset>
         <br /><br />
       </label>
