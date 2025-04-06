@@ -57,7 +57,9 @@ CREATE TABLE claims (
     submission_date DATETIME NOT NULL DEFAULT GETDATE(), -- date when claim is submitted
     date_of_incident DATE NOT NULL, -- date when the incident happened
     username NVARCHAR(100) REFERENCES users(username),
-    policy_id NVARCHAR(50) REFERENCES policies(policy_id)
+    policy_id NVARCHAR(50) REFERENCES policies(policy_id),
+	claim_amount FLOAT,
+	amount_approved FLOAT
 );
 
 -- Add constraint to set default submission_date to current date/time when claim is created
@@ -81,7 +83,7 @@ INSERT INTO policies VALUES ('123', 100, 'iPhone 13', 'Business Plan', 'Yes', 'Y
 INSERT INTO claims (claim_id, status, reason, admin_comment, date_of_incident, username, policy_id)
 VALUES ('claim1', 'Pending', 'broke my phone', '', '2025-03-15',
     (SELECT username FROM users WHERE username = 'admin'),
-    (SELECT policy_id FROM policies WHERE policy_id='123'));
+    (SELECT policy_id FROM policies WHERE policy_id='123'), 10000, 6000);
 
 SELECT * FROM users;
 SELECT * FROM policies;
