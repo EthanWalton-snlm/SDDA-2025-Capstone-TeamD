@@ -7,13 +7,15 @@ from flask_login import current_user, login_required
 from constants import UPLOAD_FOLDER
 from extensions import db
 from models.policies import Policies
+from models.policy_types import PolicyType
 
 policies_bp = Blueprint("policies_bp", __name__)
 
 
 @policies_bp.get("/policies")
 def policies_screen():
-    return render_template("policies.html")
+    policy_types = [type.to_dict() for type in PolicyType.query.all()]
+    return render_template("policies.html", policy_types=policy_types)
 
 
 @policies_bp.get("/policies/new-policy/<policy_name>")

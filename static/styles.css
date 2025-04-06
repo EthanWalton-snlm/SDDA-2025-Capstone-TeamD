@@ -866,3 +866,15 @@ faq cntent styling */
   grid-template-columns: 1fr 8fr;
   gap: 0.2em;
 }
+
+.price-from {
+  display: flex;
+  flex-direction: column;
+  gap: 0em;
+}
+
+.price-from h3 {
+  font-weight: 200;
+  font-size: 18px;
+  margin-bottom: -1em;
+}

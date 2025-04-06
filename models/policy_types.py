@@ -11,6 +11,7 @@ class PolicyType(db.Model):
     )
     name = db.Column(db.String(100))
     summary = db.Column(db.String(500))
+    start_price = db.Column(db.Float)
 
     # Object -> Dict
     def to_dict(self):
@@ -19,4 +20,5 @@ class PolicyType(db.Model):
             "policy_type_id": self.policy_type_id,
             "name": self.name,
             "summary": self.summary,
+            "start_price": self.start_price,
         }
