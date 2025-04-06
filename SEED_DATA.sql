@@ -69,6 +69,11 @@ CREATE TABLE claims (
 ALTER TABLE policies
 ADD image_link NVARCHAR(500) NULL;
 
+ALTER TABLE claims
+ADD
+claim_amount FLOAT,
+amount_approved FLOAT;
+
 INSERT INTO users (username, password, first_name, last_name, is_admin)
 VALUES
 ('admin', 'admin', 'Admin', 'Account', 1);
