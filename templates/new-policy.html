@@ -36,31 +36,30 @@
           type="text"
           id="phone_name"
           name="phone_name"
-          value="e.g iPhone 12"
+          placeholder="iPhone 12"
           required
         /><br /><br />
 
-        Please take of yourself with your phone visible (a mirror is perfect!):
-        <input type="url" id="image" name="image" required /><br /><br />
+        Please take of yourself with your phone visible (in front of a mirror is
+        perfect!):
+        <input
+          type="url"
+          id="image"
+          name="image"
+          placeholder="https://..."
+        /><br /><br />
+
+        <input type="file" id="image-file" name="image-file" /><br /><br />
 
         <fieldset>
           <legend>Which Policy would you like to select?</legend>
+          {% for type in policy_types %}
           <label
-            ><input type="radio" name="radio" value="Fresher" {% if policy_name
-            == 'fresher' %} checked {% endif %} />Fresher</label
+            ><input type="radio" name="radios" value="{{type.name}}" {% if
+            type.policy_type_id == policy_id %} checked {% else %} disabled {%
+            endif %} />{{type.name}}</label
           >
-          <label
-            ><input type="radio" name="radio" value="Personal" {% if policy_name
-            == 'personal' %} checked {% endif %} />Personal</label
-          >
-          <label
-            ><input type="radio" name="radio" value="Business" {% if policy_name
-            == 'business' %} checked {% endif %} />Business</label
-          >
-          <label
-            ><input type="radio" name="radio" value="Platinum" {% if policy_name
-            == 'platinum' %} checked {% endif %} />Platinum</label
-          >
+          {% endfor %}
         </fieldset>
         <br /><br />
 
@@ -98,6 +97,11 @@
         </fieldset>
         <br /><br />
       </label>
+
+      {% for type in policy_types %} {% if type.policy_type_id == policy_id %}
+      <h3>R{{type.start_price}}</h3>
+      {% endif %} {% endfor %}
+
       <button class="submit-button">Submit</button>
     </form>
   </div>
