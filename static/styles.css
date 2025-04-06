@@ -723,17 +723,17 @@ textarea {
 }
 
 /* input for faq page */
-.faq-input {
+.accordion-inp {
   display: none;
 }
 
-/* label for faq page */
-.faq-label {
+/* label for accordion */
+.accordion-label {
   display: block;
   padding: 8px 22px;
   margin: 0 0 1px 0;
   cursor: pointer;
-  background: var(--background-transparent);
+  background: var(--pale-blue-gradient-a);
   border-radius: 3px;
   color: var(--dark);
   transition: ease 0.5s;
@@ -741,14 +741,14 @@ textarea {
   max-width: 100%;
 }
 
-/* label hover for faq button*/
-.faq-label:hover {
+/* label hover for accordion button*/
+.accordion-label:hover {
   background: var(--dark);
   color: var(--white);
 }
 /*
-faq cntent styling */
-.faq-content {
+accordion content styling */
+.accordion-content {
   background: #e2e5f6;
   padding: 10px 25px;
   border: 1px solid #a7a7a7;
@@ -757,11 +757,11 @@ faq cntent styling */
   max-width: 100%;
 }
 
-.faq-input + .faq-label + .faq-content {
+.accordion-inp + .accordion-label + .accordion-content {
   display: none;
 }
 
-.faq-input:checked + .faq-label + .faq-content {
+.accordion-inp:checked + .accordion-label + .accordion-content {
   display: block;
 }
 
@@ -866,7 +866,12 @@ faq cntent styling */
   grid-template-columns: 1fr 8fr;
   gap: 0.2em;
 }
-
+.radio-label-row {
+  display: grid;
+  grid-template-columns: 1fr 4fr 7fr;
+  gap: 0.2em;
+  align-items: center;
+}
 .price-from {
   display: flex;
   flex-direction: column;

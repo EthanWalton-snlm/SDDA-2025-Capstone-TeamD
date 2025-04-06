@@ -23,14 +23,6 @@
           disabled
         /><br /><br />
 
-        <!-- Account Password:
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value="Password"
-          /><br /><br /> -->
-
         Phone Name:
         <input
           type="text"
@@ -51,14 +43,36 @@
 
         <input type="file" id="image-file" name="image-file" /><br /><br />
 
-        <fieldset>
+        <fieldset class="column-checkboxes">
           <legend>Which Policy would you like to select?</legend>
           {% for type in policy_types %}
-          <label
-            ><input type="radio" name="radios" value="{{type.name}}" {% if
-            type.policy_type_id == policy_id %} checked {% else %} disabled {%
-            endif %} />{{type.name}}</label
-          >
+          <label>
+            <div class="radio-label-row">
+              <div>
+                <input type="radio" name="radios" value="{{type.name}}" {% if
+                type.policy_type_id == policy_id %} checked {% else %} disabled
+                {% endif %} />
+              </div>
+              <div>{{type.name}}</div>
+              <div>
+                <input
+                  type="checkbox"
+                  id="{{type.name}}"
+                  class="accordion-inp"
+                />
+                <label for="{{type.name}}" class="accordion-label"
+                  >What does {{type.name}} cover?</label
+                >
+                <div class="accordion-content">
+                  <p>
+                    This plan costs R{{type.start_price}}. It {{type.summary}}
+                  </p>
+                </div>
+              </div>
+
+              <br />
+            </div>
+          </label>
           {% endfor %}
         </fieldset>
         <br /><br />
