@@ -16,10 +16,10 @@ def policies_screen():
     return render_template("policies.html")
 
 
-@policies_bp.get("/policies/new-policy")
+@policies_bp.get("/policies/new-policy/<policy_name>")
 @login_required
-def new_policy_page():
-    return render_template("new-policy.html")
+def new_policy_page(policy_name=None):
+    return render_template("new-policy.html", policy_name=policy_name)
 
 
 @policies_bp.post("/policies/new-policy-sign-up")

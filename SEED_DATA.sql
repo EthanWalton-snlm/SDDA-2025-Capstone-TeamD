@@ -60,8 +60,8 @@ CREATE TABLE claims (
 );
 
 -- Add constraint to set default submission_date to current date/time when claim is created
-ALTER TABLE claims
-ADD CONSTRAINT DF_Claims_SubmissionDate DEFAULT (GETDATE()) FOR submission_date;
+-- ALTER TABLE claims
+-- ADD CONSTRAINT DF_Claims_SubmissionDate DEFAULT (GETDATE()) FOR submission_date;
 
 ALTER TABLE policies
 ADD image_link NVARCHAR(500) NULL;
@@ -74,7 +74,7 @@ INSERT INTO policyTypes VALUES ('BPLAN', 'Business Plan', 'For business people')
 
 INSERT INTO policies VALUES ('123', 100, 'iPhone 13', 'Business Plan', 'Yes', 'Yes', 'No',
     (SELECT username FROM users WHERE username = 'admin'),
-    (SELECT policy_type_id FROM policyTypes WHERE policy_type_id='BPLAN'));
+    (SELECT policy_type_id FROM policyTypes WHERE policy_type_id='BPLAN'), 'test.jpg');
 
 INSERT INTO claims (claim_id, status, reason, admin_comment, date_of_incident, username, policy_id)
 VALUES ('claim1', 'Pending', 'broke my phone', '', '2025-03-15',
