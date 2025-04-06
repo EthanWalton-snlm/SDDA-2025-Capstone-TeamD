@@ -18,10 +18,13 @@ def policies_screen():
     return render_template("policies.html", policy_types=policy_types)
 
 
-@policies_bp.get("/policies/new-policy/<policy_name>")
+@policies_bp.get("/policies/new-policy/<policy_id>")
 @login_required
-def new_policy_page(policy_name=None):
-    return render_template("new-policy.html", policy_name=policy_name)
+def new_policy_page(policy_id=None):
+    policy_types = [type.to_dict() for type in PolicyType.query.all()]
+    return render_template(
+        "new-policy.html", policy_id=policy_id, policy_types=policy_types
+    )
 
 
 @policies_bp.post("/policies/new-policy-sign-up")

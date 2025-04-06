@@ -36,31 +36,28 @@
           type="text"
           id="phone_name"
           name="phone_name"
-          value="e.g iPhone 12"
+          placeholder="iPhone 12"
           required
         /><br /><br />
 
         Please take of yourself with your phone visible (a mirror is perfect!):
-        <input type="url" id="image" name="image" required /><br /><br />
+        <input
+          type="url"
+          id="image"
+          name="image"
+          placeholder="https://..."
+          required
+        /><br /><br />
 
         <fieldset>
           <legend>Which Policy would you like to select?</legend>
+          {% for type in policy_types %}
           <label
-            ><input type="radio" name="radio" value="Fresher" {% if policy_name
-            == 'fresher' %} checked {% endif %} />Fresher</label
+            ><input type="radio" name="radio" value="{{type.name}}" {% if
+            type.policy_type_id == policy_id %} checked {% endif %}
+            />{{type.name}}</label
           >
-          <label
-            ><input type="radio" name="radio" value="Personal" {% if policy_name
-            == 'personal' %} checked {% endif %} />Personal</label
-          >
-          <label
-            ><input type="radio" name="radio" value="Business" {% if policy_name
-            == 'business' %} checked {% endif %} />Business</label
-          >
-          <label
-            ><input type="radio" name="radio" value="Platinum" {% if policy_name
-            == 'platinum' %} checked {% endif %} />Platinum</label
-          >
+          {% endfor %}
         </fieldset>
         <br /><br />
 
