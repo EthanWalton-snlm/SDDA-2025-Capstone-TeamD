@@ -71,8 +71,11 @@ INSERT INTO users (username, password, first_name, last_name, is_admin)
 VALUES
 ('admin', 'admin', 'Admin', 'Account', 1);
 
-INSERT INTO policyTypes VALUES ('BPLAN', 'Business Plan', 'For business people', 700);
-INSERT INTO policyTypes VALUES ('FRESH', 'Fresher Plan', 'For fresh people', 50);
+INSERT INTO policyTypes VALUES ('FRESH', 'Fresher Plan', 'Covers Theft Protection', 50);
+INSERT INTO policyTypes VALUES ('PPLAN', 'Personal Plan', 'Covers Theft Protection and Screen Damage Protection', 200);
+INSERT INTO policyTypes VALUES ('BPLAN', 'Business Plan', 'Covers Theft Protection, Screen Damage Protection and Water Damge Protection', 700);
+INSERT INTO policyTypes VALUES ('PLAT', 'Platinum Plan', 'Covers Theft Protection, Screen Damage Protection, Water Damge Protection and Phone Upgrade Costs', 1000);
+
 
 INSERT INTO policies VALUES ('123', 100, 'iPhone 13', 'Business Plan', 'Yes', 'Yes', 'No',
     (SELECT username FROM users WHERE username = 'admin'),
