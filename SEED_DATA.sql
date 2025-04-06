@@ -41,7 +41,8 @@ CREATE TABLE policies (
     screen_protector NVARCHAR(50),
     waterproof_phone NVARCHAR(50),
     username NVARCHAR(100) REFERENCES users(username),
-    policy_type_id NVARCHAR(50) REFERENCES policyTypes(policy_type_id)
+    policy_type_id NVARCHAR(50) REFERENCES policyTypes(policy_type_id),
+    image_link NVARCHAR(500) NULL
 );
 
 CREATE TABLE claims (
@@ -65,14 +66,6 @@ CREATE TABLE claims (
 -- Add constraint to set default submission_date to current date/time when claim is created
 -- ALTER TABLE claims
 -- ADD CONSTRAINT DF_Claims_SubmissionDate DEFAULT (GETDATE()) FOR submission_date;
-
-ALTER TABLE policies
-ADD image_link NVARCHAR(500) NULL;
-
-ALTER TABLE claims
-ADD
-claim_amount FLOAT,
-amount_approved FLOAT;
 
 INSERT INTO users (username, password, first_name, last_name, is_admin)
 VALUES
