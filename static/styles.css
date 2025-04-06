@@ -878,3 +878,17 @@ faq cntent styling */
   font-size: 18px;
   margin-bottom: -1em;
 }
+
+.admin-cards {
+  display: flex;
+  justify-content: space-around;
+  /* margin: 15px; */
+}
+
+.admin-info-card {
+  margin-top: 15px;
+  margin-right: 50px;
+  font-size: large;
+  font-weight: 700;
+  line-height: 35px;
+}
