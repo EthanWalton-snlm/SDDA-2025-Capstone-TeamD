@@ -33,13 +33,13 @@ def new_policy_sign_up():
     data = {
         "username": current_user.username,
         "phone_name": request.form.get("phone_name"),
-        "policy_name": request.form.get("radio"),
+        "policy_name": request.form.get("radios"),
         "phone_case": request.form.get("phone-case"),
         "screen_protector": request.form.get("screen-protector"),
         "waterproof_phone": request.form.get("waterproof-phone"),
         "image_link": None,
     }
-
+    print(data)
     if "image-file" not in request.files:
         raise ValueError("Please upload a valid image")
 

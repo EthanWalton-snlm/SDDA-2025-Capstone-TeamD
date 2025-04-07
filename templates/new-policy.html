@@ -49,9 +49,9 @@
           <label>
             <div class="radio-label-row">
               <div>
-                <input type="radio" name="radios" value="{{type.name}}" {% if
-                type.policy_type_id == policy_id %} checked {% else %} disabled
-                {% endif %} />
+                <input type="radio" id = "radios" name="radios"
+                value="{{type.name}}" {% if type.policy_type_id == policy_id %}
+                checked {% else %} disabled {% endif %} />
               </div>
               <div>{{type.name}}</div>
               <div>
