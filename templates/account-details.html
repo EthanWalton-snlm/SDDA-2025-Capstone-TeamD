@@ -3,10 +3,35 @@
 <div class="main">
   <div class="acc-details-card">
     <div class="acc-details-greeting">
-      <img
-        src="https://th.bing.com/th/id/OIP.V8o0z-WF2LgCV-e2c0MSRAHaHa?w=1306&h=1306&rs=1&pid=ImgDetMain"
-        class="account-details-profile-pic"
-      />
+      {% if not edit %}
+      <form
+        action="{{url_for('account_details_bp.change_pfp')}}"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <label for="image-file">
+          <img
+            src="../{{profile_pic_url}}"
+            class="account-details-profile-pic"
+          />
+          <input
+            type="file"
+            id="image-file"
+            name="image-file"
+            style="display: none"
+            onchange="this.form.submit();"
+          />
+        </label>
+      </form>
+
+      {% else %}
+      <a href="/change-pfp"
+        ><img
+          src="../../{{profile_pic_url}}"
+          class="account-details-profile-pic"
+      /></a>
+      <!-- <a href="/change-pfp"><i class="fa-solid fa-image"></i></a> -->
+      {% endif %}
       <h2>Hey, {{user.first_name}}!</h2>
     </div>
 
@@ -41,7 +66,8 @@
           <input type="text" value="{{value}}" disabled />
         </div>
 
-        {% elif key != "password" and key != "is_admin" %}
+        {% elif key != "password" and key != "is_admin" and key != "profile_pic"
+        %}
         <div class="acc-details-form-label">
           <h4>{{key.replace("_", " ").title()}}</h4>
         </div>

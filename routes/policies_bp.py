@@ -1,16 +1,17 @@
 import os
 from datetime import datetime
-from email.policy import Policy
 
-from flask import Blueprint, flash, redirect, render_template, request, url_for
+from flask import Blueprint, redirect, render_template, request, url_for
 from flask_login import current_user, login_required
 
 from constants import PLAN_HIERARCHY, UPLOAD_FOLDER
 from extensions import db
 from models.policies import Policies
 from models.policy_types import PolicyType
+from routes.account_details_bp import update_profile_pic_if_none
 
 policies_bp = Blueprint("policies_bp", __name__)
+
 
 @policies_bp.get("/policies")
 def policies_screen():
@@ -29,9 +30,6 @@ def new_policy_page(policy_id=None):
 
 @policies_bp.post("/policies/new-policy-sign-up")
 def new_policy_sign_up():
-    img_path = request.form.get("image-file")
-    img_link = request.form.get("image")
-
     data = {
         "username": current_user.username,
         "phone_name": request.form.get("phone_name"),
@@ -39,43 +37,97 @@ def new_policy_sign_up():
         "phone_case": request.form.get("phone-case"),
         "screen_protector": request.form.get("screen-protector"),
         "waterproof_phone": request.form.get("waterproof-phone"),
-        "image_link": img_link if img_link is not None else img_path,
+        "image_link": None,
     }
 
-    if "image" not in request.files:
-        # Validate that image URL is provided (no file upload needed)
-        image_link = data.get("image_link")
-        if not image_link:
-            raise ValueError("Please provide a valid image URL")
+    if "image-file" not in request.files:
+        raise ValueError("Please upload a valid image")
 
-        # Make sure the URL is valid (you can add more URL validation as needed)
-        if not image_link.startswith("http"):
-            raise ValueError(
-                "Please provide a valid URL that starts with http or https"
-            )
-    else:
-        img = request.files["image"]
+    img = request.files["image-file"]
 
-        if img.filename == "":
-            raise ValueError("Please upload a valid image")
+    if img.filename == "":
+        raise ValueError("Please upload a valid image")
 
-        if img:
-            filename = f"{data['username']}-policy-{datetime.date}"
+    if img:
+        extension = os.path.splitext(f"{img.filename}")[1]
+        filename = f"policy-{datetime.today().strftime('%Y-%m-%d')}-{data['username']}{extension}"
 
-            img.save(os.path.join(str(UPLOAD_FOLDER), str(filename)))
+        img.save(os.path.join(str(UPLOAD_FOLDER), str(filename)))
 
-            data["image_link"] = os.path.join(str(UPLOAD_FOLDER), str(filename))
+        data["image_link"] = os.path.join(str(UPLOAD_FOLDER), str(filename))
 
-            print("Image uploaded successfully")
+        print("Image uploaded successfully")
 
-    # Create a new policy record
     new_policy = Policies(**data)
 
     try:
         db.session.add(new_policy)
         db.session.commit()
+
+        update_profile_pic_if_none(current_user.username, data["image_link"])
+
         return redirect(url_for("dashboard_bp.dashboard_page"))
     except Exception as e:
         db.session.rollback()  # restores data, cannot be done after commit()
         print(e)
         return redirect(url_for("home_bp.home_screen"))
+
+
+# @policies_bp.post("/policies/new-policy-sign-up")
+# def new_policy_sign_up():
+#     data = {
+#         "username": current_user.username,
+#         "phone_name": request.form.get("phone_name"),
+#         "policy_name": request.form.get("radio"),
+#         "phone_case": request.form.get("phone-case"),
+#         "screen_protector": request.form.get("screen-protector"),
+#         "waterproof_phone": request.form.get("waterproof-phone"),
+#         "image_link": None,
+#     }
+
+#     if "image" not in request.files:
+#         # Validate that image URL is provided (no file upload needed)
+#         image_link = data.get("image_link")
+
+#         if not image_link:
+#             raise ValueError("Please provide a valid image URL")
+
+#         # Make sure the URL is valid (you can add more URL validation as needed)
+#         if not image_link.startswith("http"):
+#             raise ValueError(
+#                 "Please provide a valid URL that starts with http or https"
+#             )
+
+#         data["image_link"] = f"link:{image_link}"
+
+#     else:
+#         img = request.files["image"]
+
+#         if img.filename == "":
+#             raise ValueError("Please upload a valid image")
+
+#         if img:
+#             filename = f"{data['username']}-policy-{datetime.date}"
+
+#             img.save(os.path.join(str(UPLOAD_FOLDER), str(filename)))
+
+#             data["image_link"] = "path:" + os.path.join(
+#                 str(UPLOAD_FOLDER), str(filename)
+#             )
+
+#             print("Image uploaded successfully")
+
+#     # Create a new policy record
+#     new_policy = Policies(**data)
+
+#     try:
+#         db.session.add(new_policy)
+#         db.session.commit()
+
+#         update_profile_pic_if_none(current_user.username, data["image_link"])
+
+#         return redirect(url_for("dashboard_bp.dashboard_page"))
+#     except Exception as e:
+#         db.session.rollback()  # restores data, cannot be done after commit()
+#         print(e)
+#         return redirect(url_for("home_bp.home_screen"))
