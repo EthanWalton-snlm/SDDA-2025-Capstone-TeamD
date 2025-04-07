@@ -15,6 +15,7 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(50))
     phone_number = db.Column(db.String(13))
     id_number = db.Column(db.String(13))
+    profile_pic = db.Column(db.String(500))
     is_admin = db.Column(db.Boolean, default=False)
 
     # Object -> Dict
@@ -28,6 +29,7 @@ class User(UserMixin, db.Model):
             "email": self.email,
             "phone_number": self.phone_number,
             "id_number": self.id_number,
+            "profile_pic": self.profile_pic,
             "is_admin": self.is_admin,
         }
 

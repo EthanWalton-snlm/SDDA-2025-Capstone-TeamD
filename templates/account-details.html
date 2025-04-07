@@ -3,10 +3,14 @@
 <div class="main">
   <div class="acc-details-card">
     <div class="acc-details-greeting">
+      {% if not edit %}
+      <img src="../{{profile_pic_url}}" class="account-details-profile-pic" />
+      {% else %}
       <img
-        src="https://th.bing.com/th/id/OIP.V8o0z-WF2LgCV-e2c0MSRAHaHa?w=1306&h=1306&rs=1&pid=ImgDetMain"
+        src="../../{{profile_pic_url}}"
         class="account-details-profile-pic"
       />
+      {% endif %}
       <h2>Hey, {{user.first_name}}!</h2>
     </div>
 
@@ -41,7 +45,8 @@
           <input type="text" value="{{value}}" disabled />
         </div>
 
-        {% elif key != "password" and key != "is_admin" %}
+        {% elif key != "password" and key != "is_admin" and key != "profile_pic"
+        %}
         <div class="acc-details-form-label">
           <h4>{{key.replace("_", " ").title()}}</h4>
         </div>

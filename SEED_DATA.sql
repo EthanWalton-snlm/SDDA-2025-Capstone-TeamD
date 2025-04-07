@@ -12,7 +12,8 @@ CREATE TABLE users (
     email NVARCHAR(50),
     phone_number NVARCHAR(13),
     id_number NVARCHAR(13),
-    is_admin INT DEFAULT 0 -- 1 = True
+    is_admin INT DEFAULT 0, -- 1 = True
+    profile_pic NVARCHAR(500)
 );
 
 CREATE TABLE usersToContact (
