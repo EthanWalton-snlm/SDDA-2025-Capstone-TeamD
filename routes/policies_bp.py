@@ -71,3 +71,63 @@ def new_policy_sign_up():
         db.session.rollback()  # restores data, cannot be done after commit()
         print(e)
         return redirect(url_for("home_bp.home_screen"))
+
+
+# @policies_bp.post("/policies/new-policy-sign-up")
+# def new_policy_sign_up():
+#     data = {
+#         "username": current_user.username,
+#         "phone_name": request.form.get("phone_name"),
+#         "policy_name": request.form.get("radio"),
+#         "phone_case": request.form.get("phone-case"),
+#         "screen_protector": request.form.get("screen-protector"),
+#         "waterproof_phone": request.form.get("waterproof-phone"),
+#         "image_link": None,
+#     }
+
+#     if "image" not in request.files:
+#         # Validate that image URL is provided (no file upload needed)
+#         image_link = data.get("image_link")
+
+#         if not image_link:
+#             raise ValueError("Please provide a valid image URL")
+
+#         # Make sure the URL is valid (you can add more URL validation as needed)
+#         if not image_link.startswith("http"):
+#             raise ValueError(
+#                 "Please provide a valid URL that starts with http or https"
+#             )
+
+#         data["image_link"] = f"link:{image_link}"
+
+#     else:
+#         img = request.files["image"]
+
+#         if img.filename == "":
+#             raise ValueError("Please upload a valid image")
+
+#         if img:
+#             filename = f"{data['username']}-policy-{datetime.date}"
+
+#             img.save(os.path.join(str(UPLOAD_FOLDER), str(filename)))
+
+#             data["image_link"] = "path:" + os.path.join(
+#                 str(UPLOAD_FOLDER), str(filename)
+#             )
+
+#             print("Image uploaded successfully")
+
+#     # Create a new policy record
+#     new_policy = Policies(**data)
+
+#     try:
+#         db.session.add(new_policy)
+#         db.session.commit()
+
+#         update_profile_pic_if_none(current_user.username, data["image_link"])
+
+#         return redirect(url_for("dashboard_bp.dashboard_page"))
+#     except Exception as e:
+#         db.session.rollback()  # restores data, cannot be done after commit()
+#         print(e)
+#         return redirect(url_for("home_bp.home_screen"))
