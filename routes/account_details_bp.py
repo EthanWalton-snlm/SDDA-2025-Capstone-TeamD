@@ -56,7 +56,7 @@ def change_pfp():
 
     if img:
         extension = os.path.splitext(f"{img.filename}")[1]
-        filename = f"policy-{datetime.today().strftime('%Y-%m-%d')}-{current_user.username}{extension}"
+        filename = f"{current_user.username}-pfp{extension}"
 
         img.save(os.path.join(str(UPLOAD_FOLDER), str(filename)))
 
