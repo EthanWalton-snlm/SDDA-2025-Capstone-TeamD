@@ -3,4 +3,5 @@ __pycache__
 .env
 .venv
 static/Image/user_uploads/*
+!static/Image/user_uploads/.gitkeep
 venv

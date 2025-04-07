@@ -1,6 +1,10 @@
+import os
+from datetime import datetime
+
 from flask import Blueprint, redirect, render_template, request, url_for
 from flask_login import current_user
 
+from constants import UPLOAD_FOLDER
 from extensions import db
 from models.users import User
 
@@ -38,6 +42,31 @@ def update_profile_pic(username, link):
         return True
 
     return False
+
+
+@account_details_bp.post("/")
+def change_pfp():
+    if "image-file" not in request.files:
+        raise ValueError("Please upload a valid image1")
+
+    img = request.files["image-file"]
+
+    if img.filename == "":
+        raise ValueError("Please upload a valid image")
+
+    if img:
+        extension = os.path.splitext(f"{img.filename}")[1]
+        filename = f"policy-{datetime.today().strftime('%Y-%m-%d')}-{current_user.username}{extension}"
+
+        img.save(os.path.join(str(UPLOAD_FOLDER), str(filename)))
+
+        link = os.path.join(str(UPLOAD_FOLDER), str(filename))
+
+        print("Image uploaded successfully")
+
+        update_profile_pic(current_user.username, link)
+
+    return redirect(url_for("account_details_bp.account_details_page"))
 
 
 def get_user_details(username):
