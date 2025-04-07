@@ -122,7 +122,7 @@ def submit_signup_page():
             raise ValueError("Password does not match")
 
         hashed_password = generate_password_hash(password)
-        print(generate_password_hash("admin"))
+
         data = {
             "username": username,
             "password": hashed_password,
@@ -131,6 +131,7 @@ def submit_signup_page():
             "email": request.form.get("email"),
             "phone_number": request.form.get("phone_number"),
             "id_number": request.form.get("id_number"),
+            "profile_pic": None,
         }
 
         new_user = User(**data)

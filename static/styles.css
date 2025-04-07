@@ -21,7 +21,7 @@
 }
 
 .main {
-  margin-bottom: 17em;
+  margin-bottom: 5em;
   display: grid;
   place-content: center;
 }
@@ -772,7 +772,13 @@ accordion content styling */
 
 .account-details-profile-pic {
   width: 7.5em;
+  height: 7.5em;
   border-radius: 50%;
+  cursor: pointer;
+}
+
+.account-details-profile-pic:hover {
+  opacity: 50%;
 }
 
 .acc-details-card {

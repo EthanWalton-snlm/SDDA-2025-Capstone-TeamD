@@ -1,6 +1,5 @@
 import os
 from datetime import datetime
-from email.policy import Policy
 
 from flask import Blueprint, abort, flash, redirect, render_template, request, url_for
 from flask_login import current_user, login_required
@@ -9,6 +8,7 @@ from constants import UPLOAD_FOLDER
 from extensions import db
 from models.policies import Policies
 from models.policy_types import PolicyType
+from routes.account_details_bp import update_profile_pic_if_none
 
 policies_bp = Blueprint("policies_bp", __name__)
 
@@ -46,7 +46,7 @@ def new_policy_sign_up():
     img_path = request.form.get("image-file")
     img_link = request.form.get("image")
 
-    data = {
+ data = {
         "premium": policy_type.start_price,
         "phone_name": phone_name,
         "policy_name": selected_policy,
@@ -58,38 +58,33 @@ def new_policy_sign_up():
         "image_link": img_link if img_link else img_path,  # Your existing logic
     }
 
-    if "image" not in request.files:
-        # Validate that image URL is provided (no file upload needed)
-        image_link = data.get("image_link")
-        if not image_link:
-            raise ValueError("Please provide a valid image URL")
 
-        # Make sure the URL is valid (you can add more URL validation as needed)
-        if not image_link.startswith("http"):
-            raise ValueError(
-                "Please provide a valid URL that starts with http or https"
-            )
-    else:
-        img = request.files["image"]
+    if "image-file" not in request.files:
+        raise ValueError("Please upload a valid image")
 
-        if img.filename == "":
-            raise ValueError("Please upload a valid image")
+    img = request.files["image-file"]
 
-        if img:
-            filename = f"{data['username']}-policy-{datetime.date}"
+    if img.filename == "":
+        raise ValueError("Please upload a valid image")
 
-            img.save(os.path.join(str(UPLOAD_FOLDER), str(filename)))
+    if img:
+        extension = os.path.splitext(f"{img.filename}")[1]
+        filename = f"policy-{datetime.today().strftime('%Y-%m-%d')}-{data['username']}{extension}"
 
-            data["image_link"] = os.path.join(str(UPLOAD_FOLDER), str(filename))
+        img.save(os.path.join(str(UPLOAD_FOLDER), str(filename)))
 
-            print("Image uploaded successfully")
+        data["image_link"] = os.path.join(str(UPLOAD_FOLDER), str(filename))
 
-    # Create a new policy record
+        print("Image uploaded successfully")
+
     new_policy = Policies(**data)
 
     try:
         db.session.add(new_policy)
         db.session.commit()
+
+        update_profile_pic_if_none(current_user.username, data["image_link"])
+
         return redirect(url_for("dashboard_bp.dashboard_page"))
     except Exception as e:
         db.session.rollback()  # restores data, cannot be done after commit()
