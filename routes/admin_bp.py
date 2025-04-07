@@ -1,6 +1,5 @@
 from flask import Blueprint, redirect, render_template, request, url_for
 from flask_login import current_user, login_required
-from flask_login import login_required
 
 from constants import CLAIM_STATUS_CODE
 from extensions import db
@@ -65,7 +64,10 @@ def admin_review(id):
 
     if request.method == "POST":
         if "approve" in request.form:
+            amount_approved = request.form.get("amount_approved")
             change_claim_status(submission["claim_id"], CLAIM_STATUS_CODE["approve"])
+            update_amount_approved(submission["claim_id"], amount_approved)
+
             return redirect(url_for("admin_bp.admin_home_page"))
         elif "reject" in request.form:
             change_claim_status(submission["claim_id"], CLAIM_STATUS_CODE["reject"])
@@ -81,12 +83,25 @@ def admin_review(id):
     return render_template("admin_review.html", submission=submission)
 
 
+def update_amount_approved(id, amount_approved):
+    claim = Claim.query.get(id)
+
+    if claim is not None:
+        try:
+            claim.amount_approved = amount_approved
+            db.session.commit()
+        except Exception as e:
+            db.session.rollback()
+            print(e)
+
+
 def change_claim_status(id, status):
     claim = Claim.query.get(id)
 
     if claim is not None:
         try:
             claim.status = status
+            # claim.amount_approved =
             db.session.commit()
         except Exception as e:
             db.session.rollback()  # restores data, cannot be done after commit()
