@@ -16,13 +16,19 @@
             <i class="fa-solid fa-lock"></i>Theft Protection
           </li>
           <li class="policy-info-list-gray">
-            <i id="fa-heart-crack-gray" class="fa-solid fa-heart-crack"></i>Screen Damage Protection
+            <i id="fa-heart-crack-gray" class="fa-solid fa-heart-crack"></i
+            >Screen Damage Protection
           </li>
           <li class="policy-info-list-gray">
-            <i id="fa-droplet-gray" class="fa-solid fa-droplet"></i>Water Damage Protection
+            <i id="fa-droplet-gray" class="fa-solid fa-droplet"></i>Water Damage
+            Protection
           </li>
           <li class="policy-info-list-gray">
-            <i id="fa-square-caret-up-gray" class="fa-solid fa-square-caret-up"></i>Phone Upgrade Costs
+            <i
+              id="fa-square-caret-up-gray"
+              class="fa-solid fa-square-caret-up"
+            ></i
+            >Phone Upgrade Costs
           </li>
         </ul>
         {%endif%} {%if policy.policy_name == "Personal"%}
@@ -34,10 +40,15 @@
             <i class="fa-solid fa-heart-crack"></i>Screen Damage Protection
           </li>
           <li class="policy-info-list-gray">
-            <i id="fa-droplet-gray" class="fa-solid fa-droplet"></i>Water Damage Protection
+            <i id="fa-droplet-gray" class="fa-solid fa-droplet"></i>Water Damage
+            Protection
           </li>
           <li class="policy-info-list-gray">
-            <i id="fa-square-caret-up-gray" class="fa-solid fa-square-caret-up"></i>Phone Upgrade Costs
+            <i
+              id="fa-square-caret-up-gray"
+              class="fa-solid fa-square-caret-up"
+            ></i
+            >Phone Upgrade Costs
           </li>
         </ul>
         {%endif%} {%if policy.policy_name == "Business"%}
@@ -52,7 +63,11 @@
             <i class="fa-solid fa-droplet"></i>Water Damage Protection
           </li>
           <li class="policy-info-list-gray">
-            <i id="fa-square-caret-up-gray" class="fa-solid fa-square-caret-up"></i>Phone Upgrade Costs
+            <i
+              id="fa-square-caret-up-gray"
+              class="fa-solid fa-square-caret-up"
+            ></i
+            >Phone Upgrade Costs
           </li>
         </ul>
         {%endif%} {%if policy.policy_name == "Platinum"%}
@@ -72,9 +87,16 @@
         </ul>
         {%endif%}
         <div class="claim-upgrade-buttons">
-          <a href="{{ url_for('claims_bp.claims_page') }}" class="btn btn-primary">Claim</a>
-          <a href="{{ url_for('policies_bp.upgrade_policy', policy_id=policy.policy_id) }}"
-            class="btn btn-secondary">Upgrade</a>
+          <a
+            href="{{ url_for('claims_bp.claims_page') }}"
+            class="btn btn-primary"
+            >Claim</a
+          >
+          <a
+            href="{{ url_for('policies_bp.new_policy_page', policy_id=policy.policy_id) }}"
+            class="btn btn-secondary"
+            >Upgrade</a
+          >
         </div>
       </div>
     </div>
