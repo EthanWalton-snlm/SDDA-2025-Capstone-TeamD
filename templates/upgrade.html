@@ -1,6 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
 
+<div style="background: yellow; padding: 10px;">
+  <h4>Debug Info</h4>
+  <p>Current Policy: {{ current_policy.policy_name }}</p>
+  <p>Policy Type: {{ policy_type.name }}</p>
+  <p>Available Upgrades: {{ higher_policy_types|length }}</p>
+</div>
+
+
 <body style="overflow-x: hidden">
   <div class="main">
     <div class="container mt-5">
@@ -21,7 +29,7 @@
                 <div class="card mb-3">
                   <div class="card-body">
                     <h5 class="card-title">{{ phone_name }}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">{{ current_policy_type.name }} Plan</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ policy_type.name }} Plan</h6>
                     <p class="card-text">
                       Current Premium:
                       {% if current_policy.premium is not none %}

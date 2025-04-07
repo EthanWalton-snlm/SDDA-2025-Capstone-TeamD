@@ -1,131 +1,61 @@
-{% extends "base.html" %} {% block content%}
+{% extends "base.html" %}
+{% block content %}
 
 <div class="main">
   <div class="dash-flex">
-    {% for policy in policies %} {% if policy.username == user.username%}
+    {% for policy in policies %}
     <div class="cover-card">
       <div class="phone-cover">
-        <h2>{{policy.phone_name}}</h2>
-        <h5>{{policy.policy_name}}</h5>
-        <h2>R{{policy.premium}}</h2>
+        <h2>{{ policy.phone_name }}</h2>
+        <h5>{{ policy.policy_name }}</h5>
+        <h2>R{{ policy.premium }}</h2>
         <h6>Policy Covers:</h6>
 
-        {%if policy.policy_name == "Fresher"%}
+
         <ul class="list-of-benefits">
+          <!-- Theft Protection (always included) -->
           <li class="policy-info-list">
             <i class="fa-solid fa-lock"></i>Theft Protection
           </li>
-          <li class="policy-info-list-gray">
-            <i id="fa-heart-crack-gray" class="fa-solid fa-heart-crack"></i
-            >Screen Damage Protection
-          </li>
-          <li class="policy-info-list-gray">
-            <i id="fa-droplet-gray" class="fa-solid fa-droplet"></i>Water Damage
-            Protection
-          </li>
-          <li class="policy-info-list-gray">
-            <i
-              id="fa-square-caret-up-gray"
-              class="fa-solid fa-square-caret-up"
-            ></i
-            >Phone Upgrade Costs
-          </li>
-        </ul>
-        {%endif%} {%if policy.policy_name == "Personal"%}
-        <ul class="list-of-benefits">
-          <li class="policy-info-list">
-            <i class="fa-solid fa-lock"></i>Theft Protection
-          </li>
-          <li class="policy-info-list">
+
+          <!-- Screen Damage Protection -->
+          <li
+            class="{% if policy.policy_name in ['Personal', 'Business', 'Platinum'] %}policy-info-list{% else %}policy-info-list-gray{% endif %}">
             <i class="fa-solid fa-heart-crack"></i>Screen Damage Protection
           </li>
-          <li class="policy-info-list-gray">
-            <i id="fa-droplet-gray" class="fa-solid fa-droplet"></i>Water Damage
-            Protection
-          </li>
-          <li class="policy-info-list-gray">
-            <i
-              id="fa-square-caret-up-gray"
-              class="fa-solid fa-square-caret-up"
-            ></i
-            >Phone Upgrade Costs
-          </li>
-        </ul>
-        {%endif%} {%if policy.policy_name == "Business"%}
-        <ul class="list-of-benefits">
-          <li class="policy-info-list">
-            <i class="fa-solid fa-lock"></i>Theft Protection
-          </li>
-          <li class="policy-info-list">
-            <i class="fa-solid fa-heart-crack"></i>Screen Damage Protection
-          </li>
-          <li class="policy-info-list">
+
+          <!-- Water Damage Protection -->
+          <li
+            class="{% if policy.policy_name in ['Business', 'Platinum'] %}policy-info-list{% else %}policy-info-list-gray{% endif %}">
             <i class="fa-solid fa-droplet"></i>Water Damage Protection
           </li>
-          <li class="policy-info-list-gray">
-            <i
-              id="fa-square-caret-up-gray"
-              class="fa-solid fa-square-caret-up"
-            ></i
-            >Phone Upgrade Costs
-          </li>
-        </ul>
-        {%endif%} {%if policy.policy_name == "Platinum"%}
-        <ul class="list-of-benefits">
-          <li class="policy-info-list">
-            <i class="fa-solid fa-lock"></i>Theft Protection
-          </li>
-          <li class="policy-info-list">
-            <i class="fa-solid fa-heart-crack"></i>Screen Damage Protection
-          </li>
-          <li class="policy-info-list">
-            <i class="fa-solid fa-droplet"></i>Water Damage Protection
-          </li>
-          <li class="policy-info-list">
+
+          <!-- Phone Upgrade Costs -->
+          <li
+            class="{% if policy.policy_name == 'Platinum' %}policy-info-list{% else %}policy-info-list-gray{% endif %}">
             <i class="fa-solid fa-square-caret-up"></i>Phone Upgrade Costs
           </li>
         </ul>
-        {%endif%}
+
         <div class="claim-upgrade-buttons">
-          <a
-            href="{{ url_for('claims_bp.claims_page') }}"
-            class="btn btn-primary"
-            >Claim</a
-          >
-          <a
-            href="{{ url_for('policies_bp.new_policy_page', policy_id=policy.policy_id) }}"
-            class="btn btn-secondary"
-            >Upgrade</a
-          >
+          <a href="{{ url_for('claims_bp.claims_page') }}" class="btn btn-primary">Claim</a>
+          {% if policy.policy_name != 'Platinum' %}
+          <a href="#" class="btn btn-secondary" onclick="alert('Upgrade feature is not available yet'); return false;">
+            Upgrade
+          </a>
+          {% endif %}
         </div>
       </div>
     </div>
-    {%endif%} {% endfor %}
+    {% else %}
+    <div class="no-policies">
+      <p>You don't have any active policies yet.</p>
+      <a href="{{ url_for('policies_bp.new_policy_page' , policy_id='new') }}" class="btn btn-primary">
+        Get Your First Policy
+      </a>
+    </div>
+    {% endfor %}
   </div>
-
-  <!-- TODO: Move to upgrade page -->
-  <!-- <div class="cover-card premium-reducers">
-      <h1>Premium Reducers</h1>
-
-      <div class="premium-reducer-margin">
-        <div class="cover-flex">
-          <div class="premium-reducer">
-            <i class="fa-solid fa-shield-halved" style="font-size: 54px"></i>
-            <h2>Screen Protector</h2>
-          </div>
-
-          <div class="premium-reducer">
-            <i class="fa-solid fa-dumbbell" style="font-size: 54px"></i>
-            <h2>Phone Case</h2>
-          </div>
-
-          <div class="premium-reducer">
-            <i class="fa-solid fa-dumbbell" style="font-size: 54px"></i>
-            <h2>Phone Case</h2>
-          </div>
-        </div>
-      </div>
-    </div> -->
 </div>
 
 {% endblock %}
