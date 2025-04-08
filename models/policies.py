@@ -16,9 +16,9 @@ class Policies(db.Model):
     phone_name = db.Column(db.String(100))
     policy_name = db.Column(db.String(100))
     policy_type_id = db.Column(db.String(50), ForeignKey(PolicyType.policy_type_id))
-    phone_case = db.Column(db.String(50))
-    screen_protector = db.Column(db.String(50))
-    waterproof_phone = db.Column(db.String(50))
+    phone_case = db.Column(db.Boolean)
+    screen_protector = db.Column(db.Boolean)
+    waterproof_phone = db.Column(db.Boolean)
     image_link = db.Column(db.String(500), nullable=True)
     premium = db.Column(db.Float)
 

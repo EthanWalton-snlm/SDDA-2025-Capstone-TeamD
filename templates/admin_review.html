@@ -37,14 +37,17 @@
       </p>
 
       <form method="POST">
-        {% if submission.status == 'Pending' %}
         <!-- Textarea for admin to enter the approved amount -->
-        <div class="amount-approved" style="margin-bottom: 10px">
-          <p><strong>Approved Amount: R </strong></p>
+        <div
+          class="amount-approved"
+          name="amount-approved"
+          style="margin-bottom: 10px"
+        >
+          <p><strong>Approved Amount: R</strong></p>
           <input
-            id="amount_approved"
-            name="amount_approved"
             type="number"
+            name="amount-approved"
+            id="amunt-approved"
             step="0.01"
             placeholder="Enter approved amount"
             style="
@@ -55,6 +58,7 @@
             "
           />
         </div>
+        {% if submission.status == 'Pending' %}
         <button type="submit" name="approve">Approve</button>
         <button type="submit" name="reject">Reject</button>
         {% endif %}

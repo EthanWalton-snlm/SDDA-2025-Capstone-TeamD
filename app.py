@@ -34,6 +34,8 @@ def create_app():
     with app.app_context():
         try:
             result = db.session.execute(text("SELECT 1")).fetchall()
+            # movies_objs = Movie.query.all()
+            # movies = [movie.to_dict() for movie in movies_objs]
             print("Connection successful:", result)
         except Exception as e:
             print("Error connecting to the database:", e)
