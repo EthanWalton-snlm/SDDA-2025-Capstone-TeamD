@@ -57,7 +57,7 @@ def new_policy_sign_up():
         "policy_type_id": policy_type.policy_type_id,
         "image_link": img_link if img_link else img_path,  # Your existing logic
     }
-
+    print(data)
     if "image-file" not in request.files:
         raise ValueError("Please upload a valid image")
 
