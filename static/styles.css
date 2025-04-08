@@ -1055,8 +1055,10 @@ accordion content styling */
 
 .prem-container {
   display: flex;
+  gap: 10px;
 }
 
-.saving {
-  color: green;
+.old-price {
+  color: var(--light-gray);
+  text-decoration: line-through;
 }

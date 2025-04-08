@@ -50,7 +50,7 @@ def submit_claim():
             "reason": reason,
             "admin_comment": "",
             "username": current_user.username,
-            "policy_id": 123,  # policy_id,
+            "policy_id": policy_id,
             "affidavit_link": affidavit_link,
             "image_link": image_link,
             "submission_date": submission_date,

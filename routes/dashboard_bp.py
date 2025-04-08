@@ -3,6 +3,7 @@ from flask_login import current_user, login_required
 
 from extensions import db
 from models.policies import Policies
+from models.policy_types import PolicyType
 
 dashboard_bp = Blueprint("dashboard_bp", __name__)
 
@@ -17,5 +18,8 @@ def dashboard_page():
     # policies = Policies.query.filter_by(user_id=current_user.id).all()
     # return render_template("dashboard.html", user=current_user, policies=policies)
     return render_template(
-        "dashboard.html", policies=Policies.query.all(), user=current_user.to_dict()
+        "dashboard.html",
+        policies=Policies.query.all(),
+        policy_types=PolicyType.query.all(),
+        user=current_user.to_dict(),
     )

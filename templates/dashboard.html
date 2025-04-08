@@ -70,10 +70,12 @@
             <h3>R {{ policy.premium}}</h3>
           </div>
           <div>
-            <!-- <h6 class = "saving"> -->
-              <!-- calculate savings -->
-               <!-- {{ policy.premium}} saved -->
-            <!-- </> -->
+
+            {% for policy_type in policy_types%}
+            {%if policy.policy_type_id == policy_type.policy_type_id %}
+            <p class = "old-price">R {{policy_type.start_price}}</p>
+            {% endif %}
+            {% endfor %}
           </div>
         </div>
 
