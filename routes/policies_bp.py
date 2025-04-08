@@ -3,6 +3,7 @@ from datetime import datetime
 
 from flask import Blueprint, abort, flash, redirect, render_template, request, url_for
 from flask_login import current_user, login_required
+from sqlalchemy import true
 
 from constants import UPLOAD_FOLDER
 from extensions import db
@@ -50,14 +51,15 @@ def new_policy_sign_up():
         "premium": policy_type.start_price,
         "phone_name": phone_name,
         "policy_name": selected_policy,
-        "phone_case": request.form.get("phone-case") == "true",  # Convert to boolean
-        "screen_protector": request.form.get("screen-protector") == "true",
-        "waterproof_phone": request.form.get("waterproof-phone") == "true",
+        "phone_case": request.form.get("phone-case")
+        == "phone-case",  # Convert to boolean
+        "screen_protector": request.form.get("screen-protector") == "screen-protector",
+        "waterproof_phone": request.form.get("waterproof-phone") == "waterproof-phone",
         "username": current_user.username,
         "policy_type_id": policy_type.policy_type_id,
         "image_link": img_link if img_link else img_path,  # Your existing logic
     }
-    print(data)
+
     if "image-file" not in request.files:
         raise ValueError("Please upload a valid image")
 

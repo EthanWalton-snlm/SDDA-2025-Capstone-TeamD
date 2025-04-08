@@ -4,6 +4,7 @@
   --dark: #051d48;
   --white: #fffffe;
   --gray: #776f69;
+  --light-gray: #7e7c7a44;
   --border-transparent: rgba(5, 29, 72, 0.1);
   --border-opaque: rgba(5, 29, 72, 0.9);
   --background-transparent: rgba(255, 255, 254, 0.85);
@@ -905,4 +906,64 @@ accordion content styling */
   font-size: large;
   font-weight: 700;
   line-height: 35px;
+}
+
+/* .prem-reduce-container {
+  /* display: flex;
+  flex-direction: row; */
+/* gap: 5em;
+  flex-wrap: wrap; */
+/* min-width: 50%; */
+/* margin-bottom: 5em; */
+/* justify-content: space-between; */
+/* justify-content: space-around; */
+/* background-color: #0000ff; */
+/* } */
+
+.dash-pol-container {
+  max-width: 100%;
+}
+
+.dash-extra-info {
+  padding: 1%;
+  display: flex;
+  gap: 5px;
+  justify-content: space-between;
+  background-color: #776f69;
+}
+
+.claim-track-container {
+  /* display: flex; */
+  min-width: 50%;
+}
+
+.prem-reducers {
+  display: flex;
+  justify-content: space-between;
+}
+
+.reducers {
+  display: grid;
+  width: 20%;
+  align-self: center;
+}
+
+.reducer-text {
+  font-size: x-small;
+}
+
+.shield-gray {
+  color: var(--light-gray);
+}
+
+.suitcase-gray {
+  color: var(--light-gray);
+}
+
+.umbrella-gray {
+  color: var(--light-gray);
+}
+.reducer-text-gray {
+  color: var(--light-gray);
+  font-size: x-small;
 }
