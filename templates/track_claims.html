@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="main">
+  <div class="card">
+    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+      <h3 class="mb-0">Your Claims</h3>
+      <a href="{{ url_for('dashboard_bp.dashboard_page') }}" class="btn btn-light">
+        <i class="fa-solid fa-arrow-left me-2"></i>Back to Dashboard
+      </a>
+    </div>
+    <div class="card-body">
+      {% if user_claims %}
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Claim ID</th>
+              <th>Submitted On</th>
+              <th>Incident Date</th>
+              <th>Amount</th>
+              <th>Status</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for claim in user_claims %}
+            <tr>
+              <td>{{ claim.claim_id }}</td>
+              <td>{{ claim.submission_date }}</td>
+              <td>{{ claim.date_of_incident }}</td>
+              <td>R{{ claim.claim_amount }}</td>
+              <td>
+                <span
+                  class="badge bg-{% if claim.status == 'Approved' %}success{% elif claim.status == 'Rejected' %}danger{% else %}warning{% endif %}">
+                  {{ claim.status }}
+                </span>
+              </td>
+              <td>
+                <a href="#claim-{{ claim.claim_id }}" class="btn btn-sm btn-info"
+                  onclick="document.getElementById('claim-{{ claim.claim_id }}').style.display = document.getElementById('claim-{{ claim.claim_id }}').style.display === 'none' ? 'block' : 'none';">
+                  <i class="fa-solid fa-circle-info"></i>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="6">
+                <div id="claim-{{ claim.claim_id }}" style="display: none;">
+                  <div class="card card-body bg-light">
+                    <h6>Reason:</h6>
+                    <p>{{ claim.reason }}</p>
+
+                    {% if claim.status == 'Rejected' and claim.admin_comment %}
+                    <h6 class="text-danger">Rejection Reason:</h6>
+                    <p>{{ claim.admin_comment }}</p>
+                    {% endif %}
+
+                    {% if claim.affidavit_link or claim.image_link %}
+                    <h6>Supporting Documents:</h6>
+                    <ul class="list-unstyled">
+                      {% if claim.affidavit_link %}
+                      <li>
+                        <a href="{{ claim.affidavit_link }}" target="_blank" class="btn btn-sm btn-outline-secondary">
+                          <i class="fa-solid fa-file-pdf me-1"></i> View Affidavit
+                        </a>
+                      </li>
+                      {% endif %}
+
+                      {% if claim.image_link %}
+                      <li class="mt-2">
+                        <a href="{{ claim.image_link }}" target="_blank" class="btn btn-sm btn-outline-secondary">
+                          <i class="fa-solid fa-image me-1"></i> View Evidence Image
+                        </a>
+                      </li>
+                      {% endif %}
+                    </ul>
+                    {% endif %}
+                  </div>
+                </div>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% else %}
+      <div class="alert alert-info">
+        <i class="fa-solid fa-info-circle me-2"></i>
+        You haven't submitted any claims yet.
+        <div class="mt-3">
+          <a href="{{ url_for('claims_bp.claims_page') }}" class="btn btn-primary">
+            <i class="fa-solid fa-plus me-2"></i>Submit a New Claim
+          </a>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

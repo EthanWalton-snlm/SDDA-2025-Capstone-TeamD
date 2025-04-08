@@ -46,7 +46,7 @@ def new_policy_sign_up():
     img_path = request.form.get("image-file")
     img_link = request.form.get("image")
 
- data = {
+    data = {
         "premium": policy_type.start_price,
         "phone_name": phone_name,
         "policy_name": selected_policy,
@@ -57,7 +57,6 @@ def new_policy_sign_up():
         "policy_type_id": policy_type.policy_type_id,
         "image_link": img_link if img_link else img_path,  # Your existing logic
     }
-
 
     if "image-file" not in request.files:
         raise ValueError("Please upload a valid image")
@@ -92,91 +91,106 @@ def new_policy_sign_up():
         return redirect(url_for("home_bp.home_screen"))
 
 
-# @policies_bp.route("/upgrade/<string:policy_id>")
-# @login_required
-# def upgrade_page(policy_id):
-#     # Get both the policy and its type in one query
-#     result = (
-#         db.session.query(Policies, PolicyType)
-#         .join(PolicyType, Policies.policy_type_id == PolicyType.policy_type_id)
-#         .filter(
-#             Policies.policy_id == policy_id, Policies.username == current_user.username
-#         )
-#         .first()
-#     )
+@policies_bp.route("/upgrade/<string:policy_id>")
+@login_required
+def upgrade_page(policy_id):
+    # Get both the policy and its type in one query
+    result = (
+        db.session.query(Policies, PolicyType)
+        .join(PolicyType, Policies.policy_type_id == PolicyType.policy_type_id)
+        .filter(
+            Policies.policy_id == policy_id, Policies.username == current_user.username
+        )
+        .first()
+    )
 
-#     if not result:
-#         abort(404)
+    if not result:
+        abort(404)
 
-#     current_policy, current_policy_type = result
+    current_policy, current_policy_type = result
 
-#     # Get higher-tier plans
-#     higher_policy_types = (
-#         PolicyType.query.filter(
-#             PolicyType.start_price > current_policy_type.start_price
-#         )
-#         .order_by(PolicyType.start_price)
-#         .all()
-#     )
+    # Get higher-tier plans
+    higher_policy_types_query = (
+        PolicyType.query.filter(
+            PolicyType.start_price > current_policy_type.start_price
+        )
+        .order_by(PolicyType.start_price)
+        .all()
+    )
 
-#     return render_template(
-#         "upgrade.html",
-#         current_policy=current_policy,
-#         current_policy_type=current_policy_type,  # This is critical
-#         higher_policy_types=higher_policy_types,
-#         phone_name=current_policy.phone_name,
-#     )
+    # Create a list of tuples with (policy_type, simulated_policy)
+    higher_policy_types = []
+    for pt in higher_policy_types_query:
+        # Create a simulated policy with premium for display purposes
+        simulated_policy = type(
+            "obj",
+            (object,),
+            {"premium": pt.start_price, "policy_type_id": pt.policy_type_id},
+        )
+        higher_policy_types.append((pt, simulated_policy))
+
+    # Get the policy_type object for the current policy
+    policy_type = PolicyType.query.get(current_policy.policy_type_id)
+
+    return render_template(
+        "upgrade.html",
+        current_policy=current_policy,
+        current_policy_type=current_policy_type,
+        policy_type=policy_type,  # Add this for compatibility
+        higher_policy_types=higher_policy_types,
+        phone_name=current_policy.phone_name,
+    )
 
 
-# @policies_bp.route("/confirm-upgrade", methods=["POST"])
-# @login_required
-# def confirm_upgrade():
-#     policy_id = request.form.get("policy_id")
-#     new_policy_type_id = request.form.get("new_policy_type_id")
+@policies_bp.route("/confirm-upgrade", methods=["POST"])
+@login_required
+def confirm_upgrade():
+    policy_id = request.form.get("policy_id")
+    new_policy_type_id = request.form.get("new_policy_type_id")
 
-#     if not policy_id or not new_policy_type_id:
-#         flash("Missing required fields", "danger")
-#         return redirect(url_for("dashboard_bp.dashboard_page"))
+    if not policy_id or not new_policy_type_id:
+        flash("Missing required fields", "danger")
+        return redirect(url_for("dashboard_bp.dashboard_page"))
 
-#     # Verify the policy belongs to the user
-#     policy = Policies.query.filter_by(
-#         policy_id=policy_id, username=current_user.username
-#     ).first()
+    # Verify the policy belongs to the user
+    policy = Policies.query.filter_by(
+        policy_id=policy_id, username=current_user.username
+    ).first()
 
-#     if not policy:
-#         abort(404)
+    if not policy:
+        abort(404)
 
-#     # Get the new policy type
-#     new_policy_type = PolicyType.query.filter_by(
-#         policy_type_id=new_policy_type_id
-#     ).first()
+    # Get the new policy type
+    new_policy_type = PolicyType.query.filter_by(
+        policy_type_id=new_policy_type_id
+    ).first()
 
-#     if not new_policy_type:
-#         abort(404)
+    if not new_policy_type:
+        abort(404)
 
-#     # Apply premium discounts based on user selections
-#     discount = 0
-#     if request.form.get("phone-case") == "on":
-#         policy.phone_case = "Yes"
-#         discount += 0.05
-#     if request.form.get("screen-protector") == "on":
-#         policy.screen_protector = "Yes"
-#         discount += 0.03
-#     if request.form.get("waterproof-phone") == "on":
-#         policy.waterproof_phone = "Yes"
-#         discount += 0.02
+    # Apply premium discounts based on user selections
+    discount = 0
+    if request.form.get("phone-case") == "on":
+        policy.phone_case = "Yes"
+        discount += 0.05
+    if request.form.get("screen-protector") == "on":
+        policy.screen_protector = "Yes"
+        discount += 0.03
+    if request.form.get("waterproof-phone") == "on":
+        policy.waterproof_phone = "Yes"
+        discount += 0.02
 
-#     # Update the policy
-#     policy.policy_name = new_policy_type.name
-#     policy.policy_type_id = new_policy_type.policy_type_id
-#     original_premium = new_policy_type.start_price
-#     policy.premium = original_premium * (1 - discount)
+    # Update the policy
+    policy.policy_name = new_policy_type.name
+    policy.policy_type_id = new_policy_type.policy_type_id
+    original_premium = new_policy_type.start_price
+    policy.premium = original_premium * (1 - discount)
 
-#     try:
-#         db.session.commit()
-#         flash(f"Successfully upgraded to {new_policy_type.name} Plan!", "success")
-#     except Exception as e:
-#         db.session.rollback()
-#         flash("Failed to process upgrade. Please try again.", "danger")
+    try:
+        db.session.commit()
+        flash(f"Successfully upgraded to {new_policy_type.name} Plan!", "success")
+    except Exception as e:
+        db.session.rollback()
+        flash("Failed to process upgrade. Please try again.", "danger")
 
-#     return redirect(url_for("dashboard_bp.dashboard_page"))
+    return redirect(url_for("dashboard_bp.dashboard_page"))

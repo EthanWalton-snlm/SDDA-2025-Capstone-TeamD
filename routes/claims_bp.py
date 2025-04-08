@@ -78,3 +78,15 @@ def submit_claim():
             error=f"An error occurred: {str(e)}",
             policy_types=PolicyType.query.all(),
         )
+
+
+@claims_bp.route("/track")
+@login_required
+def track_claims():
+    # Fetch the user's claims
+    user_claims = (
+        Claim.query.filter_by(username=current_user.username)
+        .order_by(Claim.submission_date.desc())
+        .all()
+    )
+    return render_template("track_claims.html", user_claims=user_claims)

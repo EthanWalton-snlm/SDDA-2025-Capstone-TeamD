@@ -1,74 +1,74 @@
 {% extends "base.html" %} {% block content%}
 
 <div class="main">
-        <div class="card">
-          <div class="card-header bg-primary text-white">
-            <h3 class="mb-0">Submit a Claim</h3>
-          </div>
-          <div class="card-body">
-            {% if error %}
-            <div class="alert alert-danger">{{ error }}</div>
-            {% endif %}
+  <div class="card">
+    <div class="card-header bg-primary text-white">
+      <h3 class="mb-0">Submit a Claim</h3>
+    </div>
+    <div class="card-body">
+      {% if error %}
+      <div class="alert alert-danger">{{ error }}</div>
+      {% endif %}
 
-            <form id="claim-form" method="POST" action="{{ url_for('claims_bp.submit_claim') }}">
-              <div class="mb-3">
-                <label for="policy_id" class="form-label">Policy Type</label>
-                <select class="form-select" id="policy_id" name="policy_id" required>
-                  <option value="" selected disabled>Select a policy type</option>
-                  {% for policy in policy_types %}
-                  <option value="{{ policy.policy_type_id }}">{{ policy.name }}</option>
-                  {% endfor %}
-                </select>
-              </div>
-
-
-              <div class="mb-3">
-                <label for="reason" class="form-label">Reason for Claim</label>
-                <textarea class="form-control" id="reason" name="reason" rows="5"
-                  placeholder="Please describe the reason for your claim in detail" required></textarea>
-                <div class="form-text">Maximum 500 characters</div>
-              </div>
-
-              <div class="mb-3">
-                <label for="affidavit_link" class="form-label">Affidavit Link</label>
-                <input type="url" class="form-control" id="affidavit_link" name="affidavit_link"
-                  placeholder="https://example.com/your-affidavit">
-                <div class="form-text">Provide a link to your affidavit document (PDF, Doc, etc.)</div>
-              </div>
-
-              <div class="mb-3">
-                <label for="image_link" class="form-label">Evidence Image Link</label>
-                <input type="url" class="form-control" id="image_link" name="image_link"
-                  placeholder="https://example.com/your-image.jpg">
-                <div class="form-text">Provide a link to an image supporting your claim</div>
-              </div>
-
-              <div class="mb-3">
-                <label for="quotation" class="form-label">Upload Quotation for Replacement/Fixing </label>
-                <input type="url" class="form-control" id="quotation" name="quotation" required
-                  placeholder="https://example.com/your-image.jpg">
-                <div class="form-text">Upload a link to a quotation document that states the cost of replacing
-                  the phone.</div>
-              </div>
-
-              <label for="submission_date">Date of Submission:</label>
-              <input type="date" id="submission_date" name="submission_date"><br><br>
-
-              <label for="date_of_incident">Date of Incident:</label>
-              <input type="date" id="date_of_incident" name="date_of_incident" required><br><br>
-
-              <div class="mb-3">
-                <label for="claim_amount" class="form-label">Specify Claim Amount</label>
-                <input type="number" class="form-control" id="claim_amount" name="claim_amount" placeholder="100">
-                <div class="form-text">Please specify the amount you wish to claim for</div>
-              </div>
+      <form id="claim-form" method="POST" action="{{ url_for('claims_bp.submit_claim') }}">
+        <div class="mb-3">
+          <label for="policy_id" class="form-label">Policy Type</label>
+          <select class="form-select" id="policy_id" name="policy_id" required>
+            <option value="" selected disabled>Select a policy type</option>
+            {% for policy in policy_types %}
+            <option value="{{ policy.policy_type_id }}">{{ policy.name }}</option>
+            {% endfor %}
+          </select>
+        </div>
 
 
-              <div class="d-grid gap-2">
-                <button type="submit" class="btn btn-primary">Submit Claim</button>
-              </div>
-            </form>
-          </div>
+        <div class="mb-3">
+          <label for="reason" class="form-label">Reason for Claim</label>
+          <textarea class="form-control" id="reason" name="reason" rows="5"
+            placeholder="Please describe the reason for your claim in detail" required></textarea>
+          <div class="form-text">Maximum 500 characters</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="affidavit_link" class="form-label">Affidavit Link</label>
+          <input type="url" class="form-control" id="affidavit_link" name="affidavit_link"
+            placeholder="https://example.com/your-affidavit">
+          <div class="form-text">Provide a link to your affidavit document (PDF, Doc, etc.)</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="image_link" class="form-label">Evidence Image Link</label>
+          <input type="url" class="form-control" id="image_link" name="image_link"
+            placeholder="https://example.com/your-image.jpg">
+          <div class="form-text">Provide a link to an image supporting your claim</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="quotation" class="form-label">Upload Quotation for Replacement/Fixing </label>
+          <input type="url" class="form-control" id="quotation" name="quotation" required
+            placeholder="https://example.com/your-image.jpg">
+          <div class="form-text">Upload a link to a quotation document that states the cost of replacing
+            the phone.</div>
+        </div>
+
+        <label for="submission_date">Date of Submission:</label>
+        <input type="date" id="submission_date" name="submission_date"><br><br>
+
+        <label for="date_of_incident">Date of Incident:</label>
+        <input type="date" id="date_of_incident" name="date_of_incident" required><br><br>
+
+        <div class="mb-3">
+          <label for="claim_amount" class="form-label">Specify Claim Amount</label>
+          <input type="number" class="form-control" id="claim_amount" name="claim_amount" placeholder="100">
+          <div class="form-text">Please specify the amount you wish to claim for</div>
+        </div>
+
+
+        <div class="d-grid gap-2">
+          <button type="submit" class="btn btn-primary">Submit Claim</button>
+        </div>
+      </form>
+    </div>
   </div>
 
 
