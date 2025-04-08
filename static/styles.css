@@ -982,3 +982,14 @@ accordion content styling */
 .plan-label {
   width: 90%;
 }
+
+.submit-button {
+  background-color: var(--border);
+  margin-top: 1em;
+}
+
+.submit-button:hover {
+  background-color: var(--border-opaque);
+  color: white;
+  cursor: pointer;
+}
