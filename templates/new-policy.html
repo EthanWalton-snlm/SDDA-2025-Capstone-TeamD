@@ -1,19 +1,21 @@
 {% extends "base.html" %} {% block content%}
 <div class="login-bg"></div>
-<div class="main">
-  <div class="card">
-    <div class="title">
-      <h1>Cellsure</h1>
-      <h2>New Policy</h2>
-    </div>
 
-    <form
-      class="new-policy-form"
-      action="{{url_for('policies_bp.new_policy_sign_up')}}"
-      method="POST"
-      enctype="multipart/form-data"
-    >
-      <label>
+<div class="quote-card">
+  <div class="title">
+    <h1>New Policy</h1>
+  </div>
+  <hr />
+
+  <form
+    class="new-policy-form"
+    action="{{url_for('policies_bp.new_policy_sign_up')}}"
+    method="POST"
+    enctype="multipart/form-data"
+  >
+    <div class="new-policy-form-grid">
+      <div class="new-policy-form-col">
+        <legend>Details</legend>
         User Name:
         <input
           type="text"
@@ -34,49 +36,54 @@
 
         Please take of yourself with your phone visible (in front of a mirror is
         perfect!):
-        <input
+        <!-- <input
           type="url"
           id="image"
           name="image"
           placeholder="https://..."
-        /><br /><br />
+        /><br /><br /> -->
 
         <input type="file" id="image-file" name="image-file" /><br /><br />
+      </div>
 
+      <div class="vl"></div>
+
+      <div>
         <fieldset class="column-checkboxes">
           <legend>Which Policy would you like to select?</legend>
-          {% for type in policy_types %}
-          <label>
-            <div class="radio-label-row">
-              <div>
-                <input type="radio" name="radio" value="{{type.name}}" {% if
-                type.policy_type_id==policy_id %} checked {% else %} disabled {%
-                endif %} />
-              </div>
-              <div>{{type.name}}</div>
-              <div>
-                <input
-                  type="checkbox"
-                  id="{{type.name}}"
-                  class="accordion-inp"
-                />
-                <label for="{{type.name}}" class="accordion-label"
-                  >What does {{type.name}} cover?</label
-                >
-                <div class="accordion-content">
-                  <p>
-                    This plan costs R{{type.start_price}}. It {{type.summary}}
-                  </p>
-                </div>
-              </div>
 
-              <br />
+          {% for type in policy_types %}
+          <div class="flex-r-nsp">
+            <div class="checkbox-label-row">
+              <input type="radio" name="radio" value="{{type.name}}"
+              id="{{type.name}}1" title="test" {% if
+              type.policy_type_id==policy_id %} checked {% else %}
+              onclick="window.location.href = './{{type.policy_type_id}}';"
+              {%endif %} />
+
+              <label for="{{type.name}}1">{{type.name}}</label>
             </div>
-          </label>
+
+            <div class="flex-r-sbtw">
+              <input type="checkbox" id="{{type.name}}" class="accordion-inp" />
+              <label for="{{type.name}}" class="accordion-label"
+                ><i class="fa-solid fa-circle-info accordion-label-icon"></i
+              ></label>
+
+              <div class="accordion-content">
+                <p>
+                  This plan costs R{{type.start_price}}. It {{type.summary}}
+                </p>
+              </div>
+            </div>
+          </div>
           {% endfor %}
         </fieldset>
-        <br /><br />
+      </div>
 
+      <div class="vl"></div>
+
+      <div class="new-policy-form-col">
         <fieldset class="column-checkboxes">
           <legend>Which extra features do you have?</legend>
           <div class="checkbox-label-row">
@@ -109,16 +116,12 @@
             <label for="waterproof-phone">Waterproof Phone</label>
           </div>
         </fieldset>
-        <br /><br />
-      </label>
-
-      {% for type in policy_types %} {% if type.policy_type_id == policy_id %}
-      <h3>R{{type.start_price}}</h3>
-      {% endif %} {% endfor %}
-
-      <button class="submit-button">Submit</button>
-    </form>
-  </div>
+      </div>
+    </div>
+    <div class="new-policy-form-col">
+      <input type="submit" value="Get Quote" />
+    </div>
+  </form>
 </div>
 
 {% endblock %}
