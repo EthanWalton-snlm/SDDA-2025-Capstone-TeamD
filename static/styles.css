@@ -926,7 +926,6 @@ accordion content styling */
   display: flex;
   gap: 5px;
   justify-content: space-between;
-  background-color: #776f69;
 }
 
 .claim-track-container {
@@ -963,4 +962,12 @@ accordion content styling */
 .reducer-text-gray {
   color: var(--light-gray);
   font-size: x-small;
+}
+
+.prem-container {
+  display: flex;
+}
+
+.saving {
+  color: green;
 }
