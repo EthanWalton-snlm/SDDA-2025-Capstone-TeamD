@@ -252,13 +252,16 @@ li.margin-adjustment {
 }
 
 .phone-cover .btn-primary {
-  background-color: var(--border-transparent);
+  width: 100%;
+  background-color: var(--dark);
   color: var(--white);
   border: none;
+  margin-top: -4em;
+  padding: 1em 0em;
 }
 
 .phone-cover .btn-primary:hover {
-  background-color: var(--gray);
+  background-color: var(--light);
 }
 
 .phone-cover .btn-secondary {
