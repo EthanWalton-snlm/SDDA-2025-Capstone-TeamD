@@ -4,6 +4,7 @@ from flask_login import current_user, login_required
 from constants import CLAIM_STATUS_CODE
 from extensions import db
 from models.claims import Claim
+from routes import dashboard_bp
 
 admin_bp = Blueprint("admin_bp", __name__)
 
@@ -47,12 +48,15 @@ def get_all_pending_submissions():
 @admin_bp.route("/")
 @login_required
 def admin_home_page():
-    return render_template(
-        "admin.html",
-        submissions=get_all_submissions_data(),
-        approved=get_all_approved_submissions(),
-        rejected=get_all_rejected_submissions(),
-    )
+    if current_user.is_admin == 1:
+        return render_template(
+            "admin.html",
+            submissions=get_all_submissions_data(),
+            approved=get_all_approved_submissions(),
+            rejected=get_all_rejected_submissions(),
+        )
+
+    return redirect(url_for("dashboard_bp.dashboard_page"))
 
 
 @admin_bp.route("/review/<id>", methods=["GET", "POST"])
