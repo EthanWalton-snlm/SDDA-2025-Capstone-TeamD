@@ -9,7 +9,7 @@
     </div>
 
     <div class="dash-flex">
-      {% for policy in policies %}
+      {% for policy in policies %} {% if policy.username == user.username%}
       <div class="cover-card">
         <div class="phone-cover">
           <h2>{{ policy.phone_name }}</h2>
@@ -63,19 +63,18 @@
           </div>
         </div>
       </div>
-      {% else %}
+
+      {% endif%} {% endfor %}
       <div class="no-policies">
-        <p>You don't have any active policies yet.</p>
+        <p>Add a New Policy</p>
         <a
           href="{{ url_for('policies_bp.new_policy_page' , policy_id='new') }}"
           class="btn btn-primary"
         >
-          Get Your First Policy
+          Get a New Policy
         </a>
       </div>
-      {% endfor %}
     </div>
   </div>
-
-  {% endblock %}
 </div>
+{% endblock %}
