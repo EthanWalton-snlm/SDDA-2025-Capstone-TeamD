@@ -14,40 +14,6 @@
     enctype="multipart/form-data"
   >
     <div class="new-policy-form-grid">
-      <div class="new-policy-form-col">
-        <legend>Details</legend>
-        User Name:
-        <input
-          type="text"
-          id="username"
-          name="username"
-          value="{{current_user.username}}"
-          disabled
-        /><br /><br />
-
-        Phone Name:
-        <input
-          type="text"
-          id="phone_name"
-          name="phone_name"
-          placeholder="iPhone 12"
-          required
-        /><br /><br />
-
-        Please take of yourself with your phone visible (in front of a mirror is
-        perfect!):
-        <!-- <input
-          type="url"
-          id="image"
-          name="image"
-          placeholder="https://..."
-        /><br /><br /> -->
-
-        <input type="file" id="image-file" name="image-file" /><br /><br />
-      </div>
-
-      <div class="vl"></div>
-
       <div>
         <fieldset class="column-checkboxes">
           <legend>Which Policy would you like to select?</legend>
@@ -79,6 +45,40 @@
           </div>
           {% endfor %}
         </fieldset>
+      </div>
+
+      <div class="vl"></div>
+
+      <div class="new-policy-form-col">
+        <legend>Please provide a few details for your policy</legend>
+        User Name:
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value="{{current_user.username}}"
+          disabled
+        /><br /><br />
+
+        Phone Name:
+        <input
+          type="text"
+          id="phone_name"
+          name="phone_name"
+          placeholder="iPhone 12"
+          required
+        /><br /><br />
+
+        Please take of yourself with your phone visible (in front of a mirror is
+        perfect!):
+        <!-- <input
+          type="url"
+          id="image"
+          name="image"
+          placeholder="https://..."
+        /><br /><br /> -->
+
+        <input type="file" id="image-file" name="image-file" /><br /><br />
       </div>
 
       <div class="vl"></div>
@@ -119,10 +119,11 @@
           </div>
         </fieldset>
       </div>
-    </div>
-    <div class="new-policy-form-col">
+      <div class="new-policy-form-col">
       <input type="submit" value="Get Quote" />
     </div>
+    </div>
+
   </form>
 </div>
 
