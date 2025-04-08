@@ -23,7 +23,7 @@
             <div class="checkbox-label-row">
               <input type="radio" name="radio" value="{{type.name}}"
               id="{{type.name}}1" title="test" {% if
-              type.policy_type_id==policy_id %} checked {% else %}
+              type.policy_type_id==policy_id or loop.index == 1 %} checked {% else %}
               onclick="window.location.href = './{{type.policy_type_id}}';"
               {%endif %} />
 
