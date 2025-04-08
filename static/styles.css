@@ -4,6 +4,7 @@
   --dark: #051d48;
   --white: #fffffe;
   --gray: #776f69;
+  --light-gray: #7e7c7a44;
   --border-transparent: rgba(5, 29, 72, 0.1);
   --border-opaque: rgba(5, 29, 72, 0.9);
   --background-transparent: rgba(255, 255, 254, 0.85);
@@ -931,4 +932,35 @@ accordion content styling */
 .claim-track-container {
   /* display: flex; */
   min-width: 50%;
+}
+
+.prem-reducers {
+  display: flex;
+  justify-content: space-between;
+}
+
+.reducers {
+  display: grid;
+  width: 20%;
+  align-self: center;
+}
+
+.reducer-text {
+  font-size: x-small;
+}
+
+.shield-gray {
+  color: var(--light-gray);
+}
+
+.suitcase-gray {
+  color: var(--light-gray);
+}
+
+.umbrella-gray {
+  color: var(--light-gray);
+}
+.reducer-text-gray {
+  color: var(--light-gray);
+  font-size: x-small;
 }

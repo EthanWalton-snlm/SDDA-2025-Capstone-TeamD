@@ -18,10 +18,55 @@
       <div class="phone-cover">
         <h2>{{ policy.phone_name }}</h2>
         <h5>{{ policy.policy_name }}</h5>
-        <div class="prem-reduce-container"></div>
 
+        <div class="prem-reducers">
+          <!-- <div>
+            <h6>Premium Reducers:</h6>
+          </div> -->
+
+            <!-- screen protector reducer added -->
+            {%if policy.screen_protector%}
+            <div class="reducers">
+              <div><i class="fa-solid fa-shield"></i></div>
+              <div><p class="reducer-text">Screen protector</p></div>
+            </div>
+            {%endif%} {%if not policy.screen_protector%}
+            <div class="reducers">
+              <div><i class="fa-solid fa-shield shield-gray"></i></div>
+              <div><p class="reducer-text-gray">Screen protector</p></div>
+            </div>
+            {%endif%}
+            <!-- phone case reducer added -->
+            {%if policy.phone_case%}
+            <div class="reducers">
+              <div><i class="fa-solid fa-suitcase"></i></div>
+              <div><p class="reducer-text">Phone Case</p></div>
+            </div>
+            {%endif%} {%if not policy.phone_case%}
+            <div class="reducers">
+              <div><i class="fa-solid fa-suitcase suitcase-gray"></i></i></div>
+              <div><p class="reducer-text-gray">Phone Case</p></div>
+            </div>
+            {%endif%}
+            <!-- waterproof reducer added -->
+            {%if policy.waterproof_phone%}
+            <div class="reducers">
+              <div><i class="fa-solid fa-umbrella"></i></div>
+              <div><p class="reducer-text">Waterproof Phone</p></div>
+            </div>
+            {%endif%} {%if not policy.waterproof_phone%}
+            <div class="reducers">
+              <div><i class="fa-solid fa-umbrella umbrella-gray"></i></div>
+              <div><p class="reducer-text-gray">Waterproof Phone</p></div>
+            </div>
+            {%endif%}
+
+
+        </div>
+
+        <h3>R {{ policy.premium}}</h3>
         <h6>Policy Covers:</h6>
-        {{policy.policy_name}} {%if policy.policy_name == "Fresher Plan"%}
+        {%if policy.policy_name == "Fresher Plan"%}
         <ul class="list-of-benefits">
           <li class="policy-info-list">
             <i class="fa-solid fa-lock"></i>Theft Protection
