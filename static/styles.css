@@ -904,17 +904,17 @@ accordion content styling */
   line-height: 35px;
 }
 
-.prem-reduce-container {
+/* .prem-reduce-container {
   /* display: flex;
   flex-direction: row; */
-  /* gap: 5em;
+/* gap: 5em;
   flex-wrap: wrap; */
-  min-width: 50%;
-  /* margin-bottom: 5em; */
-  /* justify-content: space-between; */
-  /* justify-content: space-around; */
-  background-color: #0000ff;
-}
+/* min-width: 50%; */
+/* margin-bottom: 5em; */
+/* justify-content: space-between; */
+/* justify-content: space-around; */
+/* background-color: #0000ff; */
+/* } */
 
 .dash-pol-container {
   max-width: 100%;

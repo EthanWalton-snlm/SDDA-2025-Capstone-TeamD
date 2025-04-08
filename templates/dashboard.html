@@ -1,9 +1,6 @@
 {% extends "base.html" %} {% block content %}
 
 <div class="dash-extra-info">
-  <div class="prem-reduce-container">
-    <p>der</p>
-  </div>
   <div class="claim-track-container">
     <div class="mb-4 d-flex justify-content-end">
       <a href="{{ url_for('claims_bp.track_claims') }}" class="btn btn-info">
@@ -21,6 +18,11 @@
       <div class="phone-cover">
         <h2>{{ policy.phone_name }}</h2>
         <h5>{{ policy.policy_name }}</h5>
+        <div class="prem-reduce-container">
+          {{policy.to_dict()}}
+          <h5>{% if policy.screen_protector == "yes" %} true {%endif%}</h5>
+          <h5>{% if policy.screen_protector == "no" %} false {%endif%}</h5>
+        </div>
         <h2>R{{ policy.premium }}</h2>
         <h6>Policy Covers:</h6>
 
