@@ -29,6 +29,7 @@
             <div class="reducers">
               <div><i class="fa-solid fa-shield"></i></div>
               <div><p class="reducer-text">Screen protector</p></div>
+
             </div>
             {%endif%} {%if not policy.screen_protector%}
             <div class="reducers">
@@ -64,7 +65,21 @@
 
         </div>
 
-        <h3>R {{ policy.premium}}</h3>
+        <div class = "prem-container">
+          <div>
+            <h3>R {{ policy.premium}}</h3>
+          </div>
+          <div>
+
+            {% for policy_type in policy_types%}
+            {%if policy.policy_type_id == policy_type.policy_type_id %}
+            <p class = "old-price">R {{policy_type.start_price}}</p>
+            {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+
+
         <h6>Policy Covers:</h6>
         {%if policy.policy_name == "Fresher Plan"%}
         <ul class="list-of-benefits">

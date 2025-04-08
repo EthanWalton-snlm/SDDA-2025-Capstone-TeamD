@@ -78,10 +78,18 @@ def new_policy_sign_up():
 
         print("Image uploaded successfully")
 
-    new_policy = Policies(**data)
+    policy = Policies(**data)
+
+    policy.premium = calculate_premium(
+        policy_type,
+        policy,
+        request.form.get("phone-case"),
+        request.form.get("screen-protector"),
+        request.form.get("waterproof-phone"),
+    )
 
     try:
-        db.session.add(new_policy)
+        db.session.add(policy)
         db.session.commit()
 
         update_profile_pic_if_none(current_user.username, data["image_link"])
@@ -170,24 +178,18 @@ def confirm_upgrade():
     if not new_policy_type:
         abort(404)
 
-    # Apply premium discounts based on user selections
-    discount = 0
-    if request.form.get("phone-case") == "on":
-        policy.phone_case = "Yes"
-        discount += 0.05
-    if request.form.get("screen-protector") == "on":
-        policy.screen_protector = "Yes"
-        discount += 0.03
-    if request.form.get("waterproof-phone") == "on":
-        policy.waterproof_phone = "Yes"
-        discount += 0.02
-
     # Update the policy
     policy.policy_name = new_policy_type.name
     policy.policy_type_id = new_policy_type.policy_type_id
-    original_premium = new_policy_type.start_price
-    policy.premium = original_premium * (1 - discount)
 
+    # Apply premium discounts based on user selections
+    policy.premium = calculate_premium(
+        new_policy_type,
+        policy,
+        request.form.get("phone-case"),
+        request.form.get("screen-protector"),
+        request.form.get("waterproof-phone"),
+    )
     try:
         db.session.commit()
         flash(f"Successfully upgraded to {new_policy_type.name} Plan!", "success")
@@ -196,3 +198,19 @@ def confirm_upgrade():
         flash("Failed to process upgrade. Please try again.", "danger")
 
     return redirect(url_for("dashboard_bp.dashboard_page"))
+
+
+def calculate_premium(
+    policy_type, policy, phone_case, screen_protector, waterproof_phone
+):
+    discount = 0
+
+    if phone_case:
+        discount += 0.05
+    if screen_protector:
+        discount += 0.05
+    if waterproof_phone:
+        discount += 0.10
+
+    original_premium = policy_type.start_price
+    return original_premium * (1 - discount)
