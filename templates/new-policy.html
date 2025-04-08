@@ -32,14 +32,14 @@
           required
         /><br /><br />
 
-        Please take and upload a mirror selfie of you and your phone completely
-        visible
-        <!-- <input
+        Please take of yourself with your phone visible (in front of a mirror is
+        perfect!):
+        <input
           type="url"
           id="image"
           name="image"
           placeholder="https://..."
-        /><br /><br /> -->
+        /><br /><br />
 
         <input type="file" id="image-file" name="image-file" /><br /><br />
 
@@ -49,9 +49,9 @@
           <label>
             <div class="radio-label-row">
               <div>
-                <input type="radio" id = "radios" name="radios"
-                value="{{type.name}}" {% if type.policy_type_id == policy_id %}
-                checked {% else %} disabled {% endif %} />
+                <input type="radio" name="radio" value="{{type.name}}" {% if
+                type.policy_type_id==policy_id %} checked {% else %} disabled {%
+                endif %} />
               </div>
               <div>{{type.name}}</div>
               <div>
