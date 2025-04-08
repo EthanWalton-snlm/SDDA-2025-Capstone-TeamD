@@ -1,80 +1,87 @@
 {% extends "base.html" %} {% block content %}
 
-<div class="main">
-  <div class="main">
+<div class="dash-extra-info">
+  <div class="prem-reduce-container">
+    <p>der</p>
+  </div>
+  <div class="claim-track-container">
     <div class="mb-4 d-flex justify-content-end">
       <a href="{{ url_for('claims_bp.track_claims') }}" class="btn btn-info">
         <i class="fa-solid fa-list-check me-2"></i>Track Claims
       </a>
     </div>
+  </div>
+</div>
 
-    <div class="dash-flex">
-      {% for policy in policies %} {% if policy.username == user.username%}
-      <div class="cover-card">
-        <div class="phone-cover">
-          <h2>{{ policy.phone_name }}</h2>
-          <h5>{{ policy.policy_name }}</h5>
-          <h2>R{{ policy.premium }}</h2>
-          <h6>Policy Covers:</h6>
+<div class="dash-pol-container">
+  <!-- <div class="main-p"> -->
+  <div class="dash-flex">
+    {% for policy in policies %} {% if policy.username == user.username%}
+    <div class="cover-card">
+      <div class="phone-cover">
+        <h2>{{ policy.phone_name }}</h2>
+        <h5>{{ policy.policy_name }}</h5>
+        <h2>R{{ policy.premium }}</h2>
+        <h6>Policy Covers:</h6>
 
-          <ul class="list-of-benefits">
-            <!-- Theft Protection (always included) -->
-            <li class="policy-info-list">
-              <i class="fa-solid fa-lock"></i>Theft Protection
-            </li>
-            <!-- TODO: icon colours -->
-            <!-- Screen Damage Protection -->
-            <li
-              class="{% if policy.policy_name in ['Personal', 'Business', 'Platinum'] %}policy-info-list{% else %}policy-info-list{% endif %}"
-            >
-              <i id="fa-heart-crack" class="fa-solid fa-heart-crack"></i>Screen
-              Damage Protection
-            </li>
+        <ul class="list-of-benefits">
+          <!-- Theft Protection (always included) -->
+          <li class="policy-info-list">
+            <i class="fa-solid fa-lock"></i>Theft Protection
+          </li>
+          <!-- TODO: icon colours -->
+          <!-- Screen Damage Protection -->
+          <li
+            class="{% if policy.policy_name in ['Personal', 'Business', 'Platinum'] %}policy-info-list{% else %}policy-info-list{% endif %}"
+          >
+            <i id="fa-heart-crack" class="fa-solid fa-heart-crack"></i>Screen
+            Damage Protection
+          </li>
 
-            <!-- Water Damage Protection -->
-            <li
-              class="{% if policy.policy_name in ['Business', 'Platinum'] %}policy-info-list{% else %}policy-info-list{% endif %}"
-            >
-              <i class="fa-solid fa-droplet"></i>Water Damage Protection
-            </li>
+          <!-- Water Damage Protection -->
+          <li
+            class="{% if policy.policy_name in ['Business', 'Platinum'] %}policy-info-list{% else %}policy-info-list{% endif %}"
+          >
+            <i class="fa-solid fa-droplet"></i>Water Damage Protection
+          </li>
 
-            <!-- Phone Upgrade Costs -->
-            <li
-              class="{% if policy.policy_name == 'Platinum' %}policy-info-list{% else %}policy-info-list{% endif %}"
-            >
-              <i class="fa-solid fa-square-caret-up"></i>Phone Upgrade Costs
-            </li>
-          </ul>
+          <!-- Phone Upgrade Costs -->
+          <li
+            class="{% if policy.policy_name == 'Platinum' %}policy-info-list{% else %}policy-info-list{% endif %}"
+          >
+            <i class="fa-solid fa-square-caret-up"></i>Phone Upgrade Costs
+          </li>
+        </ul>
 
-          <div class="claim-upgrade-buttons">
-            <a
-              href="{{ url_for('claims_bp.claims_page') }}"
-              class="btn btn-primary"
-              >Claim</a
-            >
-            {% if policy.policy_name != 'Platinum' %}
-            <a
-              href="{{ url_for('policies_bp.upgrade_page', policy_id=policy.policy_id) }}"
-              class="btn btn-secondary"
-            >
-              Upgrade
-            </a>
-            {% endif %}
-          </div>
+        <div class="claim-upgrade-buttons">
+          <a
+            href="{{ url_for('claims_bp.claims_page') }}"
+            class="btn btn-primary"
+            >Claim</a
+          >
+          {% if policy.policy_name != 'Platinum' %}
+          <a
+            href="{{ url_for('policies_bp.upgrade_page', policy_id=policy.policy_id) }}"
+            class="btn btn-secondary"
+          >
+            Upgrade
+          </a>
+          {% endif %}
         </div>
       </div>
-
-      {% endif%} {% endfor %}
-      <div class="no-policies">
-        <p>Add a New Policy</p>
-        <a
-          href="{{ url_for('policies_bp.new_policy_page' , policy_id='new') }}"
-          class="btn btn-primary"
-        >
-          Get a New Policy
-        </a>
-      </div>
     </div>
+
+    {% endif%} {% endfor %}
+    <div class="no-policies">
+      <p>Add a New Policy</p>
+      <a
+        href="{{ url_for('policies_bp.new_policy_page' , policy_id='new') }}"
+        class="btn btn-primary"
+      >
+        Get a New Policy
+      </a>
+    </div>
+    <!-- </div> -->
   </div>
 </div>
 {% endblock %}

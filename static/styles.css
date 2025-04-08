@@ -903,3 +903,32 @@ accordion content styling */
   font-weight: 700;
   line-height: 35px;
 }
+
+.prem-reduce-container {
+  /* display: flex;
+  flex-direction: row; */
+  /* gap: 5em;
+  flex-wrap: wrap; */
+  min-width: 50%;
+  /* margin-bottom: 5em; */
+  /* justify-content: space-between; */
+  /* justify-content: space-around; */
+  background-color: #0000ff;
+}
+
+.dash-pol-container {
+  max-width: 100%;
+}
+
+.dash-extra-info {
+  padding: 1%;
+  display: flex;
+  gap: 5px;
+  justify-content: space-between;
+  background-color: #776f69;
+}
+
+.claim-track-container {
+  /* display: flex; */
+  min-width: 50%;
+}
