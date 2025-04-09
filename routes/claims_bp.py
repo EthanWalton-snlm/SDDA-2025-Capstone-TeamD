@@ -4,7 +4,9 @@ from flask_login import current_user, login_required
 
 from extensions import db
 from models.claims import Claim
-from models.policy_types import PolicyType
+
+# from models.policy_types import PolicyType
+from models.policies import Policies
 
 claims_bp = Blueprint("claims_bp", __name__)
 
@@ -12,15 +14,20 @@ claims_bp = Blueprint("claims_bp", __name__)
 @claims_bp.get("/")
 @login_required
 def claims_page():
-    policy_types = PolicyType.query.all()
-    return render_template("claims.html", policy_types=policy_types)
+    # policy_types = PolicyType.query.all()
+    policy = Policies.query.all()
+    return render_template(
+        "claims.html",
+        policy=policy,
+        user=current_user.to_dict(),
+    )  # policy_types=policy_types)
 
 
 @claims_bp.post("/submit")
 @login_required
 def submit_claim():
     # Get form data
-    policy_id = request.form.get("policy_id")
+    policy_id = "04cc64a5-d0b4-4453-b9fe-a30b3909e5a2"  # request.form.get("policy_id")
     reason = request.form.get("reason")
     affidavit_link = request.form.get("affidavit_link")
     image_link = request.form.get("image_link")
@@ -33,14 +40,16 @@ def submit_claim():
         return render_template(
             "claims.html",
             error="All fields are required",
-            policy_types=PolicyType.query.all(),
+            policy=Policies.query.all(),
+            # policy_types=PolicyType.query.all(),
         )
 
     if len(reason) > 500:
         return render_template(
             "claims.html",
             error="Reason must be less than 500 characters",
-            policy_types=PolicyType.query.all(),
+            policy=Policies.query.all(),
+            # policy_types=PolicyType.query.all(),
         )
 
     # Create new claim
@@ -68,7 +77,9 @@ def submit_claim():
             "claims.html",
             success="Your claim has been submitted successfully. Claim ID: "
             + new_claim.claim_id,
-            policy_types=PolicyType.query.all(),
+            # policy_types=PolicyType.query.all(),
+            policy=Policies.query.all(),
+            user=current_user.to_dict(),
         )
 
     except Exception as e:
@@ -76,7 +87,8 @@ def submit_claim():
         return render_template(
             "claims.html",
             error=f"An error occurred: {str(e)}",
-            policy_types=PolicyType.query.all(),
+            policy=Policies.query.all(),
+            # policy_types=PolicyType.query.all(),
         )
 
 
