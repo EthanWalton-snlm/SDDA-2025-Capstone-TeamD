@@ -72,9 +72,11 @@
           <div>
 
             {% for policy_type in policy_types%}
-            {%if policy.policy_type_id == policy_type.policy_type_id %}
-            <p class = "old-price">R {{policy_type.start_price}}</p>
-            {% endif %}
+              {%if policy.policy_type_id == policy_type.policy_type_id %}
+                {% if not policy_type.start_price == policy.premium%}
+                <p class = "old-price">R {{policy_type.start_price}}</p>
+                {% endif %}
+              {% endif %}
             {% endfor %}
           </div>
         </div>
@@ -91,7 +93,7 @@
             >Screen Damage Protection
           </li>
           <li class="policy-info-list-gray">
-            <i id="fa-droplet-gray" class="fa-solid fa-droplet"></i>Water Damage
+            <i id="fa-droplet-gray" class="fa-solid fa-droplet gray-icon"></i>Water Damage
             Protection
           </li>
           <li class="policy-info-list-gray">
