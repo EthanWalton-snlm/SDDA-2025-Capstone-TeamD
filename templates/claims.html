@@ -17,9 +17,9 @@
             <option value="" selected disabled>Select a policy type</option>
             {% for pol in policy %}
             {%if pol.username == user.username%}
-            <option value="{{ policy.policy_id }}">{{ pol.policy_name }}</option>
+
+            <option value="{{ policy.policy_id }}">{{pol.phone_name}}: {{ pol.policy_name }}</option>
             {%endif%}
-            <!-- here -->
             {% endfor %}
           </select>
         </div>
