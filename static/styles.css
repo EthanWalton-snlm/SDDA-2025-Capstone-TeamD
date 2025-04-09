@@ -998,6 +998,24 @@ accordion content styling */
   align-items: center;
 }
 
+.claim-tracker-title {
+  display: grid;
+  grid-template-columns: 1fr 10fr;
+  gap: 1em;
+  align-items: center;
+  margin-right: 40vw;
+}
+
+.claim-tracker-back-btn {
+  display: flex;
+  border-radius: 0.5em;
+  padding: 30% 0 25% 25%;
+}
+
+.claim-tracker-back-btn:hover {
+  background-color: var(--light-gray);
+}
+
 .plan-label {
   width: 90%;
 }
@@ -1137,4 +1155,38 @@ accordion content styling */
 
 .no-anchor-styling {
   text-decoration: none;
+}
+
+.card-fw {
+  background-color: var(--background-transparent);
+  padding: 2em 4em;
+  box-shadow: 0px 7px 29px 0px rgba(100, 100, 111, 0.2);
+  border-radius: 1.5em;
+}
+
+.claim-track-row {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  justify-content: space-between;
+  margin-bottom: 2em;
+}
+
+.claim-track-row-nosp {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+}
+
+.claim-track-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.claim-track-info-btn {
+  max-width: 2.2em;
+  height: 2.2em;
+  text-align: center;
+  padding-top: 25%;
 }
