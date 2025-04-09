@@ -131,7 +131,6 @@ def submit_signup_page():
             "email": request.form.get("email"),
             "phone_number": request.form.get("phone_number"),
             "id_number": request.form.get("id_number"),
-            "profile_pic": None,
         }
 
         new_user = User(**data)

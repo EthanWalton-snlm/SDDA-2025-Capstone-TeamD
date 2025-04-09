@@ -1,7 +1,8 @@
 myenv
-__pycache__
+venv
 .env
 .venv
+__pycache__
 static/Image/user_uploads/*
+!static/Image/user_uploads/policy-2025-04-09-john545.png
 !static/Image/user_uploads/.gitkeep
-venv
