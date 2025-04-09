@@ -2,8 +2,11 @@ from flask import Blueprint, abort, flash, redirect, render_template, request, u
 from flask_login import current_user, login_required
 
 from extensions import db
+
+# from models.claims import Claim
 from models.policies import Policies
 from models.policy_types import PolicyType
+from models.users import User
 
 dashboard_bp = Blueprint("dashboard_bp", __name__)
 
@@ -22,4 +25,5 @@ def dashboard_page():
         policies=Policies.query.all(),
         policy_types=PolicyType.query.all(),
         user=current_user.to_dict(),
+        stored_users=User.query.all(),
     )

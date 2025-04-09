@@ -4,6 +4,7 @@ from flask_login import current_user, login_required
 from constants import CLAIM_STATUS_CODE
 from extensions import db
 from models.claims import Claim
+from models.users import User
 from routes import dashboard_bp
 
 admin_bp = Blueprint("admin_bp", __name__)
@@ -67,13 +68,26 @@ def admin_review(id):
     )
 
     if request.method == "POST":
+        user = User.query.get(submission["username"])
+
+        if not user:
+            return redirect(url_for("claims_bp.claims_page"))
+
         if "approve" in request.form:
+            user.claims_approved = user.claims_approved + 1
+            user.claims_pending = user.claims_pending - 1
             amount_approved = request.form.get("amount-approved")
-            change_claim_status(submission["claim_id"], CLAIM_STATUS_CODE["approve"])
+            change_claim_status(
+                submission["claim_id"], CLAIM_STATUS_CODE["approve"], user
+            )
             update_amount_approved(submission["claim_id"], amount_approved)
             return redirect(url_for("admin_bp.admin_home_page"))
         elif "reject" in request.form:
-            change_claim_status(submission["claim_id"], CLAIM_STATUS_CODE["reject"])
+            user.claims_rejected = user.claims_rejected + 1
+            user.claims_pending = user.claims_pending - 1
+            change_claim_status(
+                submission["claim_id"], CLAIM_STATUS_CODE["reject"], user
+            )
             return redirect(url_for("admin_bp.admin_review", id=id))
         elif "admin_comment" in request.form:
             update_claim_reason(
@@ -86,12 +100,12 @@ def admin_review(id):
     return render_template("admin_review.html", submission=submission)
 
 
-def change_claim_status(id, status):
+def change_claim_status(id, status, user):
     claim = Claim.query.get(id)
-
     if claim is not None:
         try:
             claim.status = status
+            db.session.add(user)
             db.session.commit()
         except Exception as e:
             db.session.rollback()  # restores data, cannot be done after commit()
