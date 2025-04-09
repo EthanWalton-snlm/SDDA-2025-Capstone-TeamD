@@ -1,252 +1,247 @@
 {% extends "base.html" %} {% block content %}
+<div class="upgrade-main">
+  <div class="upgrade-overview-card">
+    <div>
+      <div>
+        <h4 class="mb-0">Upgrade Your Policy</h4>
+        <hr />
+      </div>
+    </div>
 
-<body style="overflow-x: hidden">
-  <div class="main">
-    <div class="container mt-5">
-      <div class="row justify-content-center">
-        <div class="col-md-8">
-          <div class="card">
-            <div class="card-header bg-primary text-white position-relative">
-              <h3 class="mb-0">Upgrade Your Policy</h3>
-              {% if higher_policy_types %}
-              <span
-                class="position-absolute top-0 end-0 mt-2 me-3 badge bg-warning text-dark"
+    <div>
+      <div class="upgrade-flex-btw">
+        <div>
+          <h5 class="card-title">{{ phone_name }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{ policy_type.name }}</h6>
+          {% if higher_policy_types %}
+          <span class="badge bg-warning text-dark"> Upgrade Available! </span>
+          {% endif %}
+        </div>
+
+        <p class="card-text">
+          {% if current_policy.premium is not none %} R{{
+          "%.2f"|format(current_policy.premium) }}<br />monthly {% else %} Price
+          not available {% endif %}
+        </p>
+      </div>
+      <div>
+        <br />
+        <p class="card-text">{{ current_policy_type.summary }}</p>
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <div>
+        <h4>Available Upgrades</h4>
+        <hr />
+      </div>
+
+      <div>
+        {% if higher_policy_types %}
+        <form
+          action="{{ url_for('policies_bp.confirm_upgrade') }}"
+          method="POST"
+        >
+          <input
+            type="hidden"
+            name="policy_id"
+            value="{{ current_policy.policy_id }}"
+          />
+
+          <div class="row">
+            {% for policy_type, policy in higher_policy_types %}
+            <div class="col-md-6 mb-3">
+              <div
+                class="upgrade-card {% if policy.premium is not none and current_policy.premium is not none and policy.premium > current_policy.premium %}border-success{% endif %}"
               >
-                Upgrade Available
-              </span>
-              {% endif %}
+                <div class="card-body">
+                  <div class="form-check">
+                    <div>
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="new_policy_type_id"
+                        id="policy_{{ policy_type.policy_type_id }}"
+                        value="{{ policy_type.policy_type_id }}"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label
+                        class="form-check-label"
+                        for="policy_{{ policy_type.policy_type_id }}"
+                      >
+                        <h5 class="card-title">{{ policy_type.name }}</h5>
+                      </label>
+
+                      <h6 class="card-subtitle mb-2 text-muted">
+                        {% if policy.premium is not none %} R{{
+                        "%.2f"|format(policy.premium) }} per month {% if
+                        current_policy.premium is not none %}
+                        <span
+                          class="badge bg-{% if policy.premium > current_policy.premium %}warning{% else %}success{% endif %} text-dark ms-2"
+                        >
+                          {% if policy.premium > current_policy.premium %}+{%
+                          else %}-{% endif %} R{{ "%.2f"|format((policy.premium
+                          - current_policy.premium)|abs) }}
+                        </span>
+                        {% endif %} {% else %} Price not available {% endif %}
+                      </h6>
+                    </div>
+                  </div>
+                  <hr />
+                  <p class="card-text">{{ policy_type.summary }}</p>
+
+                  <!-- Policy benefits -->
+                  <ul class="list-group list-group-flush mt-3">
+                    <li class="list-group-item">
+                      <i
+                        class="fa-solid fa-lock text-success"
+                        aria-hidden="true"
+                      ></i>
+                      <span>Theft Protection</span>
+                    </li>
+
+                    {% if policy_type.name in ['Personal', 'Business',
+                    'Platinum'] %}
+                    <li class="list-group-item">
+                      <i
+                        class="fa-solid fa-heart-crack text-success"
+                        aria-hidden="true"
+                      ></i>
+                      <span>Screen Damage Protection</span>
+                    </li>
+                    {% endif %} {% if policy_type.name in ['Business',
+                    'Platinum'] %}
+                    <li class="list-group-item">
+                      <i
+                        class="fa-solid fa-droplet text-success"
+                        aria-hidden="true"
+                      ></i>
+                      <span>Water Damage Protection</span>
+                    </li>
+                    {% endif %} {% if policy_type.name == 'Platinum' %}
+                    <li class="list-group-item">
+                      <i
+                        class="fa-solid fa-square-caret-up text-success"
+                        aria-hidden="true"
+                      ></i>
+                      <span>Phone Upgrade Costs</span>
+                    </li>
+                    {% endif %}
+                  </ul>
+                </div>
+              </div>
             </div>
-            <div class="card-body">
-              <div class="mb-4">
-                <h4>Current Policy Details</h4>
-                <div class="card mb-3">
-                  <div class="card-body">
-                    <h5 class="card-title">{{ phone_name }}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">
-                      {{ policy_type.name }} Plan
-                    </h6>
-                    <p class="card-text">
-                      Current Premium: {% if current_policy.premium is not none
-                      %} R{{ "%.2f"|format(current_policy.premium) }} per month
-                      {% else %} Price not available {% endif %}
-                    </p>
-                    <p class="card-text">{{ current_policy_type.summary }}</p>
-                  </div>
-                </div>
-              </div>
+            {% endfor %}
+          </div>
 
-              <h4>Available Upgrades</h4>
+          <div class="mt-4">
+            <h4>Premium Reducers</h4>
+            <hr />
+            <p class="text-muted">
+              Select any that apply to reduce your monthly premium:
+            </p>
 
-              {% if higher_policy_types %}
-              <form
-                action="{{ url_for('policies_bp.confirm_upgrade') }}"
-                method="POST"
-              >
-                <input
-                  type="hidden"
-                  name="policy_id"
-                  value="{{ current_policy.policy_id }}"
-                />
-
-                <div class="row">
-                  {% for policy_type, policy in higher_policy_types %}
-                  <div class="col-md-6 mb-3">
-                    <div
-                      class="card h-100 {% if policy.premium is not none and current_policy.premium is not none and policy.premium > current_policy.premium %}border-success{% endif %}"
-                    >
-                      <div class="card-body">
-                        <div class="form-check">
-                          <input
-                            class="form-check-input"
-                            type="radio"
-                            name="new_policy_type_id"
-                            id="policy_{{ policy_type.policy_type_id }}"
-                            value="{{ policy_type.policy_type_id }}"
-                            required
-                          />
-                          <label
-                            class="form-check-label"
-                            for="policy_{{ policy_type.policy_type_id }}"
-                          >
-                            <h5 class="card-title">
-                              {{ policy_type.name }} Plan
-                            </h5>
-                          </label>
-                        </div>
-                        <h6 class="card-subtitle mb-2 text-muted">
-                          {% if policy.premium is not none %} R{{
-                          "%.2f"|format(policy.premium) }} per month {% if
-                          current_policy.premium is not none %}
-                          <span
-                            class="badge bg-{% if policy.premium > current_policy.premium %}warning{% else %}success{% endif %} text-dark ms-2"
-                          >
-                            {% if policy.premium > current_policy.premium %}+{%
-                            else %}-{% endif %} R{{
-                            "%.2f"|format((policy.premium -
-                            current_policy.premium)|abs) }}
-                          </span>
-                          {% endif %} {% else %} Price not available {% endif %}
-                        </h6>
-                        <p class="card-text">{{ policy_type.summary }}</p>
-
-                        <!-- Policy benefits -->
-                        <ul class="list-group list-group-flush mt-3">
-                          <li class="list-group-item">
-                            <i
-                              class="fa-solid fa-lock text-success"
-                              aria-hidden="true"
-                            ></i>
-                            <span>Theft Protection</span>
-                          </li>
-
-                          {% if policy_type.name in ['Personal', 'Business',
-                          'Platinum'] %}
-                          <li class="list-group-item">
-                            <i
-                              class="fa-solid fa-heart-crack text-success"
-                              aria-hidden="true"
-                            ></i>
-                            <span>Screen Damage Protection</span>
-                          </li>
-                          {% endif %} {% if policy_type.name in ['Business',
-                          'Platinum'] %}
-                          <li class="list-group-item">
-                            <i
-                              class="fa-solid fa-droplet text-success"
-                              aria-hidden="true"
-                            ></i>
-                            <span>Water Damage Protection</span>
-                          </li>
-                          {% endif %} {% if policy_type.name == 'Platinum' %}
-                          <li class="list-group-item">
-                            <i
-                              class="fa-solid fa-square-caret-up text-success"
-                              aria-hidden="true"
-                            ></i>
-                            <span>Phone Upgrade Costs</span>
-                          </li>
-                          {% endif %}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  {% endfor %}
-                </div>
-
-                <div class="mt-4">
-                  <h5>Premium Reducers</h5>
-                  <p class="text-muted">
-                    Select any that apply to reduce your monthly premium:
-                  </p>
-
-                  <div class="row mt-3">
-                    <div class="col-md-4">
-                      <div class="form-check">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          name="phone-case"
-                          id="phone-case"
-                          aria-describedby="phone-case-help"
-                        />
-                        <label class="form-check-label" for="phone-case">
-                          <i
-                            class="fa-solid fa-shield-halved me-2"
-                            aria-hidden="true"
-                          ></i>
-                          Phone Case
-                        </label>
-                        <small
-                          id="phone-case-help"
-                          class="form-text text-muted d-block"
-                        >
-                          (5% discount)
-                        </small>
-                      </div>
-                    </div>
-                    <div class="col-md-4">
-                      <div class="form-check">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          name="screen-protector"
-                          id="screen-protector"
-                          aria-describedby="screen-protector-help"
-                        />
-                        <label class="form-check-label" for="screen-protector">
-                          <i
-                            class="fa-solid fa-shield-halved me-2"
-                            aria-hidden="true"
-                          ></i>
-                          Screen Protector
-                        </label>
-                        <small
-                          id="screen-protector-help"
-                          class="form-text text-muted d-block"
-                        >
-                          (5% discount)
-                        </small>
-                      </div>
-                    </div>
-                    <div class="col-md-4">
-                      <div class="form-check">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          name="waterproof-phone"
-                          id="waterproof-phone"
-                          aria-describedby="waterproof-phone-help"
-                        />
-                        <label class="form-check-label" for="waterproof-phone">
-                          <i
-                            class="fa-solid fa-droplet me-2"
-                            aria-hidden="true"
-                          ></i>
-                          Waterproof Phone
-                        </label>
-                        <small
-                          id="waterproof-phone-help"
-                          class="form-text text-muted d-block"
-                        >
-                          (10% discount)
-                        </small>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="mt-4 d-flex justify-content-between">
-                  <a
-                    href="{{ url_for('dashboard_bp.dashboard_page') }}"
-                    class="btn btn-outline-secondary btn-lg"
+            <div class="row mt-3">
+              <div class="col-md-4">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="phone-case"
+                    id="phone-case"
+                    aria-describedby="phone-case-help"
+                  />
+                  <label class="form-check-label" for="phone-case">
+                    <i
+                      class="fa-solid fa-shield-halved me-2"
+                      aria-hidden="true"
+                    ></i>
+                    Phone Case
+                  </label>
+                  <small
+                    id="phone-case-help"
+                    class="form-text text-muted d-block right-text-align"
                   >
-                    <i class="fa-solid fa-arrow-left me-2"></i> Cancel
-                  </a>
-                  <button type="submit" class="btn btn-success btn-lg">
-                    Confirm Upgrade <i class="fa-solid fa-arrow-up me-2"></i>
-                  </button>
+                    (5% discount)
+                  </small>
                 </div>
-              </form>
-              {% else %}
-              <div class="alert alert-info">
-                <i class="fa-solid fa-info-circle"></i>
-                {% if current_policy.premium is none %} Unable to determine
-                upgrade options - current premium not set {% else %} You already
-                have our highest tier plan. No upgrades are available. {% endif
-                %}
               </div>
-              <a
-                href="{{ url_for('dashboard_bp.dashboard_page') }}"
-                class="btn btn-primary mt-3"
-              >
-                <i class="fa-solid fa-arrow-left me-2"></i> Return to Dashboard
-              </a>
-              {% endif %}
+              <div class="col-md-4">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="screen-protector"
+                    id="screen-protector"
+                    aria-describedby="screen-protector-help"
+                  />
+                  <label class="form-check-label" for="screen-protector">
+                    <i
+                      class="fa-solid fa-shield-halved me-2"
+                      aria-hidden="true"
+                    ></i>
+                    Screen Protector
+                  </label>
+                  <small
+                    id="screen-protector-help"
+                    class="form-text text-muted d-block"
+                  >
+                    (5% discount)
+                  </small>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="waterproof-phone"
+                    id="waterproof-phone"
+                    aria-describedby="waterproof-phone-help"
+                  />
+                  <label class="form-check-label" for="waterproof-phone">
+                    <i class="fa-solid fa-droplet me-2" aria-hidden="true"></i>
+                    Waterproof Phone
+                  </label>
+                  <small
+                    id="waterproof-phone-help"
+                    class="form-text text-muted d-block"
+                  >
+                    (10% discount)
+                  </small>
+                </div>
+              </div>
             </div>
           </div>
+
+          <div class="flex-c-upgrade-btn">
+            <input type="submit" value="Confirm Upgrade" />
+            <button
+              href="{{ url_for('dashboard_bp.dashboard_page') }}"
+              class="cancel-button-upgrades"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+        {% else %}
+        <div class="alert alert-info">
+          <i class="fa-solid fa-info-circle"></i>
+          {% if current_policy.premium is none %} Unable to determine upgrade
+          options - current premium not set {% else %} You already have our
+          highest tier plan. No upgrades are available. {% endif %}
         </div>
+        <a
+          href="{{ url_for('dashboard_bp.dashboard_page') }}"
+          class="btn btn-primary mt-3"
+        >
+          <i class="fa-solid fa-arrow-left me-2"></i> Return to Dashboard
+        </a>
+        {% endif %}
       </div>
     </div>
   </div>
-</body>
+</div>
 {% endblock %}
