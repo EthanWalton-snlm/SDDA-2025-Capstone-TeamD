@@ -1134,3 +1134,7 @@ accordion content styling */
   color: white;
   cursor: pointer;
 }
+
+.no-anchor-styling {
+  text-decoration: none;
+}
