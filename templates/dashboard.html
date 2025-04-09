@@ -1,42 +1,40 @@
 {% extends "base.html" %} {% block content %}
 
-<div class="dash-extra-info">
+<div class="dash-pol-container">
+
   <div class="claim-track-container">
     <div class="mb-4 d-flex justify-content-end">
       <a href="{{ url_for('claims_bp.track_claims') }}" class="btn btn-info">
         <i class="fa-solid fa-list-check me-2"></i>Track Claims
       </a>
-
-      {% for u in stored_users%}
-        {% if u.username == user.username%}
-          <div class = "claims-overview">
-            <div class = "claims-made">
-                  <div> <p>Claims Made:</p></div>
-                  <div><h3>{{u.claims_made}}</h3></div>
-            </div>
-
-            <div class = "claims-approved">
-                  <div> <p>Claims Approved: </p></div>
-                  <div><h3>{{u.claims_approved}}</h3></div>
-            </div>
-
-            <div class = "claims-rejected">
-                  <div> <p>Claims Rejected: </p></div>
-                  <div><h3>{{u.claims_rejected}}</h3></div>
-            </div>
-
-            <div class = "claims-pending">
-                  <div> <p>Pending Claims: </p></div>
-                  <div><h3>{{u.claims_pending}}</h3></div>
-            </div>
-          </div>
-        {% endif%}
-      {%endfor%}
     </div>
-  </div>
-</div>
+    {% for u in stored_users%}
+      {% if u.username == user.username%}
+        <div class = "claims-overview">
+          <div class = "claims-made">
+                <div> <p>Claims Made:</p></div>
+                <div><h3>{{u.claims_made}}</h3></div>
+          </div>
 
-<div class="dash-pol-container">
+          <div class = "claims-approved">
+                <div> <p>Claims Approved: </p></div>
+                <div><h3>{{u.claims_approved}}</h3></div>
+          </div>
+
+          <div class = "claims-rejected">
+                <div> <p>Claims Rejected: </p></div>
+                <div><h3>{{u.claims_rejected}}</h3></div>
+          </div>
+
+          <div class = "claims-pending">
+                <div> <p>Pending Claims: </p></div>
+                <div><h3>{{u.claims_pending}}</h3></div>
+          </div>
+        </div>
+      {% endif%}
+    {%endfor%}
+  </div>
+
   <!-- <div class="main-p"> -->
   <div class="dash-flex">
     {% for policy in policies %} {% if policy.username == user.username%}
@@ -106,9 +104,9 @@
             {% endfor %}
           </div>
         </div>
-
-
+        <hr />
         <h6>Policy Covers:</h6>
+
         {%if policy.policy_name == "Fresher Plan"%}
         <ul class="list-of-benefits">
           <li class="policy-info-list">
@@ -189,13 +187,13 @@
         <div class="claim-upgrade-buttons">
           <a
             href="{{ url_for('claims_bp.claims_page') }}"
-            class="btn btn-primary"
+            class="policy-card-btn"
             >Claim</a
           >
           {% if policy.policy_name != 'Platinum' %}
           <a
             href="{{ url_for('policies_bp.upgrade_page', policy_id=policy.policy_id) }}"
-            class="btn btn-secondary"
+            class="policy-card-btn"
           >
             Upgrade
           </a>
