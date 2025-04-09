@@ -3,6 +3,7 @@ import uuid
 from sqlalchemy import ForeignKey
 
 from extensions import db
+from models.policies import Policies
 from models.policy_types import PolicyType
 
 
@@ -17,7 +18,8 @@ class Claim(db.Model):
     username = db.Column(
         db.String(100), ForeignKey("users.username")
     )  # aka submitted_by
-    policy_id = db.Column(db.String(50), ForeignKey(PolicyType.policy_type_id))
+    # policy_id = db.Column(db.String(50), ForeignKey(PolicyType.policy_type_id))
+    policy_id = db.Column(db.String(50), ForeignKey(Policies.policy_id))
     affidavit_link = db.Column(db.String(500), nullable=True)
     image_link = db.Column(db.String(500), nullable=True)
 
