@@ -14,6 +14,7 @@
 
   --pale-blue-gradient-a: rgba(100, 147, 194, 0.377);
   --pale-blue-gradient-b: rgba(100, 147, 194, 0.377);
+  --pale-blue-gradient-c: rgba(100, 147, 194, 0.95);
 }
 /*  */
 * {
@@ -141,6 +142,11 @@ input[type="submit"]:hover {
   display: flex;
   flex-direction: column;
   justify-content: left;
+}
+
+.cover-card:hover {
+  transform: translateY(-0.5em);
+  transition-duration: 0.3s;
 }
 
 .login-bg {
@@ -387,8 +393,10 @@ li.margin-adjustment {
 }
 
 .home-bg {
-  background-image: linear-gradient(var(--pale-blue-gradient-b), var(--white)),
+  background-image: linear-gradient(var(--white), var(--pale-blue-gradient-c)),
     url("https://images.unsplash.com/photo-1689799515027-878d0b0cd1a5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+
+  background-repeat: round;
 }
 
 .website-header-container {
@@ -1174,6 +1182,7 @@ accordion content styling */
   background-color: var(--background-transparent);
   border-radius: 1.5em;
   padding: 2em;
+  box-shadow: 0px 7px 29px 0px var(--border-transparent);
 }
 
 .claims-overview {
@@ -1206,6 +1215,16 @@ accordion content styling */
   border-radius: 0.5em;
   width: 50%;
   padding: 2%;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+.claims-made:hover,
+.claims-approved:hover,
+.claims-rejected:hover,
+.claims-pending:hover {
+  transform: translateY(-0.5em);
+  transition-duration: 0.3s;
 }
 
 .no-anchor-styling {
@@ -1265,4 +1284,36 @@ accordion content styling */
 .policy-card-btn:hover i {
   background-color: var(--dark);
   color: var(--white);
+}
+
+.no-policy-btn {
+  font-size: 30px;
+  color: var(--dark);
+}
+
+.no-policies {
+  display: flex;
+  background-color: var(--background-transparent);
+  width: 60px;
+  height: 60px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  padding-top: 1px;
+  box-shadow: 0px 7px 29px 0px rgba(100, 100, 111, 0.2);
+}
+
+.no-policies:hover {
+  background-color: var(--white);
+  color: var(--vibrant);
+  transform: translateY(-0.25em);
+  transition-duration: 0.35s;
+}
+
+.empty-col {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

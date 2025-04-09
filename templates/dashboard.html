@@ -206,16 +206,16 @@
     </div>
 
     {% endif%} {% endfor %}
-    <div class="no-policies">
-      <p>Add a New Policy</p>
+
+    <div class="empty-col">
       <a
         href="{{ url_for('policies_bp.new_policy_page' , policy_id='new') }}"
-        class="btn btn-primary"
       >
-        Get a New Policy
+        <div class="no-policies">
+        <i class="fa-regular fa-square-plus no-policy-btn"></i>
+        </div>
       </a>
     </div>
-    <!-- </div> -->
   </div>
 </div>
 {% endblock %}
