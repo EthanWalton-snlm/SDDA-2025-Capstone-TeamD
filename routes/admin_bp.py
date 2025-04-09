@@ -66,7 +66,7 @@ def admin_review(id):
     submission = next(
         item for item in get_all_submissions_data() if item["claim_id"] == id
     )
-    print(submission)
+
     if request.method == "POST":
         user = User.query.get(submission["username"])
 
