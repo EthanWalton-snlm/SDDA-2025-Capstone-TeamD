@@ -1116,7 +1116,8 @@ accordion content styling */
 }
 
 .upgrade-main {
-  width: 100%;
+  width: 80%;
+  margin: 0 auto;
   margin-bottom: 5em;
   display: grid;
   place-content: center;
@@ -1181,6 +1182,7 @@ accordion content styling */
   background-color: rgba(255, 242, 0, 0.512);
   border-radius: 10%;
   padding: 5px;
+}
 
 .no-anchor-styling {
   text-decoration: none;
