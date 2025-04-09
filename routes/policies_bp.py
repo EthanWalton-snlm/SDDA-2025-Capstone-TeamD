@@ -40,7 +40,11 @@ def new_policy_sign_up():
 
     # Get policy type details
     policy_type = PolicyType.query.filter_by(name=selected_policy).first()
+    policy = Policies.query.filter_by(policy_name=selected_policy).first()
     if not policy_type:
+        flash("Invalid policy type selected", "error")
+        return redirect(url_for("policies_bp.new_policy_page"))
+    if not policy:
         flash("Invalid policy type selected", "error")
         return redirect(url_for("policies_bp.new_policy_page"))
 
@@ -56,7 +60,8 @@ def new_policy_sign_up():
         "screen_protector": request.form.get("screen-protector") == "screen-protector",
         "waterproof_phone": request.form.get("waterproof-phone") == "waterproof-phone",
         "username": current_user.username,
-        "policy_type_id": policy_type.policy_type_id,
+        # "policy_type_id": policy_type.policy_type_id,
+        "policy_id": policy.policy_id,
         "image_link": img_link if img_link else img_path,  # Your existing logic
     }
 

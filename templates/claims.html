@@ -15,8 +15,11 @@
           <label for="policy_id" class="form-label">Policy Type</label>
           <select class="form-select" id="policy_id" name="policy_id" required>
             <option value="" selected disabled>Select a policy type</option>
-            {% for policy in policy_types %}
-            <option value="{{ policy.policy_type_id }}">{{ policy.name }}</option>
+            {% for pol in policy %}
+            {%if pol.username == user.username%}
+            <option value="{{ policy.policy_id }}">{{ pol.policy_name }}</option>
+            {%endif%}
+            <!-- here -->
             {% endfor %}
           </select>
         </div>
