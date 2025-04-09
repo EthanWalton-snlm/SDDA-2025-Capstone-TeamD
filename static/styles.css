@@ -1185,25 +1185,27 @@ accordion content styling */
 
 .claims-made {
   background-color: var(--background-transparent);
-  border-radius: 5px;
 }
 
 .claims-approved {
   background-color: rgba(172, 255, 47, 0.342);
-  border-radius: 10%;
-  padding: 5px;
 }
 
 .claims-rejected {
   background-color: rgba(255, 0, 0, 0.447);
-  border-radius: 10%;
-  padding: 5px;
 }
 
 .claims-pending {
   background-color: rgba(255, 242, 0, 0.512);
-  border-radius: 10%;
-  padding: 5px;
+}
+
+.claims-made,
+.claims-approved,
+.claims-rejected,
+.claims-pending {
+  border-radius: 0.5em;
+  width: 50%;
+  padding: 2%;
 }
 
 .no-anchor-styling {
@@ -1256,6 +1258,11 @@ accordion content styling */
 }
 
 .policy-card-btn:hover {
+  background-color: var(--dark);
+  color: var(--white);
+}
+
+.policy-card-btn:hover i {
   background-color: var(--dark);
   color: var(--white);
 }
