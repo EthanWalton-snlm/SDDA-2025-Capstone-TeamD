@@ -37,11 +37,19 @@
         <header>
           <nav>
             {% if current_user.is_authenticated %}
-            <ul class="nav-link-container">
-              <li><a href="/dashboard"> Home</a></li>
-              <li><a href="/account"> Account</a></li>
-              <li><a href="/logout"> Sign Out</a></li>
-            </ul>
+              {% if current_user.is_admin == 1 %}
+              <ul class="nav-link-container">
+                <li><a href="/admin"> Admin Panel</a></li>
+                <li><a href="/account"> Account</a></li>
+                <li><a href="/logout"> Sign Out</a></li>
+              </ul>
+              {% else %}
+              <ul class="nav-link-container">
+                <li><a href="/dashboard"> Home</a></li>
+                <li><a href="/account"> Account</a></li>
+                <li><a href="/logout"> Sign Out</a></li>
+              </ul>
+              {% endif %}
             {% else %}
             <ul class="nav-link-container">
               <li><a href="/"> Home</a></li>
