@@ -1,5 +1,5 @@
 ## dashboard functionality comes before
-from flask import Blueprint, render_template, request
+from flask import Blueprint, redirect, render_template, request, url_for
 from flask_login import current_user, login_required
 
 from extensions import db
@@ -27,7 +27,8 @@ def claims_page():
 @login_required
 def submit_claim():
     # Get form data
-    policy_id = "04cc64a5-d0b4-4453-b9fe-a30b3909e5a2"  # request.form.get("policy_id")
+    policy_id = request.form.get("policy_id")
+
     reason = request.form.get("reason")
     affidavit_link = request.form.get("affidavit_link")
     image_link = request.form.get("image_link")
@@ -41,6 +42,7 @@ def submit_claim():
             "claims.html",
             error="All fields are required",
             policy=Policies.query.all(),
+            user=current_user.to_dict(),
             # policy_types=PolicyType.query.all(),
         )
 
@@ -49,6 +51,7 @@ def submit_claim():
             "claims.html",
             error="Reason must be less than 500 characters",
             policy=Policies.query.all(),
+            user=current_user.to_dict(),
             # policy_types=PolicyType.query.all(),
         )
 
@@ -72,15 +75,17 @@ def submit_claim():
         db.session.add(new_claim)
         db.session.commit()
 
-        # Return success
-        return render_template(
-            "claims.html",
-            success="Your claim has been submitted successfully. Claim ID: "
-            + new_claim.claim_id,
-            # policy_types=PolicyType.query.all(),
-            policy=Policies.query.all(),
-            user=current_user.to_dict(),
-        )
+        return redirect(url_for("dashboard_bp.dashboard_page"))
+
+        # Return success (TODO: fix)
+        # return render_template(
+        #     "claims.html",
+        #     success="Your claim has been submitted successfully. Claim ID: "
+        #     + new_claim.claim_id,
+        #     # policy_types=PolicyType.query.all(),
+        #     policy=Policies.query.all(),
+        #     user=current_user.to_dict(),
+        # )
 
     except Exception as e:
         db.session.rollback()
@@ -88,6 +93,7 @@ def submit_claim():
             "claims.html",
             error=f"An error occurred: {str(e)}",
             policy=Policies.query.all(),
+            user=current_user.to_dict(),
             # policy_types=PolicyType.query.all(),
         )
 
