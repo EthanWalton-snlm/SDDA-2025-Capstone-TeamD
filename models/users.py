@@ -18,6 +18,11 @@ class User(UserMixin, db.Model):
     profile_pic = db.Column(db.String(500))
     is_admin = db.Column(db.Boolean, default=False)
 
+    claims_made = db.Column(db.Integer, default=0)
+    claims_approved = db.Column(db.Integer, default=0)
+    claims_rejected = db.Column(db.Integer, default=0)
+    claims_pending = db.Column(db.Integer, default=0)
+
     # Object -> Dict
     def to_dict(self):
         return {
@@ -31,6 +36,10 @@ class User(UserMixin, db.Model):
             "id_number": self.id_number,
             "profile_pic": self.profile_pic,
             "is_admin": self.is_admin,
+            "claims_made": self.claims_made,
+            "claims_approved": self.claims_approved,
+            "claims_rejected": self.claims_rejected,
+            "claims_pending": self.claims_pending,
         }
 
     def get_id(self):

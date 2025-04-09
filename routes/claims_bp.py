@@ -7,6 +7,7 @@ from models.claims import Claim
 
 # from models.policy_types import PolicyType
 from models.policies import Policies
+from models.users import User
 
 claims_bp = Blueprint("claims_bp", __name__)
 
@@ -70,6 +71,15 @@ def submit_claim():
             "claim_amount": claim_amount,
         }
         new_claim = Claim(**data)
+
+        # update claim count
+        user = User.query.filter_by(username=current_user.username).first()
+
+        if not user:
+            return redirect(url_for("claims_bp.claims_page"))
+
+        user.claims_made = user.claims_made + 1
+        user.claims_pending = user.claims_pending + 1
 
         # Add and commit to database
         db.session.add(new_claim)
