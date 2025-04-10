@@ -1,4 +1,5 @@
 import os
+import uuid
 from datetime import datetime
 
 from flask import Blueprint, abort, flash, redirect, render_template, request, url_for
@@ -70,7 +71,7 @@ def new_policy_sign_up():
 
     if img:
         extension = os.path.splitext(f"{img.filename}")[1]
-        filename = f"policy-{datetime.today().strftime('%Y-%m-%d')}-{data['username']}{extension}"
+        filename = f"policy-{datetime.today().strftime('%Y-%m-%d')}-{data['username']}-{str(uuid.uuid4())[:8]}-{extension}"
 
         img.save(os.path.join(str(UPLOAD_FOLDER), str(filename)))
 

@@ -1317,3 +1317,31 @@ accordion content styling */
   align-items: center;
   justify-content: center;
 }
+
+.policy-dash-pic-container {
+  width: 4.5em;
+  height: 4.5em;
+  border-radius: 50%;
+  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
+    rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+}
+
+.policy-dash-pic {
+  object-fit: cover;
+  width: 4.5em;
+  height: 4.5em;
+  border-radius: 50%;
+}
+
+.flex-r-sbtw-pol-dash-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1em;
+}
+
+.flex-r-sbtw-pol-dash-title h2 {
+  padding: 0;
+  margin: 0;
+}
