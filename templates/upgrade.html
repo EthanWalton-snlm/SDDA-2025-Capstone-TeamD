@@ -218,12 +218,12 @@
 
           <div class="flex-c-upgrade-btn">
             <input type="submit" value="Confirm Upgrade" />
-            <button
+            <a
               href="{{ url_for('dashboard_bp.dashboard_page') }}"
-              class="cancel-button-upgrades"
+              class="cancel-button-upgrades-a"
             >
               Cancel
-            </button>
+            </a>
           </div>
         </form>
         {% else %}

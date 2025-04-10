@@ -82,6 +82,16 @@
                 <i class="fa-solid fa-image me-1"></i> View Evidence Image
               </a>
             </li>
+            {% endif %} {% if claim.quotation_link %}
+            <li class="mt-2">
+              <a
+                href="{{ claim.quotation_link }}"
+                target="_blank"
+                class="btn btn-sm btn-outline-secondary"
+              >
+                <i class="fa-solid fa-file-pdf me-1"></i> View Quotation
+              </a>
+            </li>
             {% endif %}
           </ul>
           {% endif %}
