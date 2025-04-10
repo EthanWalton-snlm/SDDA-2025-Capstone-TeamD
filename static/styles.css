@@ -1365,6 +1365,7 @@ accordion content styling */
   /* color: var(--border-transparent); */
   opacity: 0.2;
   list-style-type: none;
+}
 
 .policy-dash-pic-container {
   width: 4.5em;
