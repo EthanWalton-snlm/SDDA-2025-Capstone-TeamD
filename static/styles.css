@@ -1191,6 +1191,24 @@ accordion content styling */
   cursor: pointer;
 }
 
+.cancel-button-upgrades-a {
+  text-align: center;
+  color: var(--dark);
+  background-color: var(--border);
+  margin-top: 1em;
+  border-radius: 0.5em;
+  padding: 0.75em;
+  border: 0.1em solid var(--border-transparent);
+  width: 100%;
+  text-decoration: none;
+}
+
+.cancel-button-upgrades-a:hover {
+  background-color: var(--border-opaque);
+  color: white;
+  cursor: pointer;
+}
+
 .claim-track-container {
   display: flex;
   flex-direction: column;
