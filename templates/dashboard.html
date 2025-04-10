@@ -59,7 +59,12 @@
     {% for policy in policies %} {% if policy.username == user.username%}
     <div class="cover-card">
       <div class="phone-cover">
+        <div class="flex-r-sbtw-pol-dash-title">
         <h2>{{ policy.phone_name }}</h2>
+        <div class="policy-dash-pic-container">
+          <img src="../{{ policy.image_link }}" class="policy-dash-pic" />
+        </div>
+        </div>
         <h5>{{ policy.policy_name }}</h5>
 
         <div class="prem-reducers">
@@ -214,6 +219,10 @@
 
     <div class="empty-col">
       <a href="{{ url_for('policies_bp.new_policy_page' , policy_id='new') }}">
+      <a
+        href="{{ url_for('policies_bp.new_policy_page' , policy_id='new') }}"
+        style="text-decoration: none"
+      >
         <div class="no-policies">
           <i class="fa-regular fa-square-plus no-policy-btn"></i>
         </div>

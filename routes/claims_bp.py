@@ -33,9 +33,9 @@ def submit_claim():
     reason = request.form.get("reason")
     affidavit_link = request.form.get("affidavit_link")
     image_link = request.form.get("image_link")
-    submission_date = request.form.get("submission_date")
     date_of_incident = request.form.get("date_of_incident")
     claim_amount = request.form.get("claim_amount")
+    quotation = request.form.get("quotation")
 
     # Basic form validation
     if not policy_id or not reason:
@@ -66,7 +66,7 @@ def submit_claim():
             "policy_id": policy_id,
             "affidavit_link": affidavit_link,
             "image_link": image_link,
-            "submission_date": submission_date,
+            "quotation_link": quotation,
             "date_of_incident": date_of_incident,
             "claim_amount": claim_amount,
         }

@@ -67,7 +67,8 @@
         </div>
 
         {% elif key != "password" and key != "is_admin" and key != "profile_pic"
-        %}
+        and key != "claims_made" and key != "claims_approved" and key !=
+        "claims_rejected" and key != "claims_pending"%}
         <div class="acc-details-form-label">
           <h4>{{key.replace("_", " ").title()}}</h4>
         </div>
