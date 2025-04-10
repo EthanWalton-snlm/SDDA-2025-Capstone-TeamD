@@ -19,7 +19,7 @@
           <legend>Which Policy would you like to select?</legend>
 
           {% for type in policy_types %}
-          <div class="flex-r-nsp">
+          <div class="flex-r-sbtw-info-tooltip">
             <div class="checkbox-label-row">
               <input type="radio" name="radio" value="{{type.name}}"
               id="{{type.name}}1" title="test" {% if
@@ -30,17 +30,8 @@
               <label for="{{type.name}}1">{{type.name}}</label>
             </div>
 
-            <div class="flex-r-sbtw">
-              <input type="checkbox" id="{{type.name}}" class="accordion-inp" />
-              <label for="{{type.name}}" class="accordion-label"
-                ><i class="fa-solid fa-circle-info accordion-label-icon"></i
-              ></label>
-
-              <div class="accordion-content">
-                <p>
-                  This plan costs R{{type.start_price}}. It {{type.summary}}
-                </p>
-              </div>
+            <div>
+              <i class="fa-solid fa-circle-info accordion-label-icon" data-toggle="tooltip" data-placement="top" title="This plan costs R{{type.start_price}}. It {{type.summary}}"></i>
             </div>
           </div>
           {% endfor %}
@@ -50,7 +41,7 @@
       <div class="vl"></div>
 
       <div class="new-policy-form-col">
-        <legend>Please provide a few details for your policy</legend>
+        <legend>Please provide a few details for your policy:</legend>
         User Name:
         <input
           type="text"
@@ -85,8 +76,8 @@
 
       <div class="new-policy-form-col">
         <fieldset class="column-checkboxes">
-          <legend>Which extra features do you have?</legend>
-          <div class="checkbox-label-row">
+          <legend>Which extra features do you already have?</legend>
+          <div class="checkbox-label-row-extra">
             <input
               type="checkbox"
               name="phone-case"
@@ -96,7 +87,7 @@
             <label for="phone-case">Phone Case (-5%)</label>
           </div>
 
-          <div class="checkbox-label-row">
+          <div class="checkbox-label-row-extra">
             <input
               type="checkbox"
               name="screen-protector"
@@ -106,7 +97,7 @@
             <label for="screen-protector">Screen Protector (-5%)</label>
           </div>
 
-          <div class="checkbox-label-row">
+          <div class="checkbox-label-row-extra">
             <input
               type="checkbox"
               name="waterproof-phone"
@@ -114,13 +105,14 @@
               id="waterproof-phone"
             />
             <label for="waterproof-phone"
-              >Waterproof Phone (-10%)</div>
+              >Waterproof Phone (-10%)
             </label>
           </div>
         </fieldset>
+        </div>
       </div>
       <div class="new-policy-form-col">
-      <input type="submit" value="Get Quote" />
+      <input type="submit" value="Proceed" />
     </div>
     </div>
 
