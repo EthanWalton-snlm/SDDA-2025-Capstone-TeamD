@@ -5,10 +5,8 @@
     <h2>Review Submission</h2>
     <div class="submission-detail">
       <div class="image-name">
-        <img
-          src="https://th.bing.com/th/id/OIP.V8o0z-WF2LgCV-e2c0MSRAHaHa?w=1306&h=1306&rs=1&pid=ImgDetMain"
-          class="account-details-profile-pic"
-        />
+        <img src="https://th.bing.com/th/id/OIP.V8o0z-WF2LgCV-e2c0MSRAHaHa?w=1306&h=1306&rs=1&pid=ImgDetMain"
+          class="account-details-profile-pic" />
         <p>
           <strong>{{ submission.username }} {{ submission.last_name}}</strong>
         </p>
@@ -17,13 +15,10 @@
       <p><strong>Details of claim:</strong></p>
       <p>{{ submission.reason }}</p>
       <p>{{ submission.date }}</p>
-      <p>Maximum claim amount: R{{ submission.amount }}</p>
       <p>{{ submission.status }}</p>
       <p>
         <strong>Affidavit Link:</strong>
-        <a href="{{ submission.affidavit_link }}" target="_blank"
-          >View Affidavit</a
-        >
+        <a href="{{ submission.affidavit_link }}" target="_blank">View Affidavit</a>
       </p>
       <p>
         <strong>Evidence Image Link:</strong>
@@ -31,32 +26,20 @@
       </p>
       <p>
         <strong>Quotation Link:</strong>
-        <a href="{{ submission.quotation_link }}" target="_blank"
-          >View Quotation</a
-        >
+        <a href="{{ submission.quotation_link }}" target="_blank">View Quotation</a>
       </p>
 
       <form method="POST">
         <!-- Textarea for admin to enter the approved amount -->
-        <div
-          class="amount-approved"
-          name="amount-approved"
-          style="margin-bottom: 10px"
-        >
+        <div class="amount-approved" name="amount-approved" style="margin-bottom: 10px">
           <p><strong>Approved Amount: R</strong></p>
-          <input
-            type="number"
-            name="amount-approved"
-            id="amunt-approved"
-            step="0.01"
-            placeholder="Enter approved amount"
-            style="
+          <input type="number" name="amount-approved" id="amunt-approved" step="0.01"
+            placeholder="Enter approved amount" style="
               width: 150px;
               height: 40px;
               margin-top: -5px;
               padding-bottom: 10px;
-            "
-          />
+            " />
         </div>
         {% if submission.status == 'Pending' %}
         <button type="submit" name="approve">Approve</button>
@@ -68,17 +51,14 @@
       <form method="POST">
         <label for="admin_comment">Reason for Rejection:</label>
         <textarea id="admin_comment" name="admin_comment" required>
-{{ submission.admin_comment }}</textarea
-        >
+{{ submission.admin_comment }}</textarea>
         <button type="submit" name="admin_comment">
           Submit Rejection Reason
         </button>
       </form>
       {% endif %}
 
-      <a class="text-buttons" href="{{ url_for('admin_bp.admin_home_page') }}"
-        >Back to Dashboard</a
-      >
+      <a class="text-buttons" href="{{ url_for('admin_bp.admin_home_page') }}">Back to Dashboard</a>
     </div>
   </div>
 
