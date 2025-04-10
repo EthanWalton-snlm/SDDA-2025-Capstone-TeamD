@@ -5,29 +5,45 @@
   <div class="claim-track-container">
 
     {% for u in stored_users%}
-      {% if u.username == user.username%}
-        <div class = "claims-overview">
-          <div class = "claims-made">
-                <div> <p>Claims Made:</p></div>
-                <div><h3>{{u.claims_made}}</h3></div>
-          </div>
-
-          <div class = "claims-approved">
-                <div> <p>Claims Approved: </p></div>
-                <div><h3>{{u.claims_approved}}</h3></div>
-          </div>
-
-          <div class = "claims-rejected">
-                <div> <p>Claims Rejected: </p></div>
-                <div><h3>{{u.claims_rejected}}</h3></div>
-          </div>
-
-          <div class = "claims-pending">
-                <div> <p>Pending Claims: </p></div>
-                <div><h3>{{u.claims_pending}}</h3></div>
-          </div>
+    {% if u.username == user.username%}
+    <div class="claims-overview">
+      <div class="claims-made">
+        <div>
+          <p>Claims Made:</p>
         </div>
-      {% endif%}
+        <div>
+          <h3>{{u.claims_made}}</h3>
+        </div>
+      </div>
+
+      <div class="claims-approved">
+        <div>
+          <p>Claims Approved: </p>
+        </div>
+        <div>
+          <h3>{{u.claims_approved}}</h3>
+        </div>
+      </div>
+
+      <div class="claims-rejected">
+        <div>
+          <p>Claims Rejected: </p>
+        </div>
+        <div>
+          <h3>{{u.claims_rejected}}</h3>
+        </div>
+      </div>
+
+      <div class="claims-pending">
+        <div>
+          <p>Pending Claims: </p>
+        </div>
+        <div>
+          <h3>{{u.claims_pending}}</h3>
+        </div>
+      </div>
+    </div>
+    {% endif%}
     {%endfor%}
 
     <div class="mt-4 d-flex justify-content-end">
@@ -51,59 +67,71 @@
             <h6>Premium Reducers:</h6>
           </div> -->
 
-            <!-- screen protector reducer added -->
-            {%if policy.screen_protector%}
-            <div class="reducers">
-              <div><i class="fa-solid fa-shield"></i></div>
-              <div><p class="reducer-text">Screen protector</p></div>
+          <!-- screen protector reducer added -->
+          {%if policy.screen_protector%}
+          <div class="reducers">
+            <div><i class="fa-solid fa-shield"></i></div>
+            <div>
+              <p class="reducer-text">Screen protector</p>
+            </div>
 
+          </div>
+          {%endif%} {%if not policy.screen_protector%}
+          <div class="reducers">
+            <div><i class="fa-solid fa-shield shield-gray"></i></div>
+            <div>
+              <p class="reducer-text-gray">Screen protector</p>
             </div>
-            {%endif%} {%if not policy.screen_protector%}
-            <div class="reducers">
-              <div><i class="fa-solid fa-shield shield-gray"></i></div>
-              <div><p class="reducer-text-gray">Screen protector</p></div>
+          </div>
+          {%endif%}
+          <!-- phone case reducer added -->
+          {%if policy.phone_case%}
+          <div class="reducers">
+            <div><i class="fa-solid fa-suitcase"></i></div>
+            <div>
+              <p class="reducer-text">Phone Case</p>
             </div>
-            {%endif%}
-            <!-- phone case reducer added -->
-            {%if policy.phone_case%}
-            <div class="reducers">
-              <div><i class="fa-solid fa-suitcase"></i></div>
-              <div><p class="reducer-text">Phone Case</p></div>
+          </div>
+          {%endif%} {%if not policy.phone_case%}
+          <div class="reducers">
+            <div><i class="fa-solid fa-suitcase suitcase-gray"></i></i></div>
+            <div>
+              <p class="reducer-text-gray">Phone Case</p>
             </div>
-            {%endif%} {%if not policy.phone_case%}
-            <div class="reducers">
-              <div><i class="fa-solid fa-suitcase suitcase-gray"></i></i></div>
-              <div><p class="reducer-text-gray">Phone Case</p></div>
+          </div>
+          {%endif%}
+          <!-- waterproof reducer added -->
+          {%if policy.waterproof_phone%}
+          <div class="reducers">
+            <div><i class="fa-solid fa-umbrella"></i></div>
+            <div>
+              <p class="reducer-text">Waterproof Phone</p>
             </div>
-            {%endif%}
-            <!-- waterproof reducer added -->
-            {%if policy.waterproof_phone%}
-            <div class="reducers">
-              <div><i class="fa-solid fa-umbrella"></i></div>
-              <div><p class="reducer-text">Waterproof Phone</p></div>
+          </div>
+          {%endif%} {%if not policy.waterproof_phone%}
+          <div class="reducers">
+            <div><i class="fa-solid fa-umbrella umbrella-gray"></i></div>
+            <div>
+              <p class="reducer-text-gray">Waterproof Phone</p>
             </div>
-            {%endif%} {%if not policy.waterproof_phone%}
-            <div class="reducers">
-              <div><i class="fa-solid fa-umbrella umbrella-gray"></i></div>
-              <div><p class="reducer-text-gray">Waterproof Phone</p></div>
-            </div>
-            {%endif%}
+          </div>
+          {%endif%}
 
 
         </div>
 
-        <div class = "prem-container">
+        <div class="prem-container">
           <div>
             <h3>R {{ policy.premium}}</h3>
           </div>
           <div>
 
             {% for policy_type in policy_types%}
-              {%if policy.policy_type_id == policy_type.policy_type_id %}
-                {% if not policy_type.start_price == policy.premium%}
-                <p class = "old-price">R {{policy_type.start_price}}</p>
-                {% endif %}
-              {% endif %}
+            {%if policy.policy_type_id == policy_type.policy_type_id %}
+            {% if not policy_type.start_price == policy.premium%}
+            <p class="old-price">R {{policy_type.start_price}}</p>
+            {% endif %}
+            {% endif %}
             {% endfor %}
           </div>
         </div>
@@ -115,20 +143,13 @@
           <li class="policy-info-list">
             <i class="fa-solid fa-lock"></i>Theft Protection
           </li>
+          <li style="list-style-type: none;" id="policy-info-list-gray"><i class="fa-solid fa-heart-crack"
+              id="fa-heart-crack-gray"></i> Screen
+            Damage Protection</li>
+          <li style="list-style-type: none;" id="policy-info-list-gray"><i class="fa-solid fa-droplet"
+              id="fa-heart-crack-gray"></i> Water Damage Protection</li>
           <li class="policy-info-list-gray">
-            <i id="fa-heart-crack-gray" class="fa-solid fa-heart-crack"></i
-            >Screen Damage Protection
-          </li>
-          <li class="policy-info-list-gray">
-            <i id="fa-droplet-gray" class="fa-solid fa-droplet gray-icon"></i>Water Damage
-            Protection
-          </li>
-          <li class="policy-info-list-gray">
-            <i
-              id="fa-square-caret-up-gray"
-              class="fa-solid fa-square-caret-up"
-            ></i
-            >Phone Upgrade Costs
+            <i id="fa-square-caret-up-gray" class="fa-solid fa-square-caret-up"></i>Phone Upgrade Costs
           </li>
         </ul>
         {%endif%} {%if policy.policy_name == "Personal Plan"%}
@@ -137,18 +158,13 @@
             <i class="fa-solid fa-lock"></i>Theft Protection
           </li>
           <li class="policy-info-list">
-            <i class="fa-solid fa-heart-crack"></i>Screen Damage Protection
+            <i class="fa-solid fa-heart-crack"></i> Screen Damage Protection
           </li>
           <li class="policy-info-list-gray">
-            <i id="fa-droplet-gray" class="fa-solid fa-droplet"></i>Water Damage
-            Protection
-          </li>
+          <li style="list-style-type: none;" id="policy-info-list-gray"><i class="fa-solid fa-droplet"
+              id="fa-heart-crack-gray"></i> Water Damage Protection</li>
           <li class="policy-info-list-gray">
-            <i
-              id="fa-square-caret-up-gray"
-              class="fa-solid fa-square-caret-up"
-            ></i
-            >Phone Upgrade Costs
+            <i id="fa-square-caret-up-gray" class="fa-solid fa-square-caret-up"></i>Phone Upgrade Costs
           </li>
         </ul>
         {%endif%} {%if policy.policy_name == "Business Plan"%}
@@ -157,17 +173,13 @@
             <i class="fa-solid fa-lock"></i>Theft Protection
           </li>
           <li class="policy-info-list">
-            <i class="fa-solid fa-heart-crack"></i>Screen Damage Protection
+            <i class="fa-solid fa-heart-crack"></i> Screen Damage Protection
           </li>
           <li class="policy-info-list">
             <i class="fa-solid fa-droplet"></i>Water Damage Protection
           </li>
           <li class="policy-info-list-gray">
-            <i
-              id="fa-square-caret-up-gray"
-              class="fa-solid fa-square-caret-up"
-            ></i
-            >Phone Upgrade Costs
+            <i id="fa-square-caret-up-gray" class="fa-solid fa-square-caret-up"></i>Phone Upgrade Costs
           </li>
         </ul>
         {%endif%} {%if policy.policy_name == "Platinum Plan"%}
@@ -176,7 +188,7 @@
             <i class="fa-solid fa-lock"></i>Theft Protection
           </li>
           <li class="policy-info-list">
-            <i class="fa-solid fa-heart-crack"></i>Screen Damage Protection
+            <i class="fa-solid fa-heart-crack"></i> Screen Damage Protection
           </li>
           <li class="policy-info-list">
             <i class="fa-solid fa-droplet"></i>Water Damage Protection
@@ -188,16 +200,9 @@
         {%endif%}
 
         <div class="claim-upgrade-buttons">
-          <a
-            href="{{ url_for('claims_bp.claims_page') }}"
-            class="policy-card-btn"
-            >Claim</a
-          >
+          <a href="{{ url_for('claims_bp.claims_page') }}" class="policy-card-btn">Claim</a>
           {% if policy.policy_name != 'Platinum' %}
-          <a
-            href="{{ url_for('policies_bp.upgrade_page', policy_id=policy.policy_id) }}"
-            class="policy-card-btn"
-          >
+          <a href="{{ url_for('policies_bp.upgrade_page', policy_id=policy.policy_id) }}" class="policy-card-btn">
             Upgrade
           </a>
           {% endif %}
@@ -208,11 +213,9 @@
     {% endif%} {% endfor %}
 
     <div class="empty-col">
-      <a
-        href="{{ url_for('policies_bp.new_policy_page' , policy_id='new') }}"
-      >
+      <a href="{{ url_for('policies_bp.new_policy_page' , policy_id='new') }}">
         <div class="no-policies">
-        <i class="fa-regular fa-square-plus no-policy-btn"></i>
+          <i class="fa-regular fa-square-plus no-policy-btn"></i>
         </div>
       </a>
     </div>

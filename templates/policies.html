@@ -26,19 +26,20 @@
           <i class="fa-solid fa-lock"></i>Theft Protection
         </li>
 
-        <!-- TODO: dynamic benefits -->
-        <li
-          class="{% if policy_type.policy_type_id in ['bPERS', 'cBUS', 'dPLAT'] %}policy-info-list{% else %}policy-info-list{% endif %}">
-          <i class="fa-solid fa-heart-crack"></i>Screen Damage Protection
+        <!-- Screen Damage Protection - available in all except aSTART -->
+        <li class="policy-info-list">
+          <i class="fa-solid fa-heart-crack"></i> Screen Damage Protection
         </li>
 
+        <!-- Water Damage Protection - only in cBUS and dPLAT -->
         <li
-          class="{% if policy_type.policy_type_id in ['cBUS', 'dPLAT'] %}policy-info-list{% else %}policy-info-list{% endif %}">
-          <i class="fa-solid fa-droplet"></i></i>Water Damage Protection
+          class="{% if policy_type.policy_type_id in ['cBUS', 'dPLAT'] %}policy-info-list{% else %}policy-info-list-disabled{% endif %}">
+          <i class="fa-solid fa-droplet"></i>Water Damage Protection
         </li>
 
+        <!-- Phone Upgrade Costs - only in dPLAT -->
         <li
-          class="{% if policy_type.policy_type_id == 'dPLAT' %}policy-info-list{% else %}policy-info-list{% endif %}">
+          class="{% if policy_type.policy_type_id == 'dPLAT' %}policy-info-list{% else %}policy-info-list-disabled{% endif %}">
           <i class="fa-solid fa-square-caret-up"></i>Phone Upgrade Costs
         </li>
       </ul>
