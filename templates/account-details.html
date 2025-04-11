@@ -3,7 +3,6 @@
 <div class="main">
   <div class="acc-details-card">
     <div class="acc-details-greeting">
-      {% if not edit %}
       <form
         action="{{url_for('account_details_bp.change_pfp')}}"
         method="POST"
@@ -23,15 +22,6 @@
           />
         </label>
       </form>
-
-      {% else %}
-      <a href="/change-pfp"
-        ><img
-          src="../../{{profile_pic_url}}"
-          class="account-details-profile-pic"
-      /></a>
-      <!-- <a href="/change-pfp"><i class="fa-solid fa-image"></i></a> -->
-      {% endif %}
       <h2>Hey, {{user.first_name}}!</h2>
     </div>
 
